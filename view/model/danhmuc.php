@@ -1,18 +1,16 @@
 <?php
 include ".././admin/database.php";
-?>
-<?php
-
 
 ?>
+
 <?php
- class cartegoryy {
+ class cartegory {
     private $db;
     public function __construct() {
         $this->db = new Database();
     }
-    public function loaddm(){
-        $query = "SELECT * FROM loaixe";
+    public function showdm(){
+        $query = "SELECT * FROM loaixe where cartegory_id";
         $result = $this->db->select($query);
         return $result;
     }
