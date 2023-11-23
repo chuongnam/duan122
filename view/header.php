@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
 
     
 </head>
 
-<?php
-
-?>
 
 <body>
     <!--header-->
@@ -26,12 +24,7 @@
              <li><a href="index.html">TRANG CHỦ</a></li>
              <li><a href="cartegory.php">SẢN PHẨM</a>
                  
-                <ul class="sub-menu">
-                    
-                    <li><a href="">XE ĐẠP THỜI TRANG</a></li>
-                    <li><a href="">XE ĐẠP ĐỊA</a></li>
-                    <li><a href="">XE ĐẠP TRẺ EM</a></li>
-                </ul>
+             
                 
              </li>
              <li><a href="">GIỚI THIỆU</a></li>
