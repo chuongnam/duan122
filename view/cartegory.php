@@ -2,12 +2,14 @@
 
 include "header.php";
 include "model/sanpham.php";
+
 ?>
 <?php
 
 $product = new productt();
 $loadsp = $product->loadsp();
 ?>
+
 <style>
     .cartegory-right-content {
         display: flex;
@@ -25,12 +27,14 @@ $loadsp = $product->loadsp();
                     <p>DANH MỤC</p>
                 </div>
                 <div class="cartegory-right-top-item">
+                  
                     <select name="" id="">
                         <option value="">sắp xếp</option>
                         <option value="">xe đạp giá cao</option>
                         <option value="">xe đạp cũ</option>
                         <option value="">xe đạp giá rẻ</option>
                     </select>
+                   
                 </div>
                 <div class="cartegory-right-content">
                 <?php
@@ -47,7 +51,7 @@ $loadsp = $product->loadsp();
                                 <p>
                                     <?php echo $row['product_gia'] ?><sub>đ</sub>
                                 </p>
-                                <a href="chitietsanpham?product_id=<?php echo $row['product_id'] ?>">xem them</a>
+                                <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>">xem them</a>
                             </div>
                         
                         <?php
