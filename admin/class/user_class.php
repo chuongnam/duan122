@@ -19,18 +19,8 @@ include "database.php";
         $result = $this->db->select($query);
         return $result;
     }
-    public function get_cartergory($cartegory_id){
-        $query = "SELECT * FROM loaixe WHERE cartegory_id = '.$cartegory_id'";
-        $result = $this->db->select($query);
-        return $result;
-    }
-    public function updateuser($user_id,$user_name,$pass,$email){
-        $query = "UPDATE user SET user_name = '$user_name', pass='$pass', email= '$email' WHERE user_id='$user_id'";
-        $result = $this->db->update($query);
-        header ('location:listtaikhoan.php');
-        return $result;
-
-    }
+   
+    
     public function deleteuser($user_id){
         $query = "DELETE FROM user WHERE user_id='$user_id'";
         $result = $this->db->delete($query);

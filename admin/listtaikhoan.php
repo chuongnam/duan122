@@ -33,8 +33,7 @@ $showuser = $user->showuser();
                     <td><?php echo $result['user_name']?></td>
                     <td><?php echo $result['pass']?></td>
                     <td><?php echo $result['email']?></td>
-                    <td><a href="deleteuser.php?user_id=<?php echo $result['user_id']?>" class="btn btn-success">XÓA</a><a class="btn btn-danger" href="useredit.php?user_id=<?php echo $result['user_id']?>">SỬA</a></td>
-                    
+                    <td><a href="deleteuser.php?user_id=<?php echo $result['user_id']?>" class="btn btn-success">XÓA</a></td>
                 </tr>
                 </tbody>
                 <?php

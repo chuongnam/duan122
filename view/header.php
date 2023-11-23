@@ -11,6 +11,7 @@
 
     
 </head>
+
 <body>
     <!--header-->
     <header>
@@ -20,11 +21,13 @@
         <div class="menu">
              <li><a href="index.html">TRANG CHỦ</a></li>
              <li><a href="cartegory.php">SẢN PHẨM</a>
+            
                 <ul class="sub-menu">
                     <li><a href="">XE ĐẠP THỜI TRANG</a></li>
                     <li><a href="">XE ĐẠP ĐỊA</a></li>
                     <li><a href="">XE ĐẠP TRẺ EM</a></li>
                 </ul>
+                
              </li>
              <li><a href="">GIỚI THIỆU</a></li>
              <li><a href="">LIÊN HỆ</a></li>

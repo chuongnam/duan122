@@ -1,6 +1,9 @@
 <?php
+
 include "header.php";
+
 ?>
+
 <style>
     .quantity{
         margin-top: 10px;
