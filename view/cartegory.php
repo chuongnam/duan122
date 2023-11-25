@@ -1,78 +1,89 @@
 <?php
+
 include "header.php";
+include "model/sanpham.php";
+
 ?>
-<section class="cartegory">
-       <div class="container">
-       
-       </div>
-       <div class="container">
-        <div class="row">
-           
-            <div class="cartegory-right" >
-             <div class="cartegory-right-top-item">
-                <p>DANH MỤC</p>
-             </div>
-             <div class="cartegory-right-top-item">
-                <select name="" id="">
-                    <option value="">sắp xếp</option>
-                    <option value="">xe đạp giá cao</option>
-                    <option value="">xe đạp cũ</option>
-                    <option value="">xe đạp giá rẻ</option>
-                </select>
-             </div>
-          
-            
-             <div class="cartegory-right-content">
-                <div class="cartegory-right-content-item">
-                    <img src="image/anh11.jpg">
-                    <h1>xe đạp địa hình đẹp nhất việt nam</h1>
-                    <p>1.0000.000<sub>đ</sub></p>
-                </div>
-                <div class="cartegory-right-content-item">
-                    <img src="image/anh11.jpg">
-                    <h1>xe đạp địa hình đẹp nhất việt nam</h1>
-                    <p>1.0000.000<sub>đ</sub></p>
-                </div>
-                <div class="cartegory-right-content-item">
-                    <img src="image/anh11.jpg">
-                    <h1>xe đạp địa hình đẹp nhất việt nam</h1>
-                    <p>1.0000.000<sub>đ</sub></p>
-                </div>
-                <div class="cartegory-right-content-item">
-                    <img src="image/anh11.jpg">
-                    <h1>xe đạp địa hình đẹp nhất việt nam</h1>
-                    <p>1.0000.000<sub>đ</sub></p>
-                </div>
-                </div>
-                <div class="cartegory-right-content2">
-                    <div class="cartegory-right-content2-item">
-                        <img src="image/anh11.jpg">
-                        <h1>xe đạp địa hình đẹp nhất việt nam</h1>
-                        <p>1.0000.000<sub>đ</sub></p>
-                    </div>
-                    <div class="cartegory-right-content2-item">
-                        <img src="image/anh11.jpg">
-                        <h1>xe đạp địa hình đẹp nhất việt nam</h1>
-                        <p>1.0000.000<sub>đ</sub></p>
-                    </div>
-                    <div class="cartegory-right-content2-item">
-                        <img src="image/anh11.jpg">
-                        <h1>xe đạp địa hình đẹp nhất việt nam</h1>
-                        <p>1.0000.000<sub>đ</sub></p>
-                    </div>
-                    <div class="cartegory-right-content2-item">
-                        <img src="image/anh11.jpg">
-                        <h1>xe đạp địa hình đẹp nhất việt nam</h1>
-                        <p>1.0000.000<sub>đ</sub></p>
-                    </div>
-            </div>
-            
-            </div>
-        </div>
-        </div>
+<?php
+
+$product = new productt();
+$loadsp = $product->loadsp();
+?>
+<?php
+
+$cartegory = new cartegory();
+$loaddm = $cartegory->loaddm();
+?>
+<style>
+    .cartegory-right-content {
+        display: flex;
+    }
+   
+    .cartegory-left{
+        width: 20%;
+        padding: 40px;
+    }
   
-       
-   </section>
-   <?php
+</style>
+
+<section class="cartegory">
+    <div class="container">
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="cartegory-left">
+                <div class="cartegory-left-item">
+                    <h1>DANH MỤC</h1>
+
+                    <?php
+                if ($loaddm) {
+                    while ($row = $loaddm->fetch_assoc()) {
+                        ?>
+
+                       <li><a href="spdanhmuc.php?cartegory_id=<?php echo $row['cartegory_id']?>"><?php echo $row['tendanhmuc']?></a><li>
+                  
+                    <?php
+                    }
+                }
+                ?>
+                </div>
+            </div>
+            <div class="cartegory-right">
+            
+            
+                
+                <div class="cartegory-right-content">
+                <?php
+                if ($loadsp) {
+                    while ($row = $loadsp->fetch_assoc()) {
+                        ?>
+
+                        
+                            <div class="cartegory-right-content-item">
+                                <img src="../admin/upload/<?php echo $row['images'] ?>">
+                                <h1>
+                                    <?php echo $row['product_name'] ?>
+                                </h1>
+                                <p>
+                                    <?php echo $row['product_gia'] ?><sub>đ</sub>
+                                </p>
+                                <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>" class="btn.btn-danger">xem them</a>
+                            </div>
+                        
+                        <?php
+                    }
+                }
+                ?>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+</section>
+<?php
 include "footer.php";
 ?>

@@ -12,6 +12,7 @@ else{
     $product_id = $_GET["product_id"];
 }
     $get_product = $product->get_product($product_id);
+    
     if($get_product){
         $result = $get_product->fetch_assoc();
     }

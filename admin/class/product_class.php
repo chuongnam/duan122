@@ -65,5 +65,11 @@ include "database.php";
         return $result;
 
     }
+    public function get_product($product_id)
+    {
+        $query = "SELECT * FROM product WHERE product_id = $product_id";
+        $result = $this->db->select($query);
+        return $result;
+    }
  }
 ?>
