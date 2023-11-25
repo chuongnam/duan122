@@ -1,7 +1,56 @@
 <?php
-
+session_start();
 include "header.php";
+
 ?>
+
+<?php
+
+if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=[];
+//lay du lieu form
+if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
+        $images = $_POST['images'];
+        $product_name=$_POST['product_name'];
+        $product_gia=$_POST['product_gia'];
+        $color = $_POST['color'];
+        //ktra sản phẩm có trong giỏ hàng hay k
+        $fl=0;
+    //    for ($i=0;$i <sizeof($_SESSION['giohang']); $i++){
+    //     if($_SESSION['giohang'][$i][1]==$product_name){
+    //         $fl=1;
+    //         $soluongnew=$solong+$_SESSION['giohang'][$i]['3'];
+    //         $_SESSION['giohang'][$i][4]=$soluongnew;
+    //         break;
+    //     }
+    //    }
+        // if($fl==0){}
+        //them moi
+        $sp=[$images,$product_name,$product_gia,$color];
+        $_SESSION['giohang'][]=$sp;
+        header("location:cart.php");
+        
+}
+ function showgiohang(){
+    if(isset($_SESSION['giohang'])&&(is_array($_SESSION['giohang']))){
+        for($i=0; $i < sizeof($_SESSION['giohang']); $i++){
+           
+            echo '<tr>
+            <td>'.($i+1).'</td>
+            <td><img src="../admin/upload/'.$_SESSION['giohang'][$i][0].'" width="80px"></td>
+            <td><p>'.$_SESSION['giohang'][$i][1].'</p></td>
+            <td>'.$_SESSION['giohang'][$i][2].'</td>
+            <td>'.$_SESSION['giohang'][$i][3].'</td>
+         
+            
+            <td><span>x</span></td>
+
+        </tr>';
+        
+        }
+    }
+ }
+?>
+
     <section class="cart">
        
        <div class="container">
@@ -9,15 +58,17 @@ include "header.php";
                <div class="cart-content-left">
                     <table>
                        <tr>
-                           <th>SẢN PHẨM</th>
+                           <th>STT</th>
+                           <th>ẢNH SẢN PHẨM</th>
                            <th>TÊN SẢN PHẨM</th>
-                           <th>MÀU</th>
-                           <th>so luong</th>
+                           <th>GIÁ</th>
                    
+                           <th>MÀU SẮC</th>
                            <th>THÀNH TIỀN</th>
                            <th>XÓA</th>
                        </tr>
-                       <tr>
+                       <?php showgiohang() ?>
+                       <!-- <tr>
                            <td><img src="image/anh11.jpg"></td>
                            <td><p>xe đạp trẻ em</p></td>
                            <td><img src="image/color.jpg" ></td>
@@ -36,7 +87,7 @@ include "header.php";
                            <td><p>4.000.000<sub>đ</sub></p></td>
                            <td><span>x</span></td>
    
-                       </tr>
+                       </tr> -->
                     </table>
                </div>
                <div class="cart-content-right">
@@ -44,18 +95,12 @@ include "header.php";
                        <tr>
                            <th colspan="2">Tổng giỏ hàng</th>
                        </tr>
-                       <tr>
-                           <td>Tổng Sản Phẩm</td>
-                           <td>2</td>
-                       </tr>
+                   
                        <tr>
                            <td>Tổng Tiền Hàng</td>
                            <td><p>3.000.000<sub>đ</sub></p></td>
                        </tr>
-                       <tr>
-                           <td>Tạm Tính</td>
-                           <td><p style="color: black; font-weight: bold;">5.000.000<sub>đ</sub></p></td>
-                       </tr>
+                       
                    </table>
                   <div class="cart-content-right-text">
                     <p>bạn sẽ được miễn phí giao hàng khi đơn hàng của bạn có tổng giá trị trên 2.000.000<sub>đ</sub></p>
