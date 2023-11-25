@@ -3,15 +3,10 @@
 include "header.php";
 include "model/sanpham.php";
 
-?>
-<?php
-
-$product = new productt();
+$product = new product();
 $loadsp = $product->loadsp();
-?>
-<?php
 
-$cartegory = new cartegory();
+$cartegory = new category();
 $loaddm = $cartegory->loaddm();
 ?>
 <style>
