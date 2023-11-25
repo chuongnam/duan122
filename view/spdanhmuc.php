@@ -5,7 +5,7 @@ include "model/sanpham.php";
 
     <?php
 
-$cartegory = new cartegory();
+$cartegory = new category();
 $spdanhmuc = $cartegory->spdanhmuc();
 ?>
 <style>
