@@ -28,9 +28,8 @@ echo '</script>';
         <div class="product-content row">
             <div class="product-content-left row">
                 <div class="product-content-left-big-img">
-                    <img src="upload/<?php echo $sanphamchitiet['images']; ?>" alt="Product Image">
+                <img src="../admin/upload/<?php echo $sanphamchitiet['images'] ?>">
                 </div>
-
             </div>
             <div class="product-content-right">
                 <div class="product-content-right-product-name">
@@ -47,7 +46,7 @@ echo '</script>';
 
                 <div class="quantity">
                     <p style="font-weight: bold;">Số Lượng :</p>
-                    <input type="number" min="0" value="<?php echo $sanphamchitiet['soluong'] ?>">
+                    <input type="number" min="1" value="">
 
                 </div>
 
@@ -56,11 +55,7 @@ echo '</script>';
                     <p><?php echo $sanphamchitiet['product_mota'] ?>
                     </p>
                 </div>
-                <div class="mota">
-                    <h3>loại xe:</h3>
-                    <p><?php echo $category['tendanhmuc'] ?>
-                    </p>
-                </div>
+               
                 <div class="product-content-right-product-button">
                     <button><i class="fa fa-shopping-cart"></i>
                         <p>MUA HÀNG</p>
