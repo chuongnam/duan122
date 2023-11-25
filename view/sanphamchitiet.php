@@ -15,6 +15,7 @@ echo 'console.log(' . json_encode($sanphamchitiet) . ');';
 echo 'console.log(' . json_encode($category) . ');';
 echo '</script>';
 ?>
+
 <style>
     .quantity {
         margin-top: 10px;
@@ -25,6 +26,7 @@ echo '</script>';
         <div class="product-top row">
 
         </div>
+        
         <div class="product-content row">
             <div class="product-content-left row">
                 <div class="product-content-left-big-img">
@@ -47,7 +49,7 @@ echo '</script>';
 
                 <div class="quantity">
                     <p style="font-weight: bold;">Số Lượng :</p>
-                    <input type="number" min="1" value="">
+                    <input type="number" min="1" value="" name="soluong"> 
 
                 </div>
 
@@ -56,11 +58,20 @@ echo '</script>';
                     <p><?php echo $sanphamchitiet['product_mota'] ?>
                     </p>
                 </div>
-               
+                 <!-----form dat hang-->
+                <form action="cart.php" method="POST">
+                <input type="type" name="soluong" min="1" value="" hidden>
+                <input type="text" name="product_id" value="<?php echo $sanphamchitiet['product_id'] ?>" hidden>
+                <input type="text" name="images" value="<?php echo $sanphamchitiet['images'] ?>" hidden>
+                <input type="text" name="product_name" value="<?php echo $sanphamchitiet['product_name'] ?>" hidden>
+                <input type="text" name="product_gia" value="<?php echo $sanphamchitiet['product_gia'] ?>" hidden>
+                <input type="text" name="color" value="<?php echo $sanphamchitiet['color'] ?>" hidden>
+                
+                <input type="submit" value="addcart" name="addtocart">
+                </form>
+                <!-------end-------->
                 <div class="product-content-right-product-button">
-                    <button><i class="fa fa-shopping-cart"></i>
-                        <p>MUA HÀNG</p>
-                    </button>
+   
                     <button>
                         <p>TÌM TẠI CỦA HÀNG</p>
                     </button>
