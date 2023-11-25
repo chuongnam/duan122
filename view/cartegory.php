@@ -2,57 +2,36 @@
 
 include "header.php";
 include "model/sanpham.php";
-
 ?>
 <?php
 
 $product = new productt();
 $loadsp = $product->loadsp();
 ?>
-<?php
-
-$cartegory = new cartegory();
-$loaddm = $cartegory->loaddm();
-?>
 <style>
     .cartegory-right-content {
         display: flex;
     }
-   
-    .cartegory-left{
-        width: 20%;
-        padding: 40px;
-    }
-  
 </style>
-
 <section class="cartegory">
     <div class="container">
 
     </div>
     <div class="container">
         <div class="row">
-            <div class="cartegory-left">
-                <div class="cartegory-left-item">
-                    <h1>DANH MỤC</h1>
 
-                    <?php
-                if ($loaddm) {
-                    while ($row = $loaddm->fetch_assoc()) {
-                        ?>
-
-                       <li><a href="spdanhmuc.php?cartegory_id=<?php echo $row['cartegory_id']?>"><?php echo $row['tendanhmuc']?></a><li>
-                  
-                    <?php
-                    }
-                }
-                ?>
-                </div>
-            </div>
             <div class="cartegory-right">
-            
-            
-                
+                <div class="cartegory-right-top-item">
+                    <p>DANH MỤC</p>
+                </div>
+                <div class="cartegory-right-top-item">
+                    <select name="" id="">
+                        <option value="">sắp xếp</option>
+                        <option value="">xe đạp giá cao</option>
+                        <option value="">xe đạp cũ</option>
+                        <option value="">xe đạp giá rẻ</option>
+                    </select>
+                </div>
                 <div class="cartegory-right-content">
                 <?php
                 if ($loadsp) {
@@ -68,7 +47,7 @@ $loaddm = $cartegory->loaddm();
                                 <p>
                                     <?php echo $row['product_gia'] ?><sub>đ</sub>
                                 </p>
-                                <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>" class="btn.btn-danger">xem them</a>
+                                <a href="chitietsanpham?product_id=<?php echo $row['product_id'] ?>">xem them</a>
                             </div>
                         
                         <?php
