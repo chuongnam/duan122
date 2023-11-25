@@ -2,56 +2,48 @@
 
 include "header.php";
 include "model/sanpham.php";
-
 ?>
 <?php
 
-$product = new productt();
+$product = new product();
 $loadsp = $product->loadsp();
 ?>
 <?php
 
-$cartegory = new cartegory();
+$cartegory = new category();
 $loaddm = $cartegory->loaddm();
 ?>
 <style>
     .cartegory-right-content {
         display: flex;
     }
-   
-    .cartegory-left{
+    .content-left{
         width: 20%;
-        padding: 40px;
     }
-  
 </style>
-
 <section class="cartegory">
     <div class="container">
 
     </div>
     <div class="container">
         <div class="row">
-            <div class="cartegory-left">
-                <div class="cartegory-left-item">
+<div class="content-left">
+<div class="cartegory-right-top-item">
                     <h1>DANH MỤC</h1>
-
                     <?php
                 if ($loaddm) {
                     while ($row = $loaddm->fetch_assoc()) {
                         ?>
-
-                       <li><a href="spdanhmuc.php?cartegory_id=<?php echo $row['cartegory_id']?>"><?php echo $row['tendanhmuc']?></a><li>
-                  
-                    <?php
+                        <a href="spdanhmuc.php?cartegory_id=<?php echo $row['cartegory_id']?>"><?php echo $row['tendanhmuc']?></p></a>
+                               <?php
                     }
                 }
                 ?>
+
                 </div>
-            </div>
+</div>
             <div class="cartegory-right">
-            
-            
+                
                 
                 <div class="cartegory-right-content">
                 <?php
@@ -68,7 +60,7 @@ $loaddm = $cartegory->loaddm();
                                 <p>
                                     <?php echo $row['product_gia'] ?><sub>đ</sub>
                                 </p>
-                                <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>" class="btn.btn-danger">xem them</a>
+                                <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>">xem them</a>
                             </div>
                         
                         <?php
