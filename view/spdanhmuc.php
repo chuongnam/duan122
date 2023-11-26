@@ -12,14 +12,20 @@ $spdanhmuc = $cartegory->spdanhmuc();
     .cartegory-right{
         width: 100%;
         padding-top: 100px;
+       
+      
+        
     }
+ 
     
     </style>
 <div class="cartegory-right">
 <h1>DANH MỤC</h1>
-    <div class="cartegory-right-content row">
+  
+    <div class="cartegory-right-content">
         <div class="cartegory-right-content-item">
         <?php
+        
                 if ($spdanhmuc) {
                     while ($row = $spdanhmuc->fetch_assoc()) {
                         ?>
@@ -33,8 +39,8 @@ $spdanhmuc = $cartegory->spdanhmuc();
         </div>
        
 
-    </div>
-
+    
+     </div>
 
 </div>
 <?php
