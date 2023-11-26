@@ -19,20 +19,20 @@ if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
         $soluong=$_POST['soluong'];
         //ktra sản phẩm có trong giỏ hàng hay k
         $fl=0;
-    //    for ($i=0;$i <sizeof($_SESSION['giohang']); $i++){
-    //     if($_SESSION['giohang'][$i][1]==$product_name){
-    //         $fl=1;
-    //         $soluongnew=$solong+$_SESSION['giohang'][$i]['3'];
-    //         $_SESSION['giohang'][$i][4]=$soluongnew;
-    //         break;
-    //     }
-    //    }
-        // if($fl==0){}
+       for ($i=0;$i <sizeof($_SESSION['giohang']); $i++){
+        if($_SESSION['giohang'][$i][1]==$product_name){
+            $fl=1;
+            $soluongnew=$soluong+$_SESSION['giohang'][$i][4];
+            $_SESSION['giohang'][$i][4]=$soluongnew;
+            break;
+        }
+       }
+        if($fl==0){
         //them moi
         $sp=[$images,$product_name,$product_gia,$color,$soluong];
         $_SESSION['giohang'][]=$sp;
         header("location:cart.php");
-        
+        }
 }
 
 ?>
@@ -80,14 +80,8 @@ if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
                </div>
                <div class="cart-content-right">
                    <table>
-                       <tr>
-                           <th colspan="2">Tổng giỏ hàng</th>
-                       </tr>
-                   
-                       <tr>
-                           <td>Tổng Tiền Hàng</td>
-                           <td><p>3.000.000<sub>đ</sub></p></td>
-                       </tr>
+                  
+                      
                        
                    </table>
                   <div class="cart-content-right-text">

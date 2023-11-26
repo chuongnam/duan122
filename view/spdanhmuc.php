@@ -32,10 +32,12 @@ $spdanhmuc = $cartegory->spdanhmuc();
             <img src="../admin/upload/<?php echo $row['images'] ?>">
             <h1><?php echo $row['product_name']?></h1>
             <p><?php echo $row['product_gia']?><sub>đ</sub></p>
+            <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>">xem them</a>
             <?php
                     }
                 }
                 ?>
+                
         </div>
        
 
