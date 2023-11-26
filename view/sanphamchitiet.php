@@ -47,11 +47,7 @@ echo '</script>';
 
                 </div>
 
-                <div class="quantity">
-                    <p style="font-weight: bold;">Số Lượng :</p>
-                    <input type="number" min="1" value="" name="soluong"> 
-
-                </div>
+             
 
                 <div class="mota">
                     <h3>MÔ TẢ:</h3>
@@ -60,7 +56,9 @@ echo '</script>';
                 </div>
                  <!-----form dat hang-->
                 <form action="cart.php" method="POST">
-                <input type="type" name="soluong" min="1" value="" hidden>
+                <p style="font-weight: bold;">Số Lượng :</p>
+                <input type="number" min="0" value="soluong" name="soluong"> <br>
+
                 <input type="text" name="product_id" value="<?php echo $sanphamchitiet['product_id'] ?>" hidden>
                 <input type="text" name="images" value="<?php echo $sanphamchitiet['images'] ?>" hidden>
                 <input type="text" name="product_name" value="<?php echo $sanphamchitiet['product_name'] ?>" hidden>

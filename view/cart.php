@@ -1,18 +1,22 @@
 <?php
 session_start();
 include "header.php";
+include "addcart.php";
 
 ?>
 
 <?php
 
 if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=[];
+
 //lay du lieu form
 if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
+
         $images = $_POST['images'];
         $product_name=$_POST['product_name'];
         $product_gia=$_POST['product_gia'];
         $color = $_POST['color'];
+        $soluong=$_POST['soluong'];
         //ktra sản phẩm có trong giỏ hàng hay k
         $fl=0;
     //    for ($i=0;$i <sizeof($_SESSION['giohang']); $i++){
@@ -25,30 +29,12 @@ if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
     //    }
         // if($fl==0){}
         //them moi
-        $sp=[$images,$product_name,$product_gia,$color];
+        $sp=[$images,$product_name,$product_gia,$color,$soluong];
         $_SESSION['giohang'][]=$sp;
         header("location:cart.php");
         
 }
- function showgiohang(){
-    if(isset($_SESSION['giohang'])&&(is_array($_SESSION['giohang']))){
-        for($i=0; $i < sizeof($_SESSION['giohang']); $i++){
-           
-            echo '<tr>
-            <td>'.($i+1).'</td>
-            <td><img src="../admin/upload/'.$_SESSION['giohang'][$i][0].'" width="80px"></td>
-            <td><p>'.$_SESSION['giohang'][$i][1].'</p></td>
-            <td>'.$_SESSION['giohang'][$i][2].'</td>
-            <td>'.$_SESSION['giohang'][$i][3].'</td>
-         
-            
-            <td><span>x</span></td>
 
-        </tr>';
-        
-        }
-    }
- }
 ?>
 
     <section class="cart">
@@ -64,7 +50,9 @@ if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
                            <th>GIÁ</th>
                    
                            <th>MÀU SẮC</th>
+                           <th>SỐ LƯỢNG</th>
                            <th>THÀNH TIỀN</th>
+                         
                            <th>XÓA</th>
                        </tr>
                        <?php showgiohang() ?>
