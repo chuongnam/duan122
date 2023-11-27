@@ -19,7 +19,7 @@ include "header.php";
                     <input checked name="loaikhach" type="radio">
                     <p><span style="font-weight: bold;">ĐĂNG KÝ</span> (tạo mới tài khoản với thông tin bên dưới)</p>
                    </div>
-                  
+                     <form>
                      <div class="delivery-content-left-input-top-item">
                         <label for="">Họ Tên <span style="color: red;">*</span></label>
                         <input type="text">
@@ -48,8 +48,10 @@ include "header.php";
                  </div>
                  <div class="delivery-content-left-button">
                     <a href="cart.php"><span>&#8610;</span><p>Quay lại giở hàng</p></a>
-                    <button ><p style="font-weight: bold;">Thanh Toán Và Giao Hàng</p></button>
+                   <input type="">
+                     </form>
                  </div>
+                 
                 </div>
                 <div class="delivery-content-right">
                     <table>
