@@ -10,10 +10,7 @@ $sanpham = new product();
 $sanphamchitiet = $sanpham->get_product($id)->fetch_assoc();
 $danhmuc = new category();
 $category = $danhmuc->get_category($sanphamchitiet['cartegory_id']);
-echo '<script>';
-echo 'console.log(' . json_encode($sanphamchitiet) . ');';
-echo 'console.log(' . json_encode($category) . ');';
-echo '</script>';
+
 ?>
 <style>
     .quantity {
@@ -84,6 +81,7 @@ echo '</script>';
                 <div class="product-content-right-product-QR">
                     <img src="image/prcode.png">
                 </div>
+
 
                 <div class="product-content-right-bottom-content-big">
                     <div class="product-content-right-bottom-content-title row">
