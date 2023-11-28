@@ -35,7 +35,7 @@ function tongdonhang(){
             <td>'.$_SESSION['giohang'][$i][2].'</td>
             <td>'.$_SESSION['giohang'][$i][3].'</td>
             <td>'.$_SESSION['giohang'][$i][4].'</td>
-            <td>'.$tt.'</td>
+            <td>'.number_format($tt).' vnđ</td>
             <td>
             <a href="cart.php?delid='.$i.'"><span>x</span></a>
             </td>
@@ -48,12 +48,13 @@ function tongdonhang(){
          
       <tr>
           <td>Tổng Tiền Hàng</td>
-          <td><p>'.$tong.'<sub>đ</sub></p></td>
+          <td><p>'.number_format($tong).' vnđ</p></td>
           
       </tr>
       
   </table>';
     }
+    echo '<a href="dsdonhang.php" class="thanh-toan">danh sách đơn hàng</a>';
  }
  function ketnoidb(){
    
@@ -75,10 +76,10 @@ function tongdonhang(){
   
 
  }
- function taogiohang($bill_name, $bill_address, $tel,$email,$total,$pttt){
+ function taogiohang($bill_name, $bill_address, $tel,$email,$total,$pttt,$ngaydathang){
     $conn=ketnoidb();
-    $sql = "INSERT INTO bill (bill_name, bill_address, tel,email,total,pttt)
-  VALUES ('$bill_name', '$bill_address', '$tel','$email','$total','$pttt')";
+    $sql = "INSERT INTO bill (bill_name, bill_address, tel,email,total,pttt,ngaydathang)
+  VALUES ('$bill_name', '$bill_address', '$tel','$email','$total','$pttt','$ngaydathang')";
     
   $conn->exec($sql);
   $last_id = $conn->lastInsertId();
@@ -94,5 +95,55 @@ function tongdonhang(){
   $conn = null;
 
  }
+ function showlai(){
+  if(isset($_SESSION['giohang'])&&(is_array($_SESSION['giohang']))){
+     $tong=0;
+      for($i=0; $i < sizeof($_SESSION['giohang']); $i++){
+          $tt= $_SESSION['giohang'][$i][2]*$_SESSION['giohang'][$i][4];
+          $tong+=$tt;
+          echo '<tr>
+         
+        
+          <td><p>'.$_SESSION['giohang'][$i][1].'</p></td>
+         
+          <td>'.$_SESSION['giohang'][$i][4].'</td>
+          <td>'.number_format($tt).' vnđ</td>
+         
+
+      </tr>';
+      
+      }
+    echo ' <table>
+   
+       
+    <tr>
+        <td>Tổng Tiền Hàng</td>
+        <td><p>'.number_format($tong).' vnđ</p></td>
+        
+    </tr>
+    
+</table>';
+  }
+  echo '<a href="dsdonhang.php" class="thanh-toan">danh sách đơn hàng</a>';
+}
+
  
 ?>
+<style>
+   .thanh-toan{
+        margin-top: 20px;
+        width: 200px;
+        height: 50px;
+        background-color: white;
+        border: 2px solid #BF8A49;
+        color: #BF8A49;
+    }
+   .thanh-toan:hover{
+    background-color: black;
+    color: white;
+   }
+   .soluongg input{
+     margin-top: 10px;
+         width: 50px;
+   }
+  </style>

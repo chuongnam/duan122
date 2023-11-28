@@ -20,6 +20,22 @@ echo '</script>';
     .quantity {
         margin-top: 10px;
     }
+    .thanh-toan{
+        margin-top: 10px;
+        width: 150px;
+        height: 35px;
+        background-color: white;
+        border: 2px solid #BF8A49;
+        color: #BF8A49;
+    }
+   .thanh-toan:hover{
+    background-color: black;
+    color: white;
+   }
+   .soluongg input{
+     margin-top: 10px;
+         width: 50px;
+   }
 </style>
 <section class="product">
     <div class="container">
@@ -40,7 +56,7 @@ echo '</script>';
                     <P><?php echo $sanphamchitiet['masp'] ?></P>
                 </div>
                 <div class="product-content-right-product-price">
-                    <p><?php echo $sanphamchitiet['product_gia'] ?><sup>đ</sup></p>
+                    <p><?php echo number_format($sanphamchitiet['product_gia'])  ?><sup>VNĐ</sup></p>
                 </div>
                 <div class="product-content-right-product-color">
                     <p><span style="font-weight: bold;">MÀU SẮC :</span><?php echo $sanphamchitiet['color'] ?> <span style="color: red;">*</span></p>
@@ -56,8 +72,8 @@ echo '</script>';
                 </div>
                  <!-----form dat hang-->
                 <form action="cart.php" method="POST">
-                <p style="font-weight: bold;">Số Lượng :</p>
-                <input type="number" min="0" value="soluong" name="soluong"> <br>
+                
+                <p style="font-weight: bold;" class="soluongg">Số Lượng :<input type="number" min="0" value="soluong" name="soluong"></p> <br>
 
                 <input type="text" name="product_id" value="<?php echo $sanphamchitiet['product_id'] ?>" hidden>
                 <input type="text" name="images" value="<?php echo $sanphamchitiet['images'] ?>" hidden>
@@ -65,7 +81,7 @@ echo '</script>';
                 <input type="text" name="product_gia" value="<?php echo $sanphamchitiet['product_gia'] ?>" hidden>
                 <input type="text" name="color" value="<?php echo $sanphamchitiet['color'] ?>" hidden>
                 
-                <input type="submit" value="addcart" name="addtocart">
+                <input type="submit" value="THÊM GIỎ HÀNG" name="addtocart" class="thanh-toan">
                 </form>
                 <!-------end-------->
                 <div class="product-content-right-product-button">

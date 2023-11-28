@@ -57,4 +57,16 @@ class category
         }
     }
 }
+class cart{
+    private $db;
+    public function __construct()
+    {
+        $this->db = new Database();
+    }
+    public function showdonhang(){
+        $query = "SELECT * FROM cart n INNER JOIN bill b WHERE n.id_bill=b.id_bill ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+}
 ?>
