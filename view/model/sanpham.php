@@ -81,4 +81,37 @@ class lienhe{
         return $result;
     }
 }
+class user {
+
+    private $db;
+    public function __construct() {
+        $this->db = new Database();
+    }
+    
+    public function showuser(){
+        $query = "SELECT * FROM user ORDER BY user_id DESC";
+        $result = $this->db->select($query);
+        return $result;
+    }
+   
+    
+    public function deleteuser($user_id){
+        $query = "DELETE FROM user WHERE user_id='$user_id'";
+        $result = $this->db->delete($query);
+        header ("location:listtaikhoan.php");
+        return $result;
+    }
+    public function login($email,$pass){
+        $query = "SELECT * FROM user WHERE email='$email' and pass='$pass'";
+        echo '<script>console.log("'.$query.'");</script>';
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function dangky($username,$email,$pass){
+        $query = "insert into user(user_name,email,pass) values('$username','$email','$pass')";
+        $result = $this->db->insert($query);
+        return $result;
+    }
+    
+ }
 ?>
