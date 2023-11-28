@@ -1,4 +1,4 @@
-const header = Document.querySelector("header")
+const header = Document.querySelector("header");
 window.addEventListener("scroll",function(){
     x = window.pageYOffset
     if(x>0){
@@ -37,17 +37,3 @@ function slider (index){
 }
 setInterval(imgSlide,5000)
 //--------------product----------------//
-const baoquan = document.querySelector(".baoquan")
-const chitiet = document.querySelector(".chitiet")
-if(baoquan){
-    baoquan.addEventListener("click", function(){
-        document.querySelector(".product-content-right-bottom-content-chitiet").style.display= "none"
-        document.querySelector(".product-content-right-bottom-content-baoquan").style.display= "block"
-    })
-}
-if(chitiet){
-    chitiet.addEventListener("click", function(){
-        document.querySelector(".product-content-right-bottom-content-chitiet").style.display= "block"
-        document.querySelector(".product-content-right-bottom-content-baoquan").style.display= "none"
-    })
-}

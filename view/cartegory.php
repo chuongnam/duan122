@@ -20,6 +20,14 @@ $loaddm = $cartegory->loaddm();
     .content-left{
         width: 20%;
     }
+    .btn-xemthem{
+     
+        border: 2px solid #BF8A49;
+    }
+    .btn-xemthem:hover{
+        background-color: black;
+    color: white;
+    }
 </style>
 <section class="cartegory">
     <div class="container">
@@ -58,9 +66,9 @@ $loaddm = $cartegory->loaddm();
                                     <?php echo $row['product_name'] ?>
                                 </h1>
                                 <p>
-                                    <?php echo $row['product_gia'] ?><sub>đ</sub>
+                                    <?php echo number_format($row['product_gia'])  ?> VNĐ
                                 </p>
-                                <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>">xem them</a>
+                                <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>" class="btn-xemthem">xem them</a>
                             </div>
                         
                         <?php
