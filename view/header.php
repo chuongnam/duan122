@@ -27,7 +27,7 @@
                 </ul>
              </li>
              <li><a href="">GIỚI THIỆU</a></li>
-             <li><a href="">LIÊN HỆ</a></li>
+             <li><a href="lienhe.php">LIÊN HỆ</a></li>
              <li><a href="">BLOG</a></li>
         </div>
         <div class="others">
