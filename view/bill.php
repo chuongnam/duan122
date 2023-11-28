@@ -29,5 +29,3 @@ unset($_SESSION['giohang']);
 header("location:cart.php");
 
 ?>
-
-
