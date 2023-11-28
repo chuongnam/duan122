@@ -28,6 +28,6 @@
     ©POLYBIKE All rights reserved
 </div>
 </body>
-<script src="silde.js"></script>
+<script src="js/silde.js"></script>
 
 </html>
