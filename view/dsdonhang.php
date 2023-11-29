@@ -86,7 +86,7 @@ $showdonhang = $cart->showdonhang();
         <th>SỐ LƯỢNG</th>
        
         <th>PHƯƠNG THỨC THANH TOÁN</th>
-        <th>MÀU</th>
+     
         <th>THÀNH TIỀN</th>
        
 
@@ -107,7 +107,7 @@ $showdonhang = $cart->showdonhang();
         <td><?php echo $row['soluong']?></td>
     
         <td><?php echo $row['pttt']?></td>
-        <td><?php echo $row['color']?></td>
+       
         <td><?php echo number_format($row['thanhtien']),'vnd'?></td>
         
         

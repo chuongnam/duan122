@@ -28,6 +28,28 @@ $loaddm = $cartegory->loaddm();
         background-color: black;
     color: white;
     }
+    .content-sp{
+        
+        margin-left: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 200px;
+        
+    }
+    h1{
+        font-size: 20px;
+    }
+    .content-item{
+        margin-left: 10px;
+        border: 2px solid gray;
+    }
+    .content-item h1{
+        margin-top: 20px;
+    }
+    .content-item p{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 </style>
 <section class="cartegory">
     <div class="container">
@@ -53,15 +75,15 @@ $loaddm = $cartegory->loaddm();
             <div class="cartegory-right">
                 
                 
-                <div class="cartegory-right-content">
+                <div class="content-sp">
                 <?php
                 if ($loadsp) {
                     while ($row = $loadsp->fetch_assoc()) {
                         ?>
 
                         
-                            <div class="cartegory-right-content-item">
-                                <img src="../admin/upload/<?php echo $row['images'] ?>">
+                            <div class="content-item">
+                                <img src="../admin/upload/<?php echo $row['images'] ?>" width="200px" height="200px">
                                 <h1>
                                     <?php echo $row['product_name'] ?>
                                 </h1>

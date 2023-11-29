@@ -21,6 +21,7 @@ include "database.php";
         $soluong = $_POST['soluong'];
         $masp = $_POST['masp'];
         $color = $_POST['color'];
+        $luotxem=0;
         $images = $_FILES['images']['name'];
         // $upload_path="upload/".$images;
         move_uploaded_file($_FILES['images']['tmp_name'],"upload/".$_FILES['images']['name']);
@@ -32,7 +33,7 @@ include "database.php";
             soluong,
             masp,
             cartegory_id,
-            color) 
+            color,luotxem) 
             VALUES(
                 '$product_name',
                 '$product_gia',
@@ -41,7 +42,7 @@ include "database.php";
                 '$soluong',
                 '$masp',
                 '$cartegory_id',
-                '$color'
+                '$color','$luotxem'
                  )";
         $this->db->insert($query);
         header ("location:listsanpham.php");
