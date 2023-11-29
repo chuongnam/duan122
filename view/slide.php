@@ -6,12 +6,5 @@
               <img src="image/anh5.jpg">
               <img src="image/anh6.jpg">
          </div>
-         <div class="dot-container">
-             <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-         </div>
+       
     </section>

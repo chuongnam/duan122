@@ -18,7 +18,11 @@ include "model/addcart.php";
     color: white;
    }
    .pttt{
-    margin-left:  20px;
+      margin-top: 10px;
+   }
+   .tt{
+     margin-top: 10px;
+     margin-bottom: 10px;
    }
     </style>
 <section class="delivery">
@@ -60,17 +64,16 @@ include "model/addcart.php";
                  </div>
                  <div class="pttt">
                     Phương Thức Thanh Toán<span style="color: red;">*</span>
-                    <p><input type="radio" name="pttt" value="Trả tiền khi nhận hàng" checked>Trả tiền khi nhận hàng</p>
-                    <p><input type="radio" name="pttt" value="Thanh toán online">Thanh toán online </p>
-                    <p><input type="radio" name="pttt" value="thanh toán qua ngân hàng">thanh toán qua ngân hàng </p>
+                    <p><input type="radio" name="pttt" value="Trả tiền khi nhận hàng" checked class="tt">Trả tiền khi nhận hàng</p>
+                    <p><input type="radio" name="pttt" value="Thanh toán online" class="tt">Thanh toán online </p>
+                    <p><input type="radio" name="pttt" value="thanh toán qua ngân hàng" class="tt">thanh toán qua ngân hàng </p>
                  </div>
                  
-                 <div class="delivery-content-left-button">
-                    
+                 
                    <input type="submit" name="dongydathang" value="thanh toan" class="thanh-toan">
                      </form>
                  </div>
-                 
+         
                 </div>
                
               </div>
