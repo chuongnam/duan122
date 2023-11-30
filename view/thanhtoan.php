@@ -1,7 +1,30 @@
 <?php
 
 include "header.php";
+include "model/addcart.php";
 ?>
+<style>
+     .thanh-toan{
+        margin-top: 10px;
+        width: 150px;
+        height: 35px;
+        background-color: white;
+        border: 2px solid #BF8A49;
+        color: #BF8A49;
+        
+    }
+   .thanh-toan:hover{
+    background-color: black;
+    color: white;
+   }
+   .pttt{
+      margin-top: 10px;
+   }
+   .tt{
+     margin-top: 10px;
+     margin-bottom: 10px;
+   }
+    </style>
 <section class="delivery">
            <div class="container">
               <div class="delivery-content row">
@@ -19,72 +42,40 @@ include "header.php";
                     <input checked name="loaikhach" type="radio">
                     <p><span style="font-weight: bold;">ĐĂNG KÝ</span> (tạo mới tài khoản với thông tin bên dưới)</p>
                    </div>
-                  
-                     <div class="delivery-content-left-input-top-item">
+                     <form action="bill.php" method="POST">
+                    
+                   <div class="delivery-content-left-input-top-item">
                         <label for="">Họ Tên <span style="color: red;">*</span></label>
-                        <input type="text">
+                        <input required type="text" name="bill_name">
                      </div>
                      <div class="delivery-content-left-input-top-item">
                         <label for="">Điện Thoại <span style="color: red;">*</span></label>
-                        <input type="text">
+                        <input required type="text" name="tel">
                      </div>
                      <div class="delivery-content-left-input-top-item">
-                        <label for="">Tỉnh/TP <span style="color: red;">*</span></label>
-                        <input type="text">
-                     </div>
-                     <div class="delivery-content-left-input-top-item">
-                        <label for="">Quận/huyện<span style="color: red;">*</span></label>
-                        <input type="text">
+                        <label for="">EMAIL <span style="color: red;">*</span></label>
+                        <input required type="text" name="email">
                      </div>
                   
-                  
-                   <div class="delivery-content-left-input-top-item">
-                    <label for="">Phường/xã<span style="color: red;">*</span></label>
-                    <input type="text">
-                 </div>
+                 
                    <div class="delivery-content-left-input-top-item">
                     <label for="">Địa Chỉ<span style="color: red;">*</span></label>
-                    <input type="text">
+                    <input required type="text" name="bill_address">
                  </div>
-                 <div class="delivery-content-left-button">
-                    <a href="cart.php"><span>&#8610;</span><p>Quay lại giở hàng</p></a>
-                    <button ><p style="font-weight: bold;">Thanh Toán Và Giao Hàng</p></button>
+                 <div class="pttt">
+                    Phương Thức Thanh Toán<span style="color: red;">*</span>
+                    <p><input type="radio" name="pttt" value="Trả tiền khi nhận hàng" checked class="tt">Trả tiền khi nhận hàng</p>
+                    <p><input type="radio" name="pttt" value="Thanh toán online" class="tt">Thanh toán online </p>
+                    <p><input type="radio" name="pttt" value="thanh toán qua ngân hàng" class="tt">thanh toán qua ngân hàng </p>
                  </div>
+                 
+                 
+                   <input type="submit" name="dongydathang" value="thanh toan" class="thanh-toan">
+                     </form>
+                 </div>
+         
                 </div>
-                <div class="delivery-content-right">
-                    <table>
-                        <tr>
-                            <th>Tên sản phẩm</th>
-                            <th>giảm giá</th>
-                            <th>số lượng</th>
-                            <th>thành tiền</th>
-                        </tr>
-                        <tr>
-                            <td>xe đạp trẻ em</td>
-                            <td>-30%</td>
-                            <td>1</td>
-                            <td><p>2.000.000<sub>đ</sub></p></td>
-                        </tr>
-                        <tr>
-                            <td>xe đạp trẻ em</td>
-                            <td>-20%</td>
-                            <td>1</td>
-                            <td><p>2.000.000<sub>đ</sub></p></td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold;" colspan="3">Tổng</td>
-                            <td style="font-weight: bold;"><p>2.000.000<sub>đ</sub></p></td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold;" colspan="3">THUẾ VAT</td>
-                            <td style="font-weight: bold;"><p>2.000.000<sub>đ</sub></p></td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold;" colspan="3">TỔNG TIỀN HÀNG</td>
-                            <td style="font-weight: bold;"><p>2.000.000<sub>đ</sub></p></td>
-                        </tr>
-                    </table>
-                </div>
+               
               </div>
            </div>
     </section>

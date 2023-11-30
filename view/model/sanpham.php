@@ -23,6 +23,18 @@ class product
         $result = $this->db->select($query);
         return $result;
     }
+    public function top10()
+    {
+        $query = "SELECT * FROM product WHERE luotxem limit 10";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function get_productByName($name){
+        $query = "SELECT * FROM product WHERE product_name LIKE '%$name%'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    
 }
 
 class category
@@ -56,33 +68,19 @@ class category
             return false;
         }
     }
-}
-class user {
 
+}
+class cart{
     private $db;
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new Database();
     }
-    
-    public function showuser(){
-        $query = "SELECT * FROM user ORDER BY user_id DESC";
+    public function showdonhang(){
+        $query = "SELECT * FROM cart n INNER JOIN bill b WHERE n.id_bill=b.id_bill ";
         $result = $this->db->select($query);
         return $result;
     }
-   
-    
-    public function deleteuser($user_id){
-        $query = "DELETE FROM user WHERE user_id='$user_id'";
-        $result = $this->db->delete($query);
-        header ("location:listtaikhoan.php");
-        return $result;
-    }
-    public function login($email,$pass){
-        $query = "SELECT * FROM user WHERE email='$email' and pass='$pass'";
-        echo '<script>console.log("'.$query.'");</script>';
-        $result = $this->db->select($query);
-        return $result;
-    }
-    
- }
+}
+
 ?>

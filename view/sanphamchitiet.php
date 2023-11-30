@@ -10,23 +10,45 @@ $sanpham = new product();
 $sanphamchitiet = $sanpham->get_product($id)->fetch_assoc();
 $danhmuc = new category();
 $category = $danhmuc->get_category($sanphamchitiet['cartegory_id']);
-
+echo '<script>';
+echo 'console.log(' . json_encode($sanphamchitiet) . ');';
+echo 'console.log(' . json_encode($category) . ');';
+echo '</script>';
 ?>
+
 <style>
     .quantity {
         margin-top: 10px;
     }
+    .thanh-toan{
+        margin-top: 10px;
+        width: 150px;
+        height: 35px;
+        background-color: white;
+        border: 2px solid #BF8A49;
+        color: #BF8A49;
+    }
+   .thanh-toan:hover{
+    background-color: black;
+    color: white;
+   }
+   .soluongg input{
+     margin-top: 10px;
+         width: 50px;
+   }
 </style>
 <section class="product">
     <div class="container">
         <div class="product-top row">
 
         </div>
+        
         <div class="product-content row">
             <div class="product-content-left row">
                 <div class="product-content-left-big-img">
-                <img src="../admin/upload/<?php echo $sanphamchitiet['images'] ?>">
+                    <img src="../admin/upload/<?php echo $sanphamchitiet['images']; ?>" alt="Product Image">
                 </div>
+
             </div>
             <div class="product-content-right">
                 <div class="product-content-right-product-name">
@@ -34,29 +56,36 @@ $category = $danhmuc->get_category($sanphamchitiet['cartegory_id']);
                     <P><?php echo $sanphamchitiet['masp'] ?></P>
                 </div>
                 <div class="product-content-right-product-price">
-                    <p><?php echo $sanphamchitiet['product_gia'] ?><sup>đ</sup></p>
+                    <p><?php echo number_format($sanphamchitiet['product_gia'])  ?><sup>VNĐ</sup></p>
                 </div>
                 <div class="product-content-right-product-color">
                     <p><span style="font-weight: bold;">MÀU SẮC :</span><?php echo $sanphamchitiet['color'] ?> <span style="color: red;">*</span></p>
 
                 </div>
 
-                <div class="quantity">
-                    <p style="font-weight: bold;">Số Lượng :</p>
-                    <input type="number" min="1" value="">
-
-                </div>
+             
 
                 <div class="mota">
                     <h3>MÔ TẢ:</h3>
                     <p><?php echo $sanphamchitiet['product_mota'] ?>
                     </p>
                 </div>
-               
+                 <!-----form dat hang-->
+                <form action="cart.php" method="POST">
+                
+                <p style="font-weight: bold;" class="soluongg">Số Lượng :<input type="number" min="0" value="soluong" name="soluong"></p> <br>
+
+                <input type="text" name="product_id" value="<?php echo $sanphamchitiet['product_id'] ?>" hidden>
+                <input type="text" name="images" value="<?php echo $sanphamchitiet['images'] ?>" hidden>
+                <input type="text" name="product_name" value="<?php echo $sanphamchitiet['product_name'] ?>" hidden>
+                <input type="text" name="product_gia" value="<?php echo $sanphamchitiet['product_gia'] ?>" hidden>
+                <input type="text" name="color" value="<?php echo $sanphamchitiet['color'] ?>" hidden>
+                
+                <input type="submit" value="THÊM GIỎ HÀNG" name="addtocart" class="thanh-toan">
+                </form>
+                <!-------end-------->
                 <div class="product-content-right-product-button">
-                    <button><i class="fa fa-shopping-cart"></i>
-                        <p>MUA HÀNG</p>
-                    </button>
+   
                     <button>
                         <p>TÌM TẠI CỦA HÀNG</p>
                     </button>
@@ -82,24 +111,10 @@ $category = $danhmuc->get_category($sanphamchitiet['cartegory_id']);
                     <img src="image/prcode.png">
                 </div>
 
-
                 <div class="product-content-right-bottom-content-big">
-                    <div class="product-content-right-bottom-content-title row">
-                        <div class="product-content-right-bottom-content-title-item chitiet">
-                            <p>KỸ THUẬT</p>
-                        </div>
-
-                    </div>
+                 
                     <div class="product-content-right-bottom-content">
-                        <div class="product-content-right-bottom-content-kythuat">
-                            <p>Cửa hàng Đức Thắng xe đạp , xe điện 163 phố Nguyễn Lương Bằng Đống Đa Hà Nội đang bán : <br><br>
-                                * Xe đạp địa hình MINGU , bánh La Răng SIZE 24, đề chuẩn không phải chỉnh , xe được bảo dưỡng ngon lành các bạn chỉ việc đi ( cửa hàng còn rất nhiều xe và màu khác).<br><br>
-                                * Phù hợp với chiều cao từ 1m40 chở lên .<br><br>
-                                * Liên hệ qua ZALO , hoặc đt theo số trên mình tư vấn thêm cho .<br><br>
-                                * SHIP COD MỌI MIỀN TỔ QUỐC<br><br>
-                                * Cửa hàng phục vụ 24/24 , nếu đóng cửa liên hệ theo số trên , mình sẽ phục vụ nhiệt tình<br><br>
-                            </p>
-                        </div>
+                        
 
 
                         </p>
