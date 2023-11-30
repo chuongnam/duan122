@@ -34,6 +34,6 @@
              <li><input type="text" placeholder="tìm kiếm..."><i class="fa fa-search"></i></li>
             
              <li><a href="cart.php"><i class="fa fa-shopping-bag"></i></a></li>
-             <li><i class="fa fa-user" href=""></i></li>
+             <li><a class="fa fa-user" href="login.php"></a></li>
         </div>
     </header>
