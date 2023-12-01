@@ -29,6 +29,13 @@ class product
         $result = $this->db->select($query);
         return $result;
     }
+    public function splienquan()
+    {
+        
+        $query = "SELECT * FROM product,loaixe WHERE product.cartegory_id = loaixe.cartegory_id";
+        $result = $this->db->select($query);
+        return $result;
+    }
 }
 
 class category
@@ -62,6 +69,7 @@ class category
             return false;
         }
     }
+
 }
 class cart{
     private $db;

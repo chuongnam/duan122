@@ -14,6 +14,8 @@ echo '<script>';
 echo 'console.log(' . json_encode($sanphamchitiet) . ');';
 echo 'console.log(' . json_encode($category) . ');';
 echo '</script>';
+$product = new product();
+$splienquan = $product->splienquan();
 ?>
 
 <style>
@@ -71,7 +73,7 @@ echo '</script>';
                     </p>
                 </div>
                  <!-----form dat hang-->
-                <form action="cart.php" method="POST">
+                <form action="index.php?act=taogio" method="POST">
                 
                 <p style="font-weight: bold;" class="soluongg">Số Lượng :<input type="number" min="0" value="soluong" name="soluong"></p> <br>
 
@@ -132,31 +134,21 @@ echo '</script>';
         <p>SẢN PHẨM LIÊN QUAN</p>
     </div>
     <div class="row product-content">
-        <div class="product-relate-item">
-            <img src="image/anh11.jpg">
-            <h1>xe đạp trẻ em</h1>
-            <p>700.000<sup>đ</sup></p>
+    <?php
+                if ($splienquan) {
+                    while ($row = $splienquan->fetch_assoc()) {
+                        ?>
+    <div class="product-relate-item">
+    <img src="../admin/upload/<?php echo $row['images']; ?>">
+            <h1><?php echo $row['product_name'] ?></h1>
+            <p><?php echo number_format($row['product_gia']),'VNĐ' ?></p>
+            <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>" class="btn-xemthem">xem them</a>
         </div>
-        <div class="product-relate-item">
-            <img src="image/anh11.jpg">
-            <h1>xe đạp trẻ em</h1>
-            <p>700.000<sup>đ</sup></p>
-        </div>
-        <div class="product-relate-item">
-            <img src="image/anh11.jpg">
-            <h1>xe đạp trẻ em</h1>
-            <p>700.000<sup>đ</sup></p>
-        </div>
-        <div class="product-relate-item">
-            <img src="image/anh11.jpg">
-            <h1>xe đạp trẻ em</h1>
-            <p>700.000<sup>đ</sup></p>
-        </div>
-        <div class="product-relate-item">
-            <img src="image/anh11.jpg">
-            <h1>xe đạp trẻ em</h1>
-            <p>700.000<sup>đ</sup></p>
-        </div>
+        <?php
+                    }
+                }
+                ?>
+        
     </div>
 </section>
 <?php

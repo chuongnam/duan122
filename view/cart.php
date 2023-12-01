@@ -1,41 +1,4 @@
-<?php
-session_start();
-include "header.php";
-include "model/addcart.php";
 
-?>
-
-<?php
-
-if (!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
-                 
-
-//lay du lieu form
-if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
-
-    $images = $_POST['images'];
-    $product_name = $_POST['product_name'];
-    $product_gia = $_POST['product_gia'];
-    $color = $_POST['color'];
-    $soluong = $_POST['soluong'];
-    //ktra sản phẩm có trong giỏ hàng hay k
-    $fl = 0;
-    for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
-        if ($_SESSION['giohang'][$i][1] == $product_name) {
-            $fl = 1;
-            $integr=$soluong;
-            $soluongnew = intval($soluong) + intval($_SESSION['giohang'][$i][4]);
-            $_SESSION['giohang'][$i][4] = $soluongnew;
-            break;
-        }
-    }
-    if ($fl == 0) {
-        //them moi
-        $sp = [$images, $product_name, $product_gia, $color, $soluong];
-        $_SESSION['giohang'][] = $sp;
-        header("location:cart.php");
-    }
-}
 
 ?>
 <style>

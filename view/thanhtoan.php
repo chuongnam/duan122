@@ -1,8 +1,5 @@
 <?php
-
 include "header.php";
-include "model/addcart.php";
-
 ?>
 <style>
      .thanh-toan{
@@ -46,7 +43,7 @@ include "model/addcart.php";
                     <input checked name="loaikhach" type="radio">
                     <p><span style="font-weight: bold;">ĐĂNG KÝ</span> (tạo mới tài khoản với thông tin bên dưới)</p>
                    </div>
-                     <form action="bill.php" method="POST">
+                     <form action="index.php?act=mua" method="POST">
                  
 
                     

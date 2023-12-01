@@ -163,7 +163,15 @@ if (isset($_GET['act'])) {
             }
             include "./donhang/suatt.php";
             break;
-
+            case "xoatt":
+                if (!isset($_GET["id_bill"]) || ($_GET["id_bill"]) == null) {
+                    
+                } else {
+                    $id_bill = $_GET["id_bill"];
+                }
+                $delete_donhang = $bill->deletedonhang($id_bill);
+                include "./donhang/dsdonhnag";
+                break;
 
 
 

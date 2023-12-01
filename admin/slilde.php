@@ -37,6 +37,14 @@
                     <li><a href="index.php?act=showtk">DANH SÁCH TÀI KHOẢN</a></li>
                 </ul>
             </li>
+            <li><a href="">THÔNG KÊ</a>
+                <ul>
+                    
+                    <li><a href="index.php?act=showtk">DANH SÁCH THÔNG KÊ</a></li>
+                    <li><a href="index.php?act=showtk">BIỂU ĐỒ</a></li>
+                </ul>
+            </li>
+            
             
          </ul>
     </div>

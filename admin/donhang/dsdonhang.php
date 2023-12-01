@@ -43,7 +43,7 @@
        
         
         
-        <td><a href="index.php?act=suatt&id_bill=<?php echo $row['id_bill']?>" class="btn btn-success" >CẬP NHẬT</a></td>
+        <td><a href="index.php?act=suatt&id_bill=<?php echo $row['id_bill']?>" class="btn btn-success" >CẬP NHẬT</a><a href="index.php?act=xoatt&id_bill=<?php echo $row['id_bill']?>" class="btn btn-danger" >xóa</a></td>
 
         
     </tr>

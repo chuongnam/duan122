@@ -36,7 +36,7 @@
                     }
                 }
                 ?>
-                <a class="btn btn-success" href="kythuatadd.php">THÊM</a>
+                <a class="btn btn-success" href="index.php?act=addkt">THÊM</a>
             </table>
             </div>
          </div>

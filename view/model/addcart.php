@@ -53,7 +53,7 @@ function tongdonhang(){
       
   </table>';
     }
-    echo '<a href="dsdonhang.php" class="thanh-toan">danh sách đơn hàng</a>';
+    echo '<a href="index.php?act=showdon" class="thanh-toan">danh sách đơn hàng</a>';
  }
  function ketnoidb(){
    
@@ -123,7 +123,7 @@ $tt= $_SESSION['giohang'][$i][2]*$_SESSION['giohang'][$i][4];
     
 </table>';
   }
-  echo '<a href="dsdonhang.php" class="thanh-toan">danh sách đơn hàng</a>';
+  echo '<a href="index.php?act=showdon" class="thanh-toan">danh sách đơn hàng</a>';
 }
 
  

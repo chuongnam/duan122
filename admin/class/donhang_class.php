@@ -41,5 +41,11 @@ public function get_donhang($id_bill)
         return $result;
 
     }
+    public function deletedonhang($id_bill){
+        $query = "DELETE FROM bill WHERE id_bill='$id_bill'";
+        $result = $this->db->delete($query);
+        header ("location:index.php?act=dsdonhang");
+        return $result;
+    }
 }
 ?>

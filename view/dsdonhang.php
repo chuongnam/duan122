@@ -1,7 +1,4 @@
-<?php
-include "header.php";
-include "model/sanpham.php";
-?>
+
 <style>
     table {
         border-collapse: collapse;
@@ -65,12 +62,7 @@ include "model/sanpham.php";
     color: #BF8A49;
    }
 </style>
-<?php
 
-
-$cart = new cart();
-$showdonhang = $cart->showdonhang();
-?>
 
 <div class="a">
 <table>
@@ -111,7 +103,7 @@ $showdonhang = $cart->showdonhang();
 
        
         <td><?php echo number_format($row['thanhtien']),'vnd'?></td>
-        <td><?php echo $row['trangthai']?></td>
+        <td style="color: red"><?php echo $row['trangthai']?></td>
         
         
 
@@ -121,10 +113,7 @@ $showdonhang = $cart->showdonhang();
                     }
                 }
                 ?>
-                <a href="cart.php" class="thanh-toan">quay lại giỏ hàng</a>
+                <a href="index.php?act=taogio" class="thanh-toan">quay lại giỏ hàng</a>
 </table>
 </div>
 
-<?php
-include "footer.php";
-?>
