@@ -1,17 +1,18 @@
 <?php
 
 include "model/user.php";
-session_start();
+
 $user = new user_client();
 
-if(isset($_POST["btn-login"])){
+if(isset($_POST["btn_login"])){
     $email = $_POST['email'];
     $pass = $_POST['pass'];
-    $login_check = $user->login($email, $pass);
-    if($login_check){
-        $user_infor = $user->getUserByEmail($email)->fetch_assoc();
-        $_SESSION['user'][0] = $email;
-        $_SESSION['user_id'] = $user_infor['$id'];
+    $login_check = $user->login($email, $pass)->fetch_assoc();;
+    if(is_array($login_check)){
+        // $user_infor = $user->getUserByEmail($email)->fetch_assoc();
+        // $_SESSION['user'][0] = $email;
+        $_SESSION['user_id'] = $login_check;
+
 		header("location:index.php");
     }
 	else{
@@ -166,7 +167,7 @@ form{
                                 <label for="remember_me">Remember Me!</label>
                             </div>
                             <div class="row">
-                            <button class="submit" name="btn-login">ĐĂNG NHẬP</button>
+                            <button class="submit" name="btn_login">ĐĂNG NHẬP</button>
                             </div>
                         </form>
                     </div>

@@ -1,5 +1,7 @@
 <?php
+
 include ".././admin/database.php";
+
 ?>
 
 <?php
@@ -165,6 +167,23 @@ class user {
         $_SESSION['dangky'] =  $errors; 
         
     }
+
+
+    function loadall_binhluan($product_id){ 
+        $sql="select * from binhluan where 1";
+      
+        if ($product_id >0) 
+          $sql.=" AND  product_id='".$product_id."'";
+        $sql.= "  order by id_binhluan desc";
+       
+        $listbinhluan=$this->db->select($sql); 
+        return $listbinhluan;}
+
+        function insert_binhluan($id_user,$product_id,$date,$noidung){
+            $sql_insert = "insert into binhluan values(null,'$id_user','$product_id','$date','$noidung')";
+            $this->db->insert($sql_insert);
+         }
     
  }
+
 ?>
