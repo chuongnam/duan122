@@ -2,6 +2,7 @@
 
 include "header.php";
 include "model/addcart.php";
+
 ?>
 <style>
      .thanh-toan{
@@ -25,6 +26,9 @@ include "model/addcart.php";
      margin-bottom: 10px;
    }
     </style>
+    <?php
+ 
+    ?>
 <section class="delivery">
            <div class="container">
               <div class="delivery-content row">
@@ -43,6 +47,8 @@ include "model/addcart.php";
                     <p><span style="font-weight: bold;">ĐĂNG KÝ</span> (tạo mới tài khoản với thông tin bên dưới)</p>
                    </div>
                      <form action="bill.php" method="POST">
+                 
+
                     
                    <div class="delivery-content-left-input-top-item">
                         <label for="">Họ Tên <span style="color: red;">*</span></label>

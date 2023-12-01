@@ -50,6 +50,20 @@ $loaddm = $cartegory->loaddm();
         margin-top: 10px;
         margin-bottom: 10px;
     }
+    .dm-item{
+        margin-left: 20px;
+        margin-top: 10px;
+     
+    }
+   .item{
+    margin: 20 20px 20 20px;
+   }
+   .dm-item a{
+    color: #BF8A49  ;
+   }
+   .dm-item a:hover{
+     color: red;
+   }
 </style>
 <section class="cartegory">
     <div class="container">
@@ -60,16 +74,17 @@ $loaddm = $cartegory->loaddm();
 <div class="content-left">
 <div class="cartegory-right-top-item">
                     <h1>DANH MỤC</h1>
+                    <div class="dm-item">
                     <?php
                 if ($loaddm) {
                     while ($row = $loaddm->fetch_assoc()) {
                         ?>
-                        <a href="spdanhmuc.php?cartegory_id=<?php echo $row['cartegory_id']?>"><?php echo $row['tendanhmuc']?></p></a>
+                        <a href="spdanhmuc.php?cartegory_id=<?php echo $row['cartegory_id']?>" class="item"><?php echo $row['tendanhmuc']?></p></a>
                                <?php
                     }
                 }
                 ?>
-
+                    </div>
                 </div>
 </div>
             <div class="cartegory-right">

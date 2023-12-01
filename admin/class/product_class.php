@@ -1,7 +1,4 @@
-<?php
-include "database.php";
 
-?>
 <?php
  class product {
     private $db;
@@ -45,7 +42,7 @@ include "database.php";
                 '$color','$luotxem'
                  )";
         $this->db->insert($query);
-        header ("location:listsanpham.php");
+        header ("location:index.php?act=showsp");
 
     }
     public function showsp(){
@@ -56,13 +53,14 @@ include "database.php";
     public function deletesp($product_id){
         $query = "DELETE FROM product WHERE product_id='$product_id'";
         $result = $this->db->delete($query);
-        header ("location:listsanpham.php");
+        header ("location:index.php?act=showsp");
         return $result;
     }
     public function updatesp($product_id,$product_name,$product_gia,$product_mota,$soluong,$masp,$color){
-        $query = "UPDATE product SET product_name ='$product_name',product_gia ='$product_gia',product_mota ='$product_mota',soluong ='$soluong',masp ='$masp',color ='$color' WHERE product_id='$product_id' ";
+        $id=$_GET['product_id'];
+        $query = "UPDATE product SET product_name ='$product_name',product_gia ='$product_gia',product_mota ='$product_mota',soluong ='$soluong',masp ='$masp',color ='$color' WHERE product_id=$id ";
         $result = $this->db->update($query);
-        header ('location:listsanpham.php');
+        header ("location:index.php?act=showsp");
         return $result;
 
     }

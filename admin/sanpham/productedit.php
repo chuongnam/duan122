@@ -1,23 +1,11 @@
-<?php
-include "header.php";
-include "slilde.php";
-include "class/product_class.php";
-?>
-<?php
-$product = new product;
-    if(isset($_POST["submit"])){
-        
-     $insert_product = $product ->insertproduct($_POST,$_FILES);
-    //  var_dump($_POST,$_FILES);
-    }
 
-?>
 <div class="admin-content-right">
         <div class="admin-content-right-product_add">
            <h1>THÊM SẢN PHẨM</h1>
            <form action="" method="POST" enctype="multipart/form-data" >
+            
                <label for="">nhập tên sản phẩm <span style="color: red;">*</span></label>
-               <input required type="text" name="product_name">
+               <input required type="text" name="product_name" value="<?php echo $result['product_name'] ?>">
                <label for="">chọn danh mục <span style="color: red;">*</span></label>
                <select name="cartegory_id">
                 <option value="#">--chọn--</option>
@@ -33,17 +21,16 @@ $product = new product;
                   ?>
                </select>
                <label for="">nhập giá sản phẩm <span style="color: red;">*</span></label>
-               <input required type="text" name="product_gia">
+               <input required type="text" name="product_gia" <?php echo $result['product_gia'] ?>>
                <label for="">mô tả <span style="color: red;">*</span></label><br>
-               <textarea name="mota" id="" cols="30" rows="10" ></textarea><br>
-               <label for="">ảnh sản phẩm <span style="color: red;">*</span></label>
-               <input required type="file" name="images">
+               <textarea name="mota" id="" cols="30" rows="10" <?php echo $result['product_mota'] ?>></textarea><br>
+           
                <label for="">nhập số lượng <span style="color: red;">*</span></label>
-               <input required type="text" name="soluong">
+               <input required type="text" name="soluong" <?php echo $result['soluong'] ?>>
                <label for="">nhập mã sản phẩm <span style="color: red;">*</span></label>
-               <input required type="text" name="masp" >
+               <input required type="text" name="masp" <?php echo $result['masp'] ?>>
                <label for="">nhập màu sắc <span style="color: red;">*</span></label>
-               <input required type="text" name="color">
+               <input required type="text" name="color" <?php echo $result['color'] ?>>
                <button type="submit" name="submit" class="btn btn-danger">thêm</button>
            </form>
         </div>

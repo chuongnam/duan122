@@ -1,15 +1,13 @@
-<?php
-include "header.php";
-include "slilde.php";
-include "class/cartegoryadd_class.php";
-?>
-<?php
-$cartegory = new Cartegory();
-$showdm = $cartegory->showdm();
-?>
+<style>
+    .h1{
+        text-align: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    </style>
 <div class="admin-content-right">
          <div class="admin-content-right-cartegory_list">
-            <h1>DANH SÁCH DANH MỤC</h1>
+         <h1 class="h1">DANH SÁCH DANH MỤC</h1>
             <div class="table-responsive">   
             <table class="table">
                 <thead class="thead-dark">
@@ -29,7 +27,7 @@ $showdm = $cartegory->showdm();
                 <tr>
                     <td><?php echo $row['cartegory_id']?></td>
                     <td><?php echo $row['tendanhmuc']?></td>
-                    <td><a href="delete.php?cartegory_id=<?php echo $row['cartegory_id']?>" class="btn btn-success">XÓA</a><a class="btn btn-danger" href="cartegoryedit.php?cartegory_id=<?php echo $row['cartegory_id']?>">SỬA</a></td>
+                    <td><a href="index.php?act=xoadm&cartegory_id=<?php echo $row['cartegory_id']?>" class="btn btn-success">XÓA</a><a class="btn btn-danger" href="index.php?act=suadm&cartegory_id=<?php echo $row['cartegory_id']?>">SỬA</a></td>
                     
                 </tr>
                 </tbody>
@@ -37,7 +35,7 @@ $showdm = $cartegory->showdm();
                     }
                 }
                 ?>
-                <a class="btn btn-success" href="cartegoryadd.php">THÊM</a>
+                <a class="btn btn-success" href="index.php?act=adddm">THÊM</a>
             </table>
             </div>
          </div>

@@ -10,8 +10,9 @@ if(isset($_POST['dongydathang'])&&($_POST['dongydathang'])){
        $ngaydathang =date('d-m-y h:i:s');
        $total=tongdonhang();
        $pttt=$_POST['pttt'];
+       $trangthai ="chờ xác nhận";
      
-       $id_bill=taogiohang($bill_name, $bill_address, $tel,$email,$total,$pttt,$ngaydathang);
+       $id_bill=taogiohang($bill_name, $bill_address, $tel,$email,$total,$pttt,$ngaydathang,$trangthai);
 
        for($i=0; $i < sizeof($_SESSION['giohang']); $i++){
            $pro_name=$_SESSION['giohang'][$i][1];

@@ -6,6 +6,7 @@ include "model/sanpham.php";
 <hr>
 <style>
     .content{
+        
         margin-top: 30px;
     }
    .h1{
@@ -21,6 +22,7 @@ include "model/sanpham.php";
         
     }
     h1{
+        margin-bottom: 10px;
         font-size: 20px;
     }
     .content-item{

@@ -25,7 +25,7 @@ class product
     }
     public function top10()
     {
-        $query = "SELECT * FROM product WHERE luotxem limit 10";
+        $query = "SELECT * FROM product WHERE luotxem limit 10 ";
         $result = $this->db->select($query);
         return $result;
     }
