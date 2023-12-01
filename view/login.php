@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include "model/user.php";
 
 $user = new user_client();
@@ -7,7 +7,7 @@ $user = new user_client();
 if(isset($_POST["btn_login"])){
     $email = $_POST['email'];
     $pass = $_POST['pass'];
-    $login_check = $user->login($email, $pass)->fetch_assoc();;
+    $login_check = $user->login($email, $pass)->fetch_assoc();
     if(is_array($login_check)){
         // $user_infor = $user->getUserByEmail($email)->fetch_assoc();
         // $_SESSION['user'][0] = $email;
