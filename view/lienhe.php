@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 // include "header.php";
 include "model/sanpham.php";
 ?>
@@ -12,6 +13,9 @@ $lienhe = new lienhe;
      $insertlh = $lienhe ->insertlh($bl_name,$sodienthoai,$email,$noidungbinhluan);
     //  var_dump($_POST,$_FILES);
     }
+=======
+include "header.php";
+>>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
 
 ?>
 <div class="top">
@@ -37,14 +41,22 @@ $lienhe = new lienhe;
             <p>Điện thoại</p>
             <strong>0988888888</strong>
         </div>
+<<<<<<< HEAD
         <form action="" method="post">
         <h3 class="text-4xl font-bold mt-9 mb-9">Gửi thắc mắc cho chúng tôi</h3>
         <p class="w-20 h-1 bg-black my-4"></p>
         <input type="text" placeholder="Nhập tên của bạn" id="name" name="bl_name"
+=======
+
+        <h3 class="text-4xl font-bold mt-9 mb-9">Gửi thắc mắc cho chúng tôi</h3>
+        <p class="w-20 h-1 bg-black my-4"></p>
+        <input type="text" placeholder="Nhập tên của bạn" id="name" name="name"
+>>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
             class="border w-full pl-2 pt-2 pb-2 mb-4 bg-[#F5F5F5]" require>
         <div class="mb-4 mt-4">
             <input type="email" name="email" id="email" placeholder="Email của bạn"
                 class="border pl-2 pt-2 pb-2 mr-2 bg-[#F5F5F5]" require>
+<<<<<<< HEAD
             <input type="text" name="sodienthoai" id="phone" placeholder="Số điện thoại của bạn"
                 class="border pl-2 pt-2 pb-2 ml-2 bg-[#F5F5F5]" require>
         </div>
@@ -53,6 +65,16 @@ $lienhe = new lienhe;
         <button
             class="border pr-7 pl-7 pt-4 pb-4 bg-black text-white hover:bg-white hover:text-black mt-10 mb-10 button_slide slide_right"
             type="submit" name="lienhe">GỬI CHO CHÚNG TÔI</button>
+=======
+            <input type="text" name="phone" id="phone" placeholder="Số điện thoại của bạn"
+                class="border pl-2 pt-2 pb-2 ml-2 bg-[#F5F5F5]" require>
+        </div>
+        <textarea name="content" id="content" cols="30" rows="10" placeholder="Nội dung"
+            class="border w-full mt-4 pl-2 bg-[#F5F5F5]" require></textarea>
+        <button
+            class="border pr-7 pl-7 pt-4 pb-4 bg-black text-white hover:bg-white hover:text-black mt-10 mb-10 button_slide slide_right"
+            type="submit">GỬI CHO CHÚNG TÔI</button>
+>>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
         </form>
     </div>
 </div>

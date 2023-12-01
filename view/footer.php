@@ -1,10 +1,6 @@
 <hr>
     <section class="app-container">
-        <p>TẢI ỨNG DỤNG POLYBIKE</p>
-        <div class="app-google">
-            <img src="image/anh7.jpg">
-            <img src="image//anh8.jpg">
-        </div>
+       
         <p>NHẬN THÔNG TIN POLYBIKE</p>
         <input type="text" placeholder="nhập email của bạn...">
     </section>
@@ -28,6 +24,6 @@
     ©POLYBIKE All rights reserved
 </div>
 </body>
-<script src="silde.js"></script>
+<script src="js/silde.js"></script>
 
 </html>

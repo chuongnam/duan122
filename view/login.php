@@ -1,14 +1,28 @@
+<<<<<<< HEAD
 
 <?php 
 include "model/sanpham.php";
 session_start();
 $user = new user();
+=======
+<?php
+
+include "model/user.php";
+session_start();
+$user = new user_client();
+
+>>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
 if(isset($_POST["btn-login"])){
     $email = $_POST['email'];
     $pass = $_POST['pass'];
     $login_check = $user->login($email, $pass);
     if($login_check){
+<<<<<<< HEAD
         $_SESSION['user_email'] = $email;
+=======
+        $user_infor = $user->getUserByEmail($email)->fetch_assoc();
+        $_SESSION['user'][0] = $email;
+>>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
         $_SESSION['user_id'] = $user_infor['$id'];
 		header("location:index.php");
     }
@@ -17,8 +31,30 @@ if(isset($_POST["btn-login"])){
 }
 
 ?>
+<<<<<<< HEAD
 
  
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body id="body">
+
+	
+	
+</body>
+
+</html> 
+>>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,9 +75,14 @@ if(isset($_POST["btn-login"])){
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+<<<<<<< HEAD
 
 <style>
 	.main-content{
+=======
+<style>
+    .main-content{
+>>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
 	width: 50%;
 	border-radius: 20px;
 	box-shadow: 0 5px 5px rgba(0,0,0,.4);
@@ -117,7 +158,12 @@ form{
 	background-color: #008080;
 	color:#fff;
 }
+<<<<<<< HEAD
 </style>
+=======
+
+    </style>
+>>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
 <body>
     <!-- Main Content -->
     <div class="container-fluid">
@@ -152,7 +198,11 @@ form{
                         </form>
                     </div>
                     <div class="row">
+<<<<<<< HEAD
                         <p>Don't have an account? <a href="dangky.php">Register Here</a></p>
+=======
+                        <p>Don't have an account? <a href="#">Register Here</a></p>
+>>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
                     </div>
                 </div>
             </div>

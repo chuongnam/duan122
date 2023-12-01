@@ -1,39 +1,9 @@
-<?php
-include "header.php";
-include "slilde.php";
-include "class/product_class.php";
-?>
-<?php
-$product = new product();
-if(!isset($_GET["product_id"]) || ($_GET["product_id"])==null){
-    echo "<scrip>window.location = 'cartegorylist.php'</scrip>";
-}
-else{
-    $product_id = $_GET["product_id"];
-}
-    $get_product = $product->get_product($product_id);
-    if($get_product){
-        $result = $get_product->fetch_assoc();
-    }
-?>
 
-<?php
-$product = new product;
-if(isset($_POST["submit"])){
-    $product_name = $_POST['product_name'];
-    $product_gia = $_POST['product_gia'];
-    $product_mota = $_POST['mota'];
-    $soluong = $_POST['soluong'];
-    $masp = $_POST['masp'];
-    $color = $_POST['color'];
-    $insertsp = $product->updatesp($product_name,$product_gia,$product_mota,$soluong,$masp,$color,$product_id);
-}
-
-?>
 <div class="admin-content-right">
         <div class="admin-content-right-product_add">
            <h1>THÊM SẢN PHẨM</h1>
            <form action="" method="POST" enctype="multipart/form-data" >
+            
                <label for="">nhập tên sản phẩm <span style="color: red;">*</span></label>
                <input required type="text" name="product_name" value="<?php echo $result['product_name'] ?>">
                <label for="">chọn danh mục <span style="color: red;">*</span></label>
@@ -45,22 +15,23 @@ if(isset($_POST["submit"])){
 
                  
                 ?>
-                  <option value="<?php echo $result['cartegory_id']?>"><?php echo $result['tendanhmuc']?></option>
+                  <option value="<?php echo $result['cartegory_id']?> "<?php echo $result['tendanhmuc']?>>
+               
                   <?php
                     }}
                   ?>
                </select>
                <label for="">nhập giá sản phẩm <span style="color: red;">*</span></label>
-               <input required type="text" name="product_gia" <?php echo $result['product_gia'] ?>>
+               <input required type="text" name="product_gia" value="<?php echo $result['product_gia'] ?>">
                <label for="">mô tả <span style="color: red;">*</span></label><br>
-               <textarea name="mota" id="" cols="30" rows="10" <?php echo $result['product_mota'] ?>></textarea><br>
+               <textarea name="mota" id="" cols="30" rows="10" value="<?php echo $result['product_mota'] ?>"></textarea><br>
            
                <label for="">nhập số lượng <span style="color: red;">*</span></label>
-               <input required type="text" name="soluong" <?php echo $result['soluong'] ?>>
+               <input required type="text" name="soluong" value="<?php echo $result['soluong'] ?>">
                <label for="">nhập mã sản phẩm <span style="color: red;">*</span></label>
-               <input required type="text" name="masp" <?php echo $result['masp'] ?>>
+               <input required type="text" name="masp" value="<?php echo $result['masp'] ?>">
                <label for="">nhập màu sắc <span style="color: red;">*</span></label>
-               <input required type="text" name="color" <?php echo $result['color'] ?>>
+               <input required type="text" name="color" value="<?php echo $result['color'] ?>">
                <button type="submit" name="submit" class="btn btn-danger">thêm</button>
            </form>
         </div>

@@ -1,17 +1,4 @@
-<?php
-include "header.php";
-include "slilde.php";
-include "class/product_class.php";
-?>
-<?php
-$product = new product;
-    if(isset($_POST["submit"])){
-        
-     $insert_product = $product ->insertproduct($_POST,$_FILES);
-    //  var_dump($_POST,$_FILES);
-    }
 
-?>
 <div class="admin-content-right">
         <div class="admin-content-right-product_add">
            <h1>THÊM SẢN PHẨM</h1>

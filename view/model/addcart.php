@@ -53,7 +53,11 @@ function tongdonhang(){
       
   </table>';
     }
+<<<<<<< HEAD
     echo '<a href="dsdonhang.php" class="thanh-toan">danh sách đơn hàng</a>';
+=======
+    echo '<a href="index.php?act=showdon" class="thanh-toan">danh sách đơn hàng</a>';
+>>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
  }
  function ketnoidb(){
    
@@ -75,10 +79,17 @@ function tongdonhang(){
   
 
  }
+<<<<<<< HEAD
  function taogiohang($bill_name, $bill_address, $tel,$email,$total,$pttt,$ngaydathang){
     $conn=ketnoidb();
     $sql = "INSERT INTO bill (bill_name, bill_address, tel,email,total,pttt,ngaydathang)
   VALUES ('$bill_name', '$bill_address', '$tel','$email','$total','$pttt','$ngaydathang')";
+=======
+ function taogiohang($bill_name, $bill_address, $tel,$email,$total,$pttt,$ngaydathang,$trangthai){
+    $conn=ketnoidb();
+    $sql = "INSERT INTO bill (bill_name, bill_address, tel,email,total,pttt,ngaydathang,trangthai)
+  VALUES ('$bill_name', '$bill_address', '$tel','$email','$total','$pttt','$ngaydathang','$trangthai')";
+>>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
     
   $conn->exec($sql);
   $last_id = $conn->lastInsertId();
@@ -123,7 +134,11 @@ $tt= $_SESSION['giohang'][$i][2]*$_SESSION['giohang'][$i][4];
     
 </table>';
   }
+<<<<<<< HEAD
   echo '<a href="dsdonhang.php" class="thanh-toan">danh sách đơn hàng</a>';
+=======
+  echo '<a href="index.php?act=showdon" class="thanh-toan">danh sách đơn hàng</a>';
+>>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
 }
 
  
