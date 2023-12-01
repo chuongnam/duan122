@@ -6,9 +6,9 @@ if(isset($_POST["btn_dangky"])){
     $email = $_POST['email'];
     $pass = $_POST['pass'];
     $username = $_POST['user_name'];
-    $dangky = $user->dangky($username,$email, $pass);
+    $dangky = $user->insert_user($username,$email,$pass);
     if($dangky){
-		header("location:index.php");
+		header("location:login.php");
     }
 	else{
 	}
@@ -127,20 +127,32 @@ form{
             <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
                 <div class="container-fluid">
                     <div class="row">
-                        <h2>Log In</h2>
+                        <h2>Đăng Ký</h2>
                     </div>
                     <div class="row">
                         <form control="" class="form-group" method="post">
 						<div class="row">
-							<input type="text" placeholder="USERNAME" class="form__input" name="user_name">
+							<input type="text" placeholder="USERNAME" class="form__input" name="user_name" required>
 							</div>
+							<br>
+                				<small style="color: red;"><?php if (isset($_SESSION['dangky']['user_name'])) : ?>
+                                                <?= $_SESSION['dangky']['user_name'] ?>
+                                           <?php endif ?></small>
                             <div class="row">
-                                <input type="text" name="email" id="username" class="form__input" placeholder="email">
+                                <input type="text" name="email" id="username" class="form__input" placeholder="email" required>
                             </div>
+							<br>
+                		<small style="color: red;"><?php if (isset($_SESSION['dangky']['email'])) : ?>
+                                                <?= $_SESSION['dangky']['email'] ?>
+                                           <?php endif ?></small>
                             <div class="row">
                                 <!-- <span class="fa fa-lock"></span> -->
-                                <input type="password" name="pass" id="password" class="form__input" placeholder="pass">
-                            </div>	
+                                <input type="password" name="pass" id="password" class="form__input" placeholder="pass"required>
+                            </div>
+							<br>
+                			<small style="color: red;"><?php if (isset($_SESSION['dangky']['pass'])) : ?>
+                                                <?= $_SESSION['dangky']['pass'] ?>
+                                           <?php endif ?></small>	
                             <div class="row">
                             <button class="submit" name="btn_dangky">ĐĂNG KÝ</button>
                             </div>

@@ -1,10 +1,6 @@
 <?php
-<<<<<<< HEAD
-include "header.php";
-include "slide.php";
-include "footer.php";
-=======
 session_start();
+ob_start();
 include "model/addcart.php";
 include "model/sanpham.php";
 include "header.php";
@@ -93,5 +89,4 @@ if (isset($_GET['act'])) {
             break;
     }
 }
->>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
 ?>

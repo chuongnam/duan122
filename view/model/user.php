@@ -6,7 +6,7 @@ class user_client {
         $this->db = new Database();
     }
     public function login($email,$pass){
-        $sql="SELECT * FROM `user` WHERE email = '$email' and pass = '$pass' ";
+        $sql="SELECT * FROM `user` WHERE email = '$email' and pass = '".sha1($pass)."' ";
         $result = $this->db->select($sql);
         return $result;
     }

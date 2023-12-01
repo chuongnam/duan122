@@ -23,8 +23,6 @@ class product
         $result = $this->db->select($query);
         return $result;
     }
-<<<<<<< HEAD
-=======
     public function top10()
     {
         $query = "SELECT * FROM product WHERE luotxem limit 10 ";
@@ -38,7 +36,6 @@ class product
         $result = $this->db->select($query);
         return $result;
     }
->>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
 }
 
 class category
@@ -72,10 +69,7 @@ class category
             return false;
         }
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
 }
 class cart{
     private $db;
@@ -89,7 +83,6 @@ class cart{
         return $result;
     }
 }
-<<<<<<< HEAD
 class lienhe{
     private $db;
     public function __construct()
@@ -123,7 +116,7 @@ class user {
         return $result;
     }
     public function login($email,$pass){
-        $query = "SELECT * FROM user WHERE email='$email' and pass='$pass'";
+        $query = "SELECT * FROM user WHERE email='$email' and pass='".sha1($pass)."'";
         echo '<script>console.log("'.$query.'");</script>';
         $result = $this->db->select($query);
         return $result;
@@ -133,8 +126,45 @@ class user {
         $result = $this->db->insert($query);
         return $result;
     }
+    function insert_user($username,$email,$pass){
+        $errors = [];
+        if ((empty($email))) {
+            $errors['email'] = "Email không được để trống!";
+        } else if (!empty($email) && !filter_var(trim($email), FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = "Email không đúng định dạng!";
+        }else if ($email != "") {
+          $sql = "SELECT email FROM user  WHERE  email = '$email' ";
+          $check = $this->db->select($sql);
+        if ($check) {
+          $errors['email'] = "Email đã tồn tại";
+        }
+      }
+        if ($username == "") {
+            $errors['user_name'] = "Tài khoản không được để trống!";
+      } else if ($username != "") {
+        $sql = "SELECT user_name FROM user  WHERE  user_name = '$username' ";
+        $check = $this->db->select($sql);
+        if($check){
+        $errors['user_name'] = "Tài khoản đã tồn tại";
+      }
+      }
+
+    if (empty($pass)) {
+          $errors['pass'] = "Mật khẩu không được để trống!";
+       }
+       if (!empty($pass) && strlen($pass) <= '5') {
+        $errors['pass'] = "Mật khẩu của bạn phải chứa ít nhất 5 ký tự!";
+    }
+       if (!$errors) {
+        $sql = "insert into user(user_name,pass,email) values('$username','".sha1($pass)."','$email')";
+        $result=$this->db->insert($sql);
+        $errors['thongbao'] = "Đăng kí thành công! Vui lòng đăng nhập";
+      }else{
+        $errors['thongbao'] = "";
+      }
+        $_SESSION['dangky'] =  $errors; 
+        
+    }
     
  }
-=======
->>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
 ?>

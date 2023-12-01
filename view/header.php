@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,25 +28,14 @@
              
                 
              </li>
-<<<<<<< HEAD
-             <li><a href="">GIỚI THIỆU</a></li>
-             <li><a href="lienhe.php">LIÊN HỆ</a></li>
-             <li><a href="">BLOG</a></li>
-=======
              <li><a href="gioithieu.php">GIỚI THIỆU</a></li>
              <li><a href="lienhe.php">LIÊN HỆ</a></li>
           
->>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
         </div>
         <div class="others">
              <li><input type="text" placeholder="tìm kiếm..."><i class="fa fa-search"></i></li>
             
-<<<<<<< HEAD
-             <li><a href="cart.php"><i class="fa fa-shopping-bag"></i></a></li>
-             <li><a class="fa fa-user" href="login.php"></a></li>
-=======
              <li><a href="index.php?act=taogio"><i class="fa fa-shopping-bag"></i></a></li>
              <li><a href="login.php"><i class="fa fa-user" ></i></a></li>
->>>>>>> a78789311781c389fea0bddfbadc68c51fb96a28
         </div>
     </header>
