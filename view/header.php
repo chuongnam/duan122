@@ -34,7 +34,7 @@
         <div class="others">
              <li><input type="text" placeholder="tìm kiếm..."><i class="fa fa-search"></i></li>
             
-             <li><a href="cart.php"><i class="fa fa-shopping-bag"></i></a></li>
-             <li><i class="fa fa-user" href=""></i></li>
+             <li><a href="index.php?act=taogio"><i class="fa fa-shopping-bag"></i></a></li>
+             <li><a href="login.php"><i class="fa fa-user" ></i></a></li>
         </div>
     </header>

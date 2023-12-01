@@ -1,12 +1,4 @@
-<?php
-include "header.php";
-include "slilde.php";
-include "class/kythuat_class.php";
-?>
-<?php
-$kythuat = new kythuat();
-$showkt = $kythuat->showkt();
-?>
+
 <div class="admin-content-right">
          <div class="admin-content-right-cartegory_list">
             <h1>DANH SÁCH KỸ THUẬT</h1>
@@ -36,7 +28,7 @@ $showkt = $kythuat->showkt();
                     <td><?php echo $result['taynam']?></td>
                     <td><?php echo $result['lop']?></td>
                     <td><?php echo $result['xich']?></td>
-                    <td><a href="deletekt.php?kt_id=<?php echo $result['kt_id']?>" class="btn btn-success">XÓA</a><a class="btn btn-danger" href="ktedit.php?kt_id=<?php echo $result['kt_id']?>">SỬA</a></td>
+                    <td><a href="index.php?act=xoakt&kt_id=<?php echo $result['kt_id']?>" class="btn btn-success">XÓA</a><a class="btn btn-danger" href="index.php?act=suakt&kt_id=<?php echo $result['kt_id']?>">SỬA</a></td>
                     
                 </tr>
                 </tbody>
@@ -44,7 +36,7 @@ $showkt = $kythuat->showkt();
                     }
                 }
                 ?>
-                <a class="btn btn-success" href="kythuatadd.php">THÊM</a>
+                <a class="btn btn-success" href="index.php?act=addkt">THÊM</a>
             </table>
             </div>
          </div>

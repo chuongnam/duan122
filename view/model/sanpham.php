@@ -25,7 +25,14 @@ class product
     }
     public function top10()
     {
-        $query = "SELECT * FROM product WHERE luotxem limit 10";
+        $query = "SELECT * FROM product WHERE luotxem limit 10 ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function splienquan()
+    {
+        
+        $query = "SELECT * FROM product,loaixe WHERE product.cartegory_id = loaixe.cartegory_id";
         $result = $this->db->select($query);
         return $result;
     }
@@ -62,6 +69,7 @@ class category
             return false;
         }
     }
+
 }
 class cart{
     private $db;

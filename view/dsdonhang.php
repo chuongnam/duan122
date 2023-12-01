@@ -1,7 +1,4 @@
-<?php
-include "header.php";
-include "model/sanpham.php";
-?>
+
 <style>
     table {
         border-collapse: collapse;
@@ -65,12 +62,7 @@ include "model/sanpham.php";
     color: #BF8A49;
    }
 </style>
-<?php
 
-
-$cart = new cart();
-$showdonhang = $cart->showdonhang();
-?>
 
 <div class="a">
 <table>
@@ -81,13 +73,14 @@ $showdonhang = $cart->showdonhang();
         <th>TÊN SẢN PHÂM</th>
         <th>IMAGES</th>
     
-        <th>TÊN KHÁCH HÀNG</th>
+       
         <th>NGÀY ĐẶT HÀNG</th>
         <th>SỐ LƯỢNG</th>
        
         <th>PHƯƠNG THỨC THANH TOÁN</th>
      
         <th>THÀNH TIỀN</th>
+        <th>TRẠNG THÁI</th>
        
 
     </tr>
@@ -102,13 +95,15 @@ $showdonhang = $cart->showdonhang();
         <td><?php echo $row['pro_name']?></td>
         <td><img src="../admin/upload/<?php echo $row['images'] ?>" width="100px"></td>
        
-        <td><?php echo $row['bill_name']?></td>
+       
         <td><?php echo $row['ngaydathang']?></td>
         <td><?php echo $row['soluong']?></td>
     
         <td><?php echo $row['pttt']?></td>
+
        
         <td><?php echo number_format($row['thanhtien']),'vnd'?></td>
+        <td style="color: red"><?php echo $row['trangthai']?></td>
         
         
 
@@ -118,10 +113,7 @@ $showdonhang = $cart->showdonhang();
                     }
                 }
                 ?>
-                <a href="cart.php" class="thanh-toan">quay lại giỏ hàng</a>
+                <a href="index.php?act=taogio" class="thanh-toan">quay lại giỏ hàng</a>
 </table>
 </div>
 
-<?php
-include "footer.php";
-?>

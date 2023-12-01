@@ -1,66 +1,91 @@
 <?php
-include "header.php";
-include "slide.php";
+session_start();
+include "model/addcart.php";
 include "model/sanpham.php";
-?>
-<hr>
-<style>
-    .content{
-        margin-top: 30px;
-    }
-   .h1{
-        align-items: center;
-        text-align: center;
-    }
-    .content-sp{
-        
-        margin-left: 10px;
-        display: flex;
-        justify-content: space-between;
-        width: 200px;
-        
-    }
-    h1{
-        font-size: 20px;
-    }
-    .content-item{
-        margin-left: 10px;
-    }
-    </style>
-    <?php
+include "header.php";
 
-$product = new product();
-$top10 = $product->top10();
-?>
-<body>
-    <div class="content">
-    <h1 class="h1"> TOP 10 YÊU THÍCH</h1>
-    <div class="content-sp">
-    <?php
-                if ($top10) {
-                    while ($row = $top10->fetch_assoc()) {
-                        ?>
+$cart = new cart();
+if (isset($_GET['act'])) {
+    switch ($_GET['act']) {
 
-    <div class="content-item">
-    <img src="../admin/upload/<?php echo $row['images'] ?>" width="200px">
-                                <h1>
-                                    <?php echo $row['product_name'] ?>
-                                </h1>
-                                <p>
-                                    <?php echo number_format($row['product_gia'])  ?> VNĐ
-                                </p>
-                                <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>" class="btn-xemthem">xem them</a>
-                </div>
-                <?php
+        case "taogio":
+            if (!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
+
+
+            //lay du lieu form
+            if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
+
+                $images = $_POST['images'];
+                $product_name = $_POST['product_name'];
+                $product_gia = $_POST['product_gia'];
+                $color = $_POST['color'];
+                $soluong = $_POST['soluong'];
+                //ktra sản phẩm có trong giỏ hàng hay k
+                $fl = 0;
+                for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
+                    if ($_SESSION['giohang'][$i][1] == $product_name) {
+                        $fl = 1;
+                        $integr = $soluong;
+                        $soluongnew = intval($soluong) + intval($_SESSION['giohang'][$i][4]);
+                        $_SESSION['giohang'][$i][4] = $soluongnew;
+                        break;
                     }
                 }
-                ?>  
-                
-    </div>
-    
-</div>
-</body>
+                if ($fl == 0) {
+                    //them moi
+                    $sp = [$images, $product_name, $product_gia, $color, $soluong];
+                    $_SESSION['giohang'][] = $sp;
+                    header("location:index.php?act=taogio");
+                }
+            }
 
-<?php
-include "footer.php";
+            include "cart.php";
+            break;
+        case "mua":
+           
+            
+            if(isset($_POST['dongydathang'])&&($_POST['dongydathang'])){
+                   $bill_name=$_POST['bill_name'];
+                   $bill_address=$_POST['bill_address'];
+                   $tel=$_POST['tel'];
+                   $email = $_POST['email'];
+                   $ngaydathang =date('d-m-y h:i:s');
+                   $total=tongdonhang();
+                   $pttt=$_POST['pttt'];
+                   $trangthai ="chờ xác nhận";
+                 
+                   $id_bill=taogiohang($bill_name, $bill_address, $tel,$email,$total,$pttt,$ngaydathang,$trangthai);
+            
+                   for($i=0; $i < sizeof($_SESSION['giohang']); $i++){
+                       $pro_name=$_SESSION['giohang'][$i][1];
+                       $images=$_SESSION['giohang'][$i][0];
+                       $dongia=$_SESSION['giohang'][$i][2];
+                       $soluong=$_SESSION['giohang'][$i][4];
+                       $color=$_SESSION['giohang'][$i][3];
+                       $thanhtien=$dongia*$soluong;
+                       taodonhang($pro_name, $images, $dongia,$soluong,$thanhtien,$color,$id_bill);
+                   }
+                 
+            
+            }
+            unset($_SESSION['giohang']);
+            
+            
+           
+            header ("location:index.php?act=taogio");
+            break;
+        case "showdon":
+            $showdonhang = $cart->showdonhang();
+            include "dsdonhang.php";
+            break;
+
+
+
+
+
+        default:
+            include "";
+            break;
+    }
+}
 ?>

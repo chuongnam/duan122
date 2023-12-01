@@ -1,7 +1,4 @@
-<?php
-include "database.php";
 
-?>
 <?php
  class user {
     private $db;
@@ -24,7 +21,7 @@ include "database.php";
     public function deleteuser($user_id){
         $query = "DELETE FROM user WHERE user_id='$user_id'";
         $result = $this->db->delete($query);
-        header ("location:listtaikhoan.php");
+        header ("location:index.php?act=showtk");
         return $result;
     }
  }

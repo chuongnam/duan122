@@ -1,7 +1,4 @@
-<?php
-include "database.php";
 
-?>
 <?php
 class cartegory
 {
@@ -14,7 +11,7 @@ class cartegory
     {
         $query = "INSERT INTO loaixe(tendanhmuc) VALUE ('$tendanhmuc')";
         $result = $this->db->insert($query);
-        header('location:listdanhmuc.php');
+        header('location:index.php?act=showdm');
         return $result;
     }
     public function showdm()
@@ -33,7 +30,7 @@ class cartegory
     {
         $query = "UPDATE loaixe SET tendanhmuc = '$tendanhmuc' WHERE cartegory_id='$cartegory_id'";
         $result = $this->db->update($query);
-        header('location:listdanhmuc.php');
+        header('location:index.php?act=showdm');
         return $result;
 
     }
@@ -41,7 +38,7 @@ class cartegory
     {
         $query = "DELETE FROM loaixe WHERE cartegory_id='$cartegory_id'";
         $result = $this->db->delete($query);
-        header("location:listdanhmuc.php");
+        header('location:index.php?act=showdm');
         return $result;
     }
 
