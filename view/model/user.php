@@ -15,7 +15,15 @@ class user_client {
         $result = $this->db->select($sql);
         return $result;
     }
+    public function check_old_pass($user_id,$oldPassword){
+        $sql="SELECT * FROM `user` WHERE user_id = $user_id and pass='$oldPassword'";
+        $result = $this->db->select($sql);
+        return $result;
+    }
+    public function update_pasword($user_id,$newPassword){
+        $sql="UPDATE `user` SET `pass`= '$newPassword' WHERE user_id=$user_id";
+        return $this->db->update($sql);
+    }
 }
 
 ?>
-l

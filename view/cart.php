@@ -1,6 +1,6 @@
 
 
-?>
+
 <style>
     .thanh-toan {
         margin-top: 10px;

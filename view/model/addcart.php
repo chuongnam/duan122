@@ -36,7 +36,7 @@ function tongdonhang(){
             <td>'.$_SESSION['giohang'][$i][4].'</td>
             <td>'.number_format($tt).' vnđ</td>
             <td>
-            <a href="cart.php?delid='.$i.'"><span>x</span></a>
+            <a href="index.php?act=taogio&delid='.$i.'"><span>x</span></a>
             </td>
 
         </tr>';

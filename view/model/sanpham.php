@@ -36,6 +36,12 @@ class product
         $result = $this->db->select($query);
         return $result;
     }
+    public function kythuat(){
+    $id = $_GET["product_id"];
+    $query = "SELECT * FROM kythuat,product where kythuat.product_id=product.product_id AND kythuat.product_id=product_id.$id";
+    $result = $this->db->select($query);
+    return $result;
+    }
 }
 
 class category
@@ -83,4 +89,5 @@ class cart{
         return $result;
     }
 }
+
 ?>

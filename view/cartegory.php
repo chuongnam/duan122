@@ -105,7 +105,7 @@ $loaddm = $cartegory->loaddm();
                                 <p>
                                     <?php echo number_format($row['product_gia'])  ?> VNĐ
                                 </p>
-                                <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>" class="btn-xemthem">xem them</a>
+                                <a href="index.php?act=chitiet&product_id=<?php echo $row['product_id'] ?>" class="btn-xemthem">xem them</a>
                             </div>
                         
                         <?php

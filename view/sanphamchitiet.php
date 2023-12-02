@@ -1,22 +1,4 @@
-<?php
 
-include "header.php";
-include "model/sanpham.php";
-?>
-
-<?php
-$id = $_GET["product_id"];
-$sanpham = new product();
-$sanphamchitiet = $sanpham->get_product($id)->fetch_assoc();
-$danhmuc = new category();
-$category = $danhmuc->get_category($sanphamchitiet['cartegory_id']);
-echo '<script>';
-echo 'console.log(' . json_encode($sanphamchitiet) . ');';
-echo 'console.log(' . json_encode($category) . ');';
-echo '</script>';
-$product = new product();
-$splienquan = $product->splienquan();
-?>
 
 <style>
     .quantity {
@@ -75,7 +57,7 @@ $splienquan = $product->splienquan();
                  <!-----form dat hang-->
                 <form action="index.php?act=taogio" method="POST">
                 
-                <p style="font-weight: bold;" class="soluongg">Số Lượng :<input type="number" min="0" value="soluong" name="soluong"></p> <br>
+                <p style="font-weight: bold;" class="soluongg">Số Lượng :<input type="number" min="1" value="1" name="soluong"></p> <br>
 
                 <input type="text" name="product_id" value="<?php echo $sanphamchitiet['product_id'] ?>" hidden>
                 <input type="text" name="images" value="<?php echo $sanphamchitiet['images'] ?>" hidden>
@@ -116,10 +98,9 @@ $splienquan = $product->splienquan();
                 <div class="product-content-right-bottom-content-big">
                  
                     <div class="product-content-right-bottom-content">
+                       
+
                         
-
-
-                        </p>
                     </div>
                 </div>
             </div>
