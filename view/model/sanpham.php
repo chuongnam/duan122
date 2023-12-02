@@ -1,5 +1,7 @@
 <?php
+
 include ".././admin/database.php";
+
 ?>
 
 <?php
@@ -83,4 +85,105 @@ class cart{
         return $result;
     }
 }
+class lienhe{
+    private $db;
+    public function __construct()
+    {
+        $this->db = new Database();
+    }
+    public function insertlh($bl_name,$sodienthoai,$email,$noidungbinhluan){
+        $query = "insert into lienhe(bl_name,sodienthoai,email,noidungbinhluan) values('$bl_name','$sodienthoai','$email','$noidungbinhluan')";
+        $result = $this->db->insert($query);
+        return $result;
+    }
+}
+class user {
+
+    private $db;
+    public function __construct() {
+        $this->db = new Database();
+    }
+    
+    public function showuser(){
+        $query = "SELECT * FROM user ORDER BY user_id DESC";
+        $result = $this->db->select($query);
+        return $result;
+    }
+   
+    
+    public function deleteuser($user_id){
+        $query = "DELETE FROM user WHERE user_id='$user_id'";
+        $result = $this->db->delete($query);
+        header ("location:listtaikhoan.php");
+        return $result;
+    }
+    public function login($email,$pass){
+        $query = "SELECT * FROM user WHERE email='$email' and pass='".sha1($pass)."'";
+        echo '<script>console.log("'.$query.'");</script>';
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function dangky($username,$email,$pass){
+        $query = "insert into user(user_name,email,pass) values('$username','$email','$pass')";
+        $result = $this->db->insert($query);
+        return $result;
+    }
+    function insert_user($username,$email,$pass){
+        $errors = [];
+        if ((empty($email))) {
+            $errors['email'] = "Email không được để trống!";
+        } else if (!empty($email) && !filter_var(trim($email), FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = "Email không đúng định dạng!";
+        }else if ($email != "") {
+          $sql = "SELECT email FROM user  WHERE  email = '$email' ";
+          $check = $this->db->select($sql);
+        if ($check) {
+          $errors['email'] = "Email đã tồn tại";
+        }
+      }
+        if ($username == "") {
+            $errors['user_name'] = "Tài khoản không được để trống!";
+      } else if ($username != "") {
+        $sql = "SELECT user_name FROM user  WHERE  user_name = '$username' ";
+        $check = $this->db->select($sql);
+        if($check){
+        $errors['user_name'] = "Tài khoản đã tồn tại";
+      }
+      }
+
+    if (empty($pass)) {
+          $errors['pass'] = "Mật khẩu không được để trống!";
+       }
+       if (!empty($pass) && strlen($pass) <= '5') {
+        $errors['pass'] = "Mật khẩu của bạn phải chứa ít nhất 5 ký tự!";
+    }
+       if (!$errors) {
+        $sql = "insert into user(user_name,pass,email) values('$username','".sha1($pass)."','$email')";
+        $result=$this->db->insert($sql);
+        $errors['thongbao'] = "Đăng kí thành công! Vui lòng đăng nhập";
+      }else{
+        $errors['thongbao'] = "";
+      }
+        $_SESSION['dangky'] =  $errors; 
+        
+    }
+
+
+    function loadall_binhluan($product_id){ 
+        $sql="select * from binhluan where 1";
+      
+        if ($product_id >0) 
+          $sql.=" AND  product_id='".$product_id."'";
+        $sql.= "  order by id_binhluan desc";
+       
+        $listbinhluan=$this->db->select($sql); 
+        return $listbinhluan;}
+
+        function insert_binhluan($id_user,$product_id,$date,$noidung){
+            $sql_insert = "insert into binhluan values(null,'$id_user','$product_id','$date','$noidung')";
+            $this->db->insert($sql_insert);
+         }
+    
+ }
+
 ?>

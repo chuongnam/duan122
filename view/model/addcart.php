@@ -53,7 +53,10 @@ function tongdonhang(){
       
   </table>';
     }
+
+
     echo '<a href="index.php?act=showdon" class="thanh-toan">danh sách đơn hàng</a>';
+
  }
  function ketnoidb(){
    
@@ -75,10 +78,13 @@ function tongdonhang(){
   
 
  }
+
+
  function taogiohang($bill_name, $bill_address, $tel,$email,$total,$pttt,$ngaydathang,$trangthai){
     $conn=ketnoidb();
     $sql = "INSERT INTO bill (bill_name, bill_address, tel,email,total,pttt,ngaydathang,trangthai)
   VALUES ('$bill_name', '$bill_address', '$tel','$email','$total','$pttt','$ngaydathang','$trangthai')";
+
     
   $conn->exec($sql);
   $last_id = $conn->lastInsertId();
@@ -123,7 +129,9 @@ $tt= $_SESSION['giohang'][$i][2]*$_SESSION['giohang'][$i][4];
     
 </table>';
   }
+
   echo '<a href="index.php?act=showdon" class="thanh-toan">danh sách đơn hàng</a>';
+
 }
 
  

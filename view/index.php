@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 include "model/addcart.php";
 include "model/sanpham.php";
 include "header.php";

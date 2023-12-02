@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "header.php";
 ?>
 <style>
@@ -23,33 +24,28 @@ include "header.php";
      margin-bottom: 10px;
    }
     </style>
-    <?php
- 
-    ?>
+
 <section class="delivery">
            <div class="container">
               <div class="delivery-content row">
+              <?php 
+if (!isset($_SESSION['user_id'])) {
+?>
+<p>Bạn chưa đăng nhập</p>
+   <?php 
+  }else{
+    extract($_SESSION['user_id']);
+  ?>
                 <div class="delivery-content-left">
                    <p>VUI LÒNG CHỌN ĐỊA CHỈ GIAO HÀNG</p>
                    <div class="delivery-content-left-dangnhap row">
-                    <i class="fa fa-user" href=""></i>
-                    <p>đăng nhập (nếu bạn có tài khoản)</p>
-                   </div>
-                   <div class="delivery-content-left-khachle row">
-                     <input checked name="loaikhach" type="radio">
-                     <p><span style="font-weight: bold;">KHÁCH LẺ</span> (NẾU BẠN KHÔNG MUỐN LƯU LẠI THÔNG TIN)</p>
-                   </div>
-                   <div class="delivery-content-left-dangky row">
-                    <input checked name="loaikhach" type="radio">
-                    <p><span style="font-weight: bold;">ĐĂNG KÝ</span> (tạo mới tài khoản với thông tin bên dưới)</p>
-                   </div>
                      <form action="index.php?act=mua" method="POST">
                  
 
                     
                    <div class="delivery-content-left-input-top-item">
                         <label for="">Họ Tên <span style="color: red;">*</span></label>
-                        <input required type="text" name="bill_name">
+                        <input required type="text" name="bill_name" value="<?=$user_name?>">
                      </div>
                      <div class="delivery-content-left-input-top-item">
                         <label for="">Điện Thoại <span style="color: red;">*</span></label>
@@ -57,7 +53,7 @@ include "header.php";
                      </div>
                      <div class="delivery-content-left-input-top-item">
                         <label for="">EMAIL <span style="color: red;">*</span></label>
-                        <input required type="text" name="email">
+                        <input required type="text" name="email" value="<?=$email?>">
                      </div>
                   
                  
@@ -82,6 +78,7 @@ include "header.php";
               </div>
            </div>
     </section>
+    <?php } ?>
     <?php
 include "footer.php";
 ?>

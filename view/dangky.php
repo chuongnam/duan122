@@ -1,44 +1,20 @@
 <?php
-session_start();
-include "model/user.php";
 
-$user = new user_client();
-
-if(isset($_POST["btn_login"])){
+include "model/sanpham.php";
+$user = new user();
+if(isset($_POST["btn_dangky"])){
     $email = $_POST['email'];
     $pass = $_POST['pass'];
-    $login_check = $user->login($email, $pass)->fetch_assoc();
-    if(is_array($login_check)){
-        // $user_infor = $user->getUserByEmail($email)->fetch_assoc();
-        // $_SESSION['user'][0] = $email;
-        $_SESSION['user_id'] = $login_check;
-
-		header("location:index.php");
+    $username = $_POST['user_name'];
+    $dangky = $user->insert_user($username,$email,$pass);
+    if($dangky){
+		header("location:login.php");
     }
 	else{
 	}
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body id="body">
-
-	
-	
-</body>
-
-</html> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,8 +35,9 @@ if(isset($_POST["btn_login"])){
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
 <style>
-    .main-content{
+	.main-content{
 	width: 50%;
 	border-radius: 20px;
 	box-shadow: 0 5px 5px rgba(0,0,0,.4);
@@ -136,8 +113,7 @@ form{
 	background-color: #008080;
 	color:#fff;
 }
-
-    </style>
+</style>
 <body>
     <!-- Main Content -->
     <div class="container-fluid">
@@ -151,28 +127,36 @@ form{
             <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
                 <div class="container-fluid">
                     <div class="row">
-                        <h2>Log In</h2>
+                        <h2>Đăng Ký</h2>
                     </div>
                     <div class="row">
                         <form control="" class="form-group" method="post">
+						<div class="row">
+							<input type="text" placeholder="USERNAME" class="form__input" name="user_name" required>
+							</div>
+							<br>
+                				<small style="color: red;"><?php if (isset($_SESSION['dangky']['user_name'])) : ?>
+                                                <?= $_SESSION['dangky']['user_name'] ?>
+                                           <?php endif ?></small>
                             <div class="row">
-                                <input type="text" name="email" id="username" class="form__input" placeholder="email">
+                                <input type="text" name="email" id="username" class="form__input" placeholder="email" required>
                             </div>
+							<br>
+                		<small style="color: red;"><?php if (isset($_SESSION['dangky']['email'])) : ?>
+                                                <?= $_SESSION['dangky']['email'] ?>
+                                           <?php endif ?></small>
                             <div class="row">
                                 <!-- <span class="fa fa-lock"></span> -->
-                                <input type="password" name="pass" id="password" class="form__input" placeholder="pass">
+                                <input type="password" name="pass" id="password" class="form__input" placeholder="pass"required>
                             </div>
+							<br>
+                			<small style="color: red;"><?php if (isset($_SESSION['dangky']['pass'])) : ?>
+                                                <?= $_SESSION['dangky']['pass'] ?>
+                                           <?php endif ?></small>	
                             <div class="row">
-                                <input type="checkbox" name="remember_me" id="remember_me" class="">
-                                <label for="remember_me">Remember Me!</label>
-                            </div>
-                            <div class="row">
-                            <button class="submit" name="btn_login">ĐĂNG NHẬP</button>
+                            <button class="submit" name="btn_dangky">ĐĂNG KÝ</button>
                             </div>
                         </form>
-                    </div>
-                    <div class="row">
-                        <p>Don't have an account? <a href="dangky.php">Register Here</a></p>
                     </div>
                 </div>
             </div>
