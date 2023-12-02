@@ -94,6 +94,7 @@ class lienhe{
     public function insertlh($bl_name,$sodienthoai,$email,$noidungbinhluan){
         $query = "insert into lienhe(bl_name,sodienthoai,email,noidungbinhluan) values('$bl_name','$sodienthoai','$email','$noidungbinhluan')";
         $result = $this->db->insert($query);
+        
         return $result;
     }
 }
@@ -118,7 +119,7 @@ class user {
         return $result;
     }
     public function login($email,$pass){
-        $query = "SELECT * FROM user WHERE email='$email' and pass='".sha1($pass)."'";
+        $query = "SELECT * FROM user WHERE email='$email' and pass='$pass'";
         echo '<script>console.log("'.$query.'");</script>';
         $result = $this->db->select($query);
         return $result;
@@ -158,7 +159,7 @@ class user {
         $errors['pass'] = "Mật khẩu của bạn phải chứa ít nhất 5 ký tự!";
     }
        if (!$errors) {
-        $sql = "insert into user(user_name,pass,email) values('$username','".sha1($pass)."','$email')";
+        $sql = "insert into user(user_name,pass,email) values('$username','$pass','$email')";
         $result=$this->db->insert($sql);
         $errors['thongbao'] = "Đăng kí thành công! Vui lòng đăng nhập";
       }else{
