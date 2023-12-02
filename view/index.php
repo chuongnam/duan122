@@ -1,4 +1,12 @@
 <?php
+<<<<<<< Updated upstream
+=======
+
+
+ob_start();
+include "model/addcart.php";
+include "model/sanpham.php";
+>>>>>>> Stashed changes
 include "header.php";
 include "slide.php";
 include "model/sanpham.php";

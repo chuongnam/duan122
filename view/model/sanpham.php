@@ -82,5 +82,70 @@ class cart{
         return $result;
     }
 }
+<<<<<<< Updated upstream
+=======
+class lienhe{
+    private $db;
+    public function __construct()
+    {
+        $this->db = new Database();
+    }
+    public function insertlh($bl_name,$sodienthoai,$email,$noidungbinhluan){
+        $query = "insert into lienhe(bl_name,sodienthoai,email,noidungbinhluan) values('$bl_name','$sodienthoai','$email','$noidungbinhluan')";
+        $result = $this->db->insert($query);
+        return $result;
+    }
+}
+class user {
+
+    private $db;
+    public function __construct() {
+        $this->db = new Database();
+    }
+    
+    public function showuser(){
+        $query = "SELECT * FROM user ORDER BY user_id DESC";
+        $result = $this->db->select($query);
+        return $result;
+    }
+   
+    
+    public function deleteuser($user_id){
+        $query = "DELETE FROM user WHERE user_id='$user_id'";
+        $result = $this->db->delete($query);
+        header ("location:listtaikhoan.php");
+        return $result;
+    }
+    public function login($email,$pass){
+        $query = "SELECT * FROM user WHERE email='$email' and pass='".sha1($pass)."'";
+        echo '<script>console.log("'.$query.'");</script>';
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function dangky($username,$email,$pass){
+        $query = "insert into user(user_name,email,pass) values('$username','$email','$pass')";
+        $result = $this->db->insert($query);
+        return $result;
+    }
+   
+
+
+    function loadall_binhluan($product_id){ 
+        $sql="select * from binhluan where 1";
+      
+        if ($product_id >0) 
+          $sql.=" AND  product_id='".$product_id."'";
+        $sql.= "  order by id_binhluan desc";
+       
+        $listbinhluan=$this->db->select($sql); 
+        return $listbinhluan;}
+
+        function insert_binhluan($id_user,$product_id,$date,$noidung){
+            $sql_insert = "insert into binhluan values(null,'$id_user','$product_id','$date','$noidung')";
+            $this->db->insert($sql_insert);
+         }
+    
+ }
+>>>>>>> Stashed changes
 
 ?>

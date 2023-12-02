@@ -1,3 +1,11 @@
+<?php
+session_start();
+if ($_SESSION['role'] == '2') {
+    header("location:../view/404.php");
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,5 +26,6 @@
 </head>
 <body>
    <header>
-    <img src="../view/image/logo.jpg" width="300px">
+    <img src="../view/image/logo.jpg" width="300px"> <br> <br>
+    <a href="../view/index.php">Quay về trang chủ>>></a>
 </header> 
