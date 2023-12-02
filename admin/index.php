@@ -11,7 +11,8 @@ $cartegory = new Cartegory();
 $product = new product();
 $user = new user();
 $cart = new cart();
-$bill = new bill();
+$cartt = new cartt();
+
 $kythuat = new kythuat;
 
 if (isset($_GET['act'])) {
@@ -151,15 +152,15 @@ if (isset($_GET['act'])) {
             } else {
                 $id_bill = $_GET["id_bill"];
             }
-            $get_donhang = $bill->get_donhang($id_bill);
+            $get_donhang = $cartt->get_donhang($id_bill);
 
             if ($get_donhang) {
                 $row = $get_donhang->fetch_assoc();
             }
 
             if (isset($_POST["submit"])) {
-                $trangthai = $_POST['trangthai'];
-                $insertdh = $bill->updatedh($id_bill, $trangthai);
+                $trangthai_id = $_POST['trangthai_id'];
+                $insertdh = $cartt->updatedh($id_bill, $trangthai_id);
             }
             include "./donhang/suatt.php";
             break;

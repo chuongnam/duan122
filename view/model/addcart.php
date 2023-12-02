@@ -53,7 +53,10 @@ function tongdonhang(){
       
   </table>';
     }
+
+
     echo '<a href="index.php?act=showdon" class="thanh-toan">danh sách đơn hàng</a>';
+
  }
  function ketnoidb(){
    
@@ -75,20 +78,23 @@ function tongdonhang(){
   
 
  }
- function taogiohang($bill_name, $bill_address, $tel,$email,$total,$pttt,$ngaydathang,$trangthai){
+
+
+ function taogiohang($bill_name, $bill_address, $tel,$email,$total,$pttt,$ngaydathang){
     $conn=ketnoidb();
-    $sql = "INSERT INTO bill (bill_name, bill_address, tel,email,total,pttt,ngaydathang,trangthai)
-  VALUES ('$bill_name', '$bill_address', '$tel','$email','$total','$pttt','$ngaydathang','$trangthai')";
+    $sql = "INSERT INTO bill (bill_name, bill_address, tel,email,total,pttt,ngaydathang)
+  VALUES ('$bill_name', '$bill_address', '$tel','$email','$total','$pttt','$ngaydathang')";
+
     
   $conn->exec($sql);
   $last_id = $conn->lastInsertId();
   $conn = null;
   return $last_id;
  }
- function taodonhang($pro_name, $images, $dongia,$soluong,$thanhtien,$color,$id_bill){
+ function taodonhang($pro_name, $images, $dongia,$soluong,$thanhtien,$color,$id_bill,$trangthai_id){
     $conn=ketnoidb();
-    $sql = "INSERT INTO cart (pro_name, images, dongia,soluong,thanhtien,color,id_bill)
-  VALUES ('$pro_name', '$images', '$dongia','$soluong','$thanhtien','$color','$id_bill')";
+    $sql = "INSERT INTO cart (pro_name, images, dongia,soluong,thanhtien,color,id_bill,trangthai_id)
+  VALUES ('$pro_name', '$images', '$dongia','$soluong','$thanhtien','$color','$id_bill','$trangthai_id')";
   
   $conn->exec($sql);
   $conn = null;
@@ -123,7 +129,9 @@ $tt= $_SESSION['giohang'][$i][2]*$_SESSION['giohang'][$i][4];
     
 </table>';
   }
+
   echo '<a href="index.php?act=showdon" class="thanh-toan">danh sách đơn hàng</a>';
+
 }
 
  

@@ -51,7 +51,7 @@ if (isset($_GET['logout'])) {
         .dropdown:hover .options {
             display: <?php echo ($login_text === "Tôi") ? 'block' : 'none'; ?>;
         }
-    </style>
+            </style>
 </head>
 
 
@@ -72,10 +72,10 @@ if (isset($_GET['logout'])) {
 
         </div>
         <div class="others">
-            <form action="" method="post">
+                       <form action="" method="post">
                 <li><input type="text" placeholder="tìm kiếm..." name="search"><button name="search-btn"> tìm kiếm</button></li>
             </form>
-
+            
             <li><a href="index.php?act=taogio"><i class="fa fa-shopping-bag"></i></a></li>
             <div class="dropdown">
             <button class="dropdown-btn"><a href="<?php echo $login_link; ?>"><?php echo $login_text; ?></a></button>

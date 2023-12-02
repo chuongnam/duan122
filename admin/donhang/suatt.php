@@ -6,7 +6,7 @@
             
               
                <label for="">Trạng Thái <span style="color: red;">*</span></label>
-               <input required type="text" name="trangthai" value="<?php echo $row['trangthai'] ?>">
+               <input required type="text" name="trangthai_id" value="<?php echo $row['trangthai_id'] ?>">
                <button type="submit" name="submit" class="btn btn-danger">sửa</button>
            </form>
         </div>

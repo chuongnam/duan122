@@ -35,7 +35,7 @@
         <td><img src="../admin/upload/<?php echo $row['images'] ?>" width="100px"></td>
         <td><?php echo number_format($row['thanhtien']),'vnd'?></td>
         <td><?php echo $row['ngaydathang']?></td>
-        <td><?php echo $row['trangthai']?></td>
+        <td><?php echo $row['trangthai_id']?></td>
       
        
     

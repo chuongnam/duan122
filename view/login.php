@@ -1,20 +1,19 @@
- <?php
-
-include "model/user.php";
+<?php
 session_start();
+include "model/user.php";
+
 $user = new user_client();
 
-if (isset($_POST["btn-login"])) {
+if(isset($_POST["btn_login"])){
     $email = $_POST['email'];
     $pass = $_POST['pass'];
-    $login_check = $user->login($email, $pass);
+    $login_check = $user->login($email, $pass)->fetch_assoc();
+    if(is_array($login_check)){
+        // $user_infor = $user->getUserByEmail($email)->fetch_assoc();
+        // $_SESSION['user'][0] = $email;
+        $_SESSION['user_id'] = $login_check;
 
-    if ($login_check) {
-        $user_info = $user->getUserByEmail($email)->fetch_assoc();
-        $_SESSION['user_email'] = $email;
-        $_SESSION['user_id'] = $user_info['user_id'];
-        header("location:index.php");
-
+		header("location:index.php");
     }
 }
 
@@ -145,12 +144,12 @@ form{
                                 
                             </div>
                             <div class="row">
-                            <button class="submit" name="btn-login">ĐĂNG NHẬP</button>
+                            <button class="submit" name="btn_login">ĐĂNG NHẬP</button>
                             </div>
                         </form>
                     </div>
                     <div class="row">
-                        <p>Chưa có tài khoản ? <a href="">Đăng kí ngay</a></p>
+                        <p>Don't have an account? <a href="dangky.php">Register Here</a></p>
                     </div>
                 </div>
             </div>

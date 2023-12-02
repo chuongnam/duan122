@@ -6,7 +6,7 @@ include "model/sanpham.php";
 include "header.php";
 
 $cart = new cart();
-
+$trangthai = new trangthai();
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
@@ -55,9 +55,9 @@ if (isset($_GET['act'])) {
                 $ngaydathang = date('d-m-y h:i:s');
                 $total = tongdonhang();
                 $pttt = $_POST['pttt'];
-                $trangthai = "chờ xác nhận";
+              
 
-                $id_bill = taogiohang($bill_name, $bill_address, $tel, $email, $total, $pttt, $ngaydathang, $trangthai);
+                $id_bill = taogiohang($bill_name, $bill_address, $tel, $email, $total, $pttt, $ngaydathang);
 
                 for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
                     $pro_name = $_SESSION['giohang'][$i][1];
@@ -65,8 +65,9 @@ if (isset($_GET['act'])) {
                     $dongia = $_SESSION['giohang'][$i][2];
                     $soluong = $_SESSION['giohang'][$i][4];
                     $color = $_SESSION['giohang'][$i][3];
+                    $trangthai_id = "1";
                     $thanhtien = $dongia * $soluong;
-                    taodonhang($pro_name, $images, $dongia, $soluong, $thanhtien, $color, $id_bill);
+                    taodonhang($pro_name, $images, $dongia, $soluong, $thanhtien, $color, $id_bill,$trangthai_id);
                 }
 
 
@@ -75,10 +76,11 @@ if (isset($_GET['act'])) {
 
 
 
-            header("location:index.php?act=taogio");
+            header("location:index.php?act=showdon");
             break;
         case "showdon":
             $showdonhang = $cart->showdonhang();
+            $trangthai = $trangthai->trangthai();
             include "dsdonhang.php";
             break;
         case "chitiet":
@@ -97,7 +99,16 @@ if (isset($_GET['act'])) {
         
             include "sanphamchitiet.php";
             break;
-
+            case "trangthai":
+                $trangthai = $trangthai->sptrangthai();
+            
+                include "trangthai.php";
+                break;
+                case "showtrangthai":
+                    $trangthai = $trangthai->sptrangthai();
+                
+                    include "trangthai.php";
+                    break;
 
 
 

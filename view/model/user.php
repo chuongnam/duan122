@@ -7,8 +7,10 @@ class user_client {
     }
     public function login($email,$pass){
         $sql="SELECT * FROM `user` WHERE email = '$email' and pass = '$pass' ";
+        
         $result = $this->db->select($sql);
         return $result;
+       
     }
     public function getUserByEmail($email){
         $sql="SELECT * FROM `user` WHERE email = '$email'";

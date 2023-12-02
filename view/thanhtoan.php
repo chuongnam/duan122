@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "header.php";
 ?>
 <style>
@@ -23,26 +24,14 @@ include "header.php";
      margin-bottom: 10px;
    }
     </style>
-    <?php
- 
-    ?>
+
 <section class="delivery">
            <div class="container">
               <div class="delivery-content row">
-                <div class="delivery-content-left">
+
+    <div class="delivery-content-left">
                    <p>VUI LÒNG CHỌN ĐỊA CHỈ GIAO HÀNG</p>
                    <div class="delivery-content-left-dangnhap row">
-                    <i class="fa fa-user" href=""></i>
-                    <p>đăng nhập (nếu bạn có tài khoản)</p>
-                   </div>
-                   <div class="delivery-content-left-khachle row">
-                     <input checked name="loaikhach" type="radio">
-                     <p><span style="font-weight: bold;">KHÁCH LẺ</span> (NẾU BẠN KHÔNG MUỐN LƯU LẠI THÔNG TIN)</p>
-                   </div>
-                   <div class="delivery-content-left-dangky row">
-                    <input checked name="loaikhach" type="radio">
-                    <p><span style="font-weight: bold;">ĐĂNG KÝ</span> (tạo mới tài khoản với thông tin bên dưới)</p>
-                   </div>
                      <form action="index.php?act=mua" method="POST">
                  
 
@@ -82,6 +71,7 @@ include "header.php";
               </div>
            </div>
     </section>
+   
     <?php
 include "footer.php";
 ?>
