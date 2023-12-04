@@ -23,18 +23,25 @@ include "header.php";
      margin-top: 10px;
      margin-bottom: 10px;
    }
+   .delivery-content-left-input-top-item input{
+      width: 700px;
+   }
+   .delivery{
+      padding-left: 200px;
+   }
+   
     </style>
 
 <section class="delivery">
            <div class="container">
               <div class="delivery-content row">
               <?php 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['userr'])) {
 ?>
 <p>Bạn chưa đăng nhập</p>
    <?php 
   }else{
-    extract($_SESSION['user_id']);
+    extract($_SESSION['userr']);
   ?>
                 <div class="delivery-content-left">
                    <p>VUI LÒNG CHỌN ĐỊA CHỈ GIAO HÀNG</p>
@@ -59,7 +66,7 @@ if (!isset($_SESSION['user_id'])) {
                  
                    <div class="delivery-content-left-input-top-item">
                     <label for="">Địa Chỉ<span style="color: red;">*</span></label>
-                    <input required type="text" name="bill_address">
+                    <input required type="text" name="bill_address" required>
                  </div>
                  <div class="pttt">
                     Phương Thức Thanh Toán<span style="color: red;">*</span>

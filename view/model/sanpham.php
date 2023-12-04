@@ -38,6 +38,12 @@ class product
         $result = $this->db->select($query);
         return $result;
     }
+    public function kythuat(){
+    $id = $_GET["product_id"];
+    $query = "SELECT * FROM kythuat,product where kythuat.product_id=product.product_id AND kythuat.product_id=product_id.$id";
+    $result = $this->db->select($query);
+    return $result;
+    }
 }
 
 class category
@@ -94,6 +100,7 @@ class lienhe{
     public function insertlh($bl_name,$sodienthoai,$email,$noidungbinhluan){
         $query = "insert into lienhe(bl_name,sodienthoai,email,noidungbinhluan) values('$bl_name','$sodienthoai','$email','$noidungbinhluan')";
         $result = $this->db->insert($query);
+        
         return $result;
     }
 }
@@ -118,7 +125,7 @@ class user {
         return $result;
     }
     public function login($email,$pass){
-        $query = "SELECT * FROM user WHERE email='$email' and pass='".sha1($pass)."'";
+        $query = "SELECT * FROM user WHERE email='$email' and pass='$pass'";
         echo '<script>console.log("'.$query.'");</script>';
         $result = $this->db->select($query);
         return $result;
@@ -158,7 +165,7 @@ class user {
         $errors['pass'] = "Mật khẩu của bạn phải chứa ít nhất 5 ký tự!";
     }
        if (!$errors) {
-        $sql = "insert into user(user_name,pass,email) values('$username','".sha1($pass)."','$email')";
+        $sql = "insert into user(user_name,pass,email) values('$username','$pass','$email')";
         $result=$this->db->insert($sql);
         $errors['thongbao'] = "Đăng kí thành công! Vui lòng đăng nhập";
       }else{
@@ -185,5 +192,26 @@ class user {
          }
     
  }
+ class trangthai{
+    private $db;
+    public function __construct()
+    {
+        $this->db = new Database();
+    }
+    public function trangthai()
+    {
+        $query = "SELECT * FROM trangthai WHERE trangthai_id";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function sptrangthai()
+    {
+        $id = $_GET['trangthai_id'];
+        $query = "SELECT * FROM cart,trangthai WHERE cart.trangthai_id = trangthai.trangthai_id AND cart.trangthai_id=$id ORDER BY cart.trangthai_id DESC";
+        $result = $this->db->select($query);
+        return $result;
+    }
+  
+    }
 
 ?>

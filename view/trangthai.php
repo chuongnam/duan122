@@ -63,61 +63,64 @@
     color: #BF8A49;
    }
 </style>
-
 <?php
 
+
 ?>
+
 <div class="a">
 <table>
-    <h1>TỔNG ĐƠN HÀNG</h1>
+    <h1>TRẠNG THÁI ĐƠN HÀNG</h1>
     <tr>
         <th>STT</th>
         <th>MÃ ĐƠN HÀNG</th>
-        <th>TÊN SẢN PHÂM</th>
+        <th>TÊN SẢN PHẨM</th>
         <th>IMAGES</th>
+        <th>THÀNH TIỀN</th>
     
        
-        <th>NGÀY ĐẶT HÀNG</th>
-        <th>SỐ LƯỢNG</th>
+        <th>TỔNG TIỀN</th>
+        <th>NGÀY ĐẶT</th>
        
-        <th>PHƯƠNG THỨC THANH TOÁN</th>
+        <th>TRẠNG THÁI</th>
      
-        <th>THÀNH TIỀN</th>
+       
      
        
 
     </tr>
     <tr>
     <?php
-      if ($showdonhang) {
+      if ($trangthai) {
         $i=1;
-      while ($row = $showdonhang->fetch_assoc()) {
+      while ($row = $trangthai->fetch_assoc()) {
         ?>
+        <tr>
         <td><?php echo $i++ ?></td>
         <td><?php echo $row['id_bill']?></td>
         <td><?php echo $row['pro_name']?></td>
         <td><img src="../admin/upload/<?php echo $row['images'] ?>" width="100px"></td>
+        
        
        
-        <td><?php echo $row['ngaydathang']?></td>
+        <td><?php echo number_format($row['thanhtien']),'vnđ'?></td>
         <td><?php echo $row['soluong']?></td>
+        <td><?php echo $row['color']?></td>
     
-        <td><?php echo $row['pttt']?></td>
-
+        <td><?php echo $row['name']?></td>
+      </tr>
        
-        <td><?php echo number_format($row['thanhtien']),'vnd'?></td>
+       
        
         
-        
-
+      <?php
+      }
+    }
+    ?>
+<a href="index.php?act=trangthaii" class="thanh-toan">quay lại đơn hàng</a>
         
     </tr>
-    <?php
-                    }
-                }
-                ?>
-                
-               
+   
 </table>
 </div>
 

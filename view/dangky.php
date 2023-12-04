@@ -8,9 +8,10 @@ if(isset($_POST["btn_dangky"])){
     $username = $_POST['user_name'];
     $dangky = $user->insert_user($username,$email,$pass);
     if($dangky){
-		header("location:login.php");
+		
     }
 	else{
+		header("location:login.php");
 	}
 }
 

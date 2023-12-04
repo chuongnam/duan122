@@ -69,54 +69,25 @@
 ?>
 <div class="a">
 <table>
-    <h1>TỔNG ĐƠN HÀNG</h1>
+    <h1>THEO DÕI ĐƠN HÀNG</h1>
+   
     <tr>
-        <th>STT</th>
-        <th>MÃ ĐƠN HÀNG</th>
-        <th>TÊN SẢN PHÂM</th>
-        <th>IMAGES</th>
+   
     
-       
-        <th>NGÀY ĐẶT HÀNG</th>
-        <th>SỐ LƯỢNG</th>
-       
-        <th>PHƯƠNG THỨC THANH TOÁN</th>
-     
-        <th>THÀNH TIỀN</th>
-     
-       
-
-    </tr>
-    <tr>
-    <?php
-      if ($showdonhang) {
-        $i=1;
-      while ($row = $showdonhang->fetch_assoc()) {
-        ?>
-        <td><?php echo $i++ ?></td>
-        <td><?php echo $row['id_bill']?></td>
-        <td><?php echo $row['pro_name']?></td>
-        <td><img src="../admin/upload/<?php echo $row['images'] ?>" width="100px"></td>
-       
-       
-        <td><?php echo $row['ngaydathang']?></td>
-        <td><?php echo $row['soluong']?></td>
-    
-        <td><?php echo $row['pttt']?></td>
-
-       
-        <td><?php echo number_format($row['thanhtien']),'vnd'?></td>
-       
-        
-        
-
-        
-    </tr>
-    <?php
+                
+               
+                <?php
+                if ($trangthai) {
+                    while ($row = $trangthai->fetch_assoc()) {
+                        ?>
+                <a href="index.php?act=trangthai&trangthai_id=<?php echo $row['trangthai_id']?>" class="thanh-toan"><?php echo $row['name']?></a>
+              
+               
+                <?php
                     }
                 }
+            
                 ?>
-                
                
 </table>
 </div>
