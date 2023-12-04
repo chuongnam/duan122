@@ -23,13 +23,27 @@ include "header.php";
      margin-top: 10px;
      margin-bottom: 10px;
    }
+   .delivery-content-left-input-top-item input{
+      width: 700px;
+   }
+   .delivery{
+      padding-left: 200px;
+   }
+   
     </style>
 
 <section class="delivery">
            <div class="container">
               <div class="delivery-content row">
-
-    <div class="delivery-content-left">
+              <?php 
+if (!isset($_SESSION['userr'])) {
+?>
+<p>Bạn chưa đăng nhập</p>
+   <?php 
+  }else{
+    extract($_SESSION['userr']);
+  ?>
+                <div class="delivery-content-left">
                    <p>VUI LÒNG CHỌN ĐỊA CHỈ GIAO HÀNG</p>
                    <div class="delivery-content-left-dangnhap row">
                      <form action="index.php?act=mua" method="POST">
@@ -38,7 +52,7 @@ include "header.php";
                     
                    <div class="delivery-content-left-input-top-item">
                         <label for="">Họ Tên <span style="color: red;">*</span></label>
-                        <input required type="text" name="bill_name">
+                        <input required type="text" name="bill_name" value="<?=$user_name?>">
                      </div>
                      <div class="delivery-content-left-input-top-item">
                         <label for="">Điện Thoại <span style="color: red;">*</span></label>
@@ -46,13 +60,13 @@ include "header.php";
                      </div>
                      <div class="delivery-content-left-input-top-item">
                         <label for="">EMAIL <span style="color: red;">*</span></label>
-                        <input required type="text" name="email">
+                        <input required type="text" name="email" value="<?=$email?>">
                      </div>
                   
                  
                    <div class="delivery-content-left-input-top-item">
                     <label for="">Địa Chỉ<span style="color: red;">*</span></label>
-                    <input required type="text" name="bill_address">
+                    <input required type="text" name="bill_address" required>
                  </div>
                  <div class="pttt">
                     Phương Thức Thanh Toán<span style="color: red;">*</span>
@@ -71,7 +85,7 @@ include "header.php";
               </div>
            </div>
     </section>
-   
+    <?php } ?>
     <?php
 include "footer.php";
 ?>

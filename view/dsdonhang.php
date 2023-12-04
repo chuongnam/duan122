@@ -117,16 +117,7 @@
                 }
                 ?>
                 
-                <a href="index.php?act=taogio" class="thanh-toan">quay lại giỏ hàng</a>
-                <?php
-                if ($trangthai) {
-                    while ($row = $trangthai->fetch_assoc()) {
-                        ?>
-                <a href="index.php?act=trangthai&trangthai_id=<?php echo $row['trangthai_id']?>" class="thanh-toan"><?php echo $row['name']?></a>
-                <?php
-                    }
-                }
-                ?>
+               
 </table>
 </div>
 

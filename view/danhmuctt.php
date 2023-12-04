@@ -63,64 +63,32 @@
     color: #BF8A49;
    }
 </style>
+
 <?php
 
-
 ?>
-
 <div class="a">
 <table>
-    <h1>TRẠNG THÁI ĐƠN HÀNG</h1>
-    <tr>
-        <th>STT</th>
-        <th>MÃ ĐƠN HÀNG</th>
-        <th>TÊN SẢN PHẨM</th>
-        <th>IMAGES</th>
-        <th>THÀNH TIỀN</th>
-    
-       
-        <th>TỔNG TIỀN</th>
-        <th>NGÀY ĐẶT</th>
-       
-        <th>TRẠNG THÁI</th>
-     
-       
-     
-       
-
-    </tr>
-    <tr>
-    <?php
-      if ($trangthai) {
-        $i=1;
-      while ($row = $trangthai->fetch_assoc()) {
-        ?>
-        <tr>
-        <td><?php echo $i++ ?></td>
-        <td><?php echo $row['id_bill']?></td>
-        <td><?php echo $row['pro_name']?></td>
-        <td><img src="../admin/upload/<?php echo $row['images'] ?>" width="100px"></td>
-        
-       
-       
-        <td><?php echo number_format($row['thanhtien']),'vnđ'?></td>
-        <td><?php echo $row['soluong']?></td>
-        <td><?php echo $row['color']?></td>
-    
-        <td><?php echo $row['name']?></td>
-      </tr>
-       
-       
-       
-        
-      <?php
-      }
-    }
-    ?>
-<a href="index.php?act=trangthaii" class="thanh-toan">quay lại đơn hàng</a>
-        
-    </tr>
+    <h1>THEO DÕI ĐƠN HÀNG</h1>
    
+    <tr>
+   
+    
+                
+               
+                <?php
+                if ($trangthai) {
+                    while ($row = $trangthai->fetch_assoc()) {
+                        ?>
+                <a href="index.php?act=trangthai&trangthai_id=<?php echo $row['trangthai_id']?>" class="thanh-toan"><?php echo $row['name']?></a>
+              
+               
+                <?php
+                    }
+                }
+            
+                ?>
+               
 </table>
 </div>
 

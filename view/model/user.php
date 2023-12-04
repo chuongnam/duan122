@@ -1,5 +1,5 @@
 <?php
-include ".././admin/database.php";
+
 class user_client {
     private $db;
     public function __construct() {

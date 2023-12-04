@@ -1,23 +1,4 @@
-<?php
-session_start();
-include "model/user.php";
 
-$user = new user_client();
-
-if(isset($_POST["btn_login"])){
-    $email = $_POST['email'];
-    $pass = $_POST['pass'];
-    $login_check = $user->login($email, $pass)->fetch_assoc();
-    if(is_array($login_check)){
-        // $user_infor = $user->getUserByEmail($email)->fetch_assoc();
-        // $_SESSION['user'][0] = $email;
-        $_SESSION['user_id'] = $login_check;
-
-		header("location:index.php");
-    }
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,8 +6,20 @@ if(isset($_POST["btn_login"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .main-content{
+    <link rel="stylesheet" href="css/login.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/login.css">
+   
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<style>
+    .main-content{
 	width: 50%;
 	border-radius: 20px;
 	box-shadow: 0 5px 5px rgba(0,0,0,.4);
@@ -102,19 +95,7 @@ form{
 	background-color: #008080;
 	color:#fff;
 }
-        </style>
-   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/login.css">
-   
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-
+    </style>
 <body>
     
     <div class="container-fluid">
@@ -131,7 +112,7 @@ form{
                         <h2>ĐĂNG NHẬP THÀNH VIÊN</h2>
                     </div>
                     <div class="row">
-                        <form control="" class="form-group" method="post">
+                        <form action="index.php?act=login" class="form-group" method="post">
                             <div class="row">
                                 <input type="text" name="email" id="username" class="form__input" placeholder="Email">
                             </div>
@@ -144,12 +125,12 @@ form{
                                 
                             </div>
                             <div class="row">
-                            <button class="submit" name="btn_login">ĐĂNG NHẬP</button>
+                            <button class="submit" name="btn-login">ĐĂNG NHẬP</button>
                             </div>
                         </form>
                     </div>
                     <div class="row">
-                        <p>Don't have an account? <a href="dangky.php">Register Here</a></p>
+                        <p>Chưa có tài khoản ? <a href="dangky.php">Đăng kí ngay</a></p>
                     </div>
                 </div>
             </div>

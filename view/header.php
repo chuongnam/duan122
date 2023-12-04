@@ -2,25 +2,25 @@
 
 $login_text = "Đăng nhập";
 $login_link = "login.php";
-if (isset($_SESSION['user_email']) && isset($_SESSION['user_id'])) {
+
+if (isset($_SESSION['user_email'], $_SESSION['user_id'], $_SESSION['role']) && $_SESSION['role'] == 2) {
     $login_text = "Tôi";
     $login_link = "#";
 }
 
-?>
-<?php
 if (isset($_POST["search-btn"])) {
     $value = $_POST['search'];
-    header("location:cartegory.php?name=$value");
+    header("location: cartegory.php?name=$value");
 }
 
 if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
-    header("Location: index.php");
+    header("Location: index.php?act=trangchu");
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,6 +39,7 @@ if (isset($_GET['logout'])) {
         }
 
         .options {
+            width: 100px;
             display: none;
             position: absolute;
             top: 100%;
@@ -51,7 +52,7 @@ if (isset($_GET['logout'])) {
         .dropdown:hover .options {
             display: <?php echo ($login_text === "Tôi") ? 'block' : 'none'; ?>;
         }
-            </style>
+    </style>
 </head>
 
 
@@ -61,7 +62,7 @@ if (isset($_GET['logout'])) {
             <img src="image/logo.jpg">
         </div>
         <div class="menu">
-            <li><a href="index.php">TRANG CHỦ</a></li>
+            <li><a href="index.php?act=trangchu">TRANG CHỦ</a></li>
             <li><a href="cartegory.php">SẢN PHẨM</a>
 
 
@@ -72,15 +73,16 @@ if (isset($_GET['logout'])) {
 
         </div>
         <div class="others">
-                       <form action="" method="post">
+            <form action="" method="post">
                 <li><input type="text" placeholder="tìm kiếm..." name="search"><button name="search-btn"> tìm kiếm</button></li>
             </form>
-            
+
             <li><a href="index.php?act=taogio"><i class="fa fa-shopping-bag"></i></a></li>
             <div class="dropdown">
             <button class="dropdown-btn"><a href="<?php echo $login_link; ?>"><?php echo $login_text; ?></a></button>
             <div class="options">
-                    <a href="changerpassword.php">Đổi mật khẩu</a>
+                    <a href="changepassword.php">Đổi mật khẩu</a>
+                    <a href="index.php?act=trangthaii">Đơn Hàng</a>
                     <a href="?logout=true">Đăng xuất</a>
                 </div>
             </div>

@@ -3,9 +3,11 @@ session_start();
 ob_start();
 include "model/addcart.php";
 include "model/sanpham.php";
+include "model/user.php";
 include "header.php";
-
+$user = new user_client();
 $cart = new cart();
+$product = new product();
 $trangthai = new trangthai();
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
@@ -55,7 +57,7 @@ if (isset($_GET['act'])) {
                 $ngaydathang = date('d-m-y h:i:s');
                 $total = tongdonhang();
                 $pttt = $_POST['pttt'];
-              
+
 
                 $id_bill = taogiohang($bill_name, $bill_address, $tel, $email, $total, $pttt, $ngaydathang);
 
@@ -67,7 +69,7 @@ if (isset($_GET['act'])) {
                     $color = $_SESSION['giohang'][$i][3];
                     $trangthai_id = "1";
                     $thanhtien = $dongia * $soluong;
-                    taodonhang($pro_name, $images, $dongia, $soluong, $thanhtien, $color, $id_bill,$trangthai_id);
+                    taodonhang($pro_name, $images, $dongia, $soluong, $thanhtien, $color, $id_bill, $trangthai_id);
                 }
 
 
@@ -76,7 +78,7 @@ if (isset($_GET['act'])) {
 
 
 
-            header("location:index.php?act=showdon");
+            header("location:index.php?act=trangthaii");
             break;
         case "showdon":
             $showdonhang = $cart->showdonhang();
@@ -96,21 +98,47 @@ if (isset($_GET['act'])) {
             echo '</script>';
             $product = new product();
             $splienquan = $product->splienquan();
-        
+
             include "sanphamchitiet.php";
             break;
-            case "trangthai":
-                $trangthai = $trangthai->sptrangthai();
-            
-                include "trangthai.php";
-                break;
-                case "showtrangthai":
-                    $trangthai = $trangthai->sptrangthai();
-                
-                    include "trangthai.php";
-                    break;
+        case "trangthai":
+            $trangthai = $trangthai->sptrangthai();
 
+            include "trangthai.php";
+            break;
+        case "showtrangthai":
+            $trangthai = $trangthai->sptrangthai();
 
+            include "trangthai.php";
+            break;
+            break;
+        case "trangthaii":
+
+            $trangthai = $trangthai->trangthai();
+            include "danhmuctt.php";
+            break;
+        case "trangchu":
+            $product = $product->top10();
+            include "trangchu.php";
+            break;
+
+        case "login":
+            $email = $_POST['email'];
+            $pass = $_POST['pass'];
+
+            if ($user->login($email, $pass)) {
+                $user_info = $user->getUserByEmail($email)->fetch_assoc();
+                $_SESSION['user_email'] = $email;
+                $_SESSION['user_id'] = $user_info['user_id'];
+                $_SESSION['role'] = $user_info['role_id'];
+                $_SESSION['userr'] = $user_info;
+                $redirect = ($user_info['role_id'] == 1) ? "../admin/" : "index.php?act=trangchu";
+                header("location: $redirect");
+                exit();
+            }
+
+            include "login.php";
+            break;
 
 
         default:

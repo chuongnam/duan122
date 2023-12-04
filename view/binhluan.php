@@ -49,13 +49,13 @@ if($danhsachbinhluan){
     </table>
 
     <?php 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['userr'])) {
 ?>
     <a class="bg-[black] text-white px-[25px] py-[7px] rounded" href="login.php">Đăng Nhập Để
       Bình Luận</a>
     <?php 
   }else{
-    extract($_SESSION['user_id']);
+    extract($_SESSION['userr']);
   ?>
     <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
       <input type="hidden" name="product_id" value="<?=$product_id?>">

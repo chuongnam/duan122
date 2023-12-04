@@ -170,7 +170,7 @@ if (isset($_GET['act'])) {
                 } else {
                     $id_bill = $_GET["id_bill"];
                 }
-                $delete_donhang = $bill->deletedonhang($id_bill);
+                $delete_donhang = $cartt->deletedonhang($id_bill);
                 include "./donhang/dsdonhnag";
                 break;
 
