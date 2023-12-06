@@ -145,6 +145,13 @@ if(isset($_GET['act'])) {
             $binhluan = $binhluan->showbinhluan();
             include "./binhluan/listbinhluan.php";
             break;
+        case "thongke":
+            $cartt = $cartt->donhangnew();
+            $product = $product->thongke();
+            $cart = $cart->xemnhieu();
+            include "./thongke/listthongke.php";
+            break;
+        
         case "showlienhe":
 
             $lienhe = $lienhe->showlh();
@@ -159,15 +166,15 @@ if(isset($_GET['act'])) {
             $delete_binhluan = $binhluan->deletebl($id_binhluan);
             include "./binhluan/listbinhluan.php";
             break;
-            case "xoalh":
-                if(!isset($_GET["lienhe_id"]) || ($_GET["lienhe_id"]) == null) {
-    
-                } else {
-                    $lienhe_id = $_GET["lienhe_id"];
-                }
-                $delete_lienhe = $lienhe->deletelh($lienhe_id);
-                include "./lienhe/listlienhe.php";
-                break;
+        case "xoalh":
+            if(!isset($_GET["lienhe_id"]) || ($_GET["lienhe_id"]) == null) {
+
+            } else {
+                $lienhe_id = $_GET["lienhe_id"];
+            }
+            $delete_lienhe = $lienhe->deletelh($lienhe_id);
+            include "./lienhe/listlienhe.php";
+            break;
         case "xoakt":
 
             if(!isset($_GET["kt_id"]) || ($_GET["kt_id"]) == null) {

@@ -20,6 +20,14 @@
      margin-top: 10px;
          width: 50px;
    }
+   .pttt{
+    display: flex;
+    margin-bottom: 20px;
+    
+   }
+   .tt{
+   margin-left: 15px;
+   }
 </style>
 <section class="product">
     <div class="container">
@@ -42,10 +50,7 @@
                 <div class="product-content-right-product-price">
                     <p><?php echo number_format($sanphamchitiet['product_gia'])  ?><sup>VNĐ</sup></p>
                 </div>
-                <div class="product-content-right-product-color">
-                    <p><span style="font-weight: bold;">MÀU SẮC :</span><?php echo $sanphamchitiet['color'] ?> <span style="color: red;">*</span></p>
-
-                </div>
+                
 
              
 
@@ -63,7 +68,12 @@
                 <input type="text" name="images" value="<?php echo $sanphamchitiet['images'] ?>" hidden>
                 <input type="text" name="product_name" value="<?php echo $sanphamchitiet['product_name'] ?>" hidden>
                 <input type="text" name="product_gia" value="<?php echo $sanphamchitiet['product_gia'] ?>" hidden>
-                <input type="text" name="color" value="<?php echo $sanphamchitiet['color'] ?>" hidden>
+                <div class="pttt">
+                    Màu Sắc:<br>
+                    <p><input type="radio" name="color" value="vàng" checked class="tt">Vàng</p>
+                    <p><input type="radio" name="color" value="trắng" class="tt">Trắng</p>
+                    <p><input type="radio" name="color" value="đen" class="tt">Đen </p>
+                 </div>
                 
                 <input type="submit" value="THÊM GIỎ HÀNG" name="addtocart" class="thanh-toan">
                 </form>

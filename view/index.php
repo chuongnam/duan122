@@ -92,7 +92,7 @@ if (isset($_GET['act'])) {
     
     
     
-                header("location:index.php?act=trangthaii");
+                header("location:index.php?act=camon");
                 break;
         case "showdon":
             $showdonhang = $cart->showdonhang();
@@ -125,7 +125,12 @@ if (isset($_GET['act'])) {
 
             include "trangthai.php";
             break;
-            break;
+            case "camon":
+               
+    
+                include "camon.php";
+                break;
+            
         case "trangthaii":
 
             $trangthai = $trangthai->trangthai();
@@ -146,7 +151,7 @@ if (isset($_GET['act'])) {
                 $_SESSION['user_id'] = $user_info['user_id'];
                 $_SESSION['role'] = $user_info['role_id'];
                 $_SESSION['userr'] = $user_info;
-                $redirect = ($user_info['role_id'] == 1) ? "../admin/" : "index.php?act=trangchu";
+                $redirect = ($user_info['role_id'] == 1) ? "../admin/index.php?act=thongke" : "index.php?act=trangchu";
                 header("location: $redirect");
                 exit();
             }
