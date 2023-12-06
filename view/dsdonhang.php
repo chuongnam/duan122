@@ -74,6 +74,7 @@
         <th>STT</th>
         <th>MÃ ĐƠN HÀNG</th>
         <th>TÊN SẢN PHÂM</th>
+        <th>TÊN KHÁCH</th>
         <th>IMAGES</th>
     
        
@@ -96,6 +97,7 @@
         <td><?php echo $i++ ?></td>
         <td><?php echo $row['id_bill']?></td>
         <td><?php echo $row['pro_name']?></td>
+        <td><?php echo $row['bill_name']?></td>
         <td><img src="../admin/upload/<?php echo $row['images'] ?>" width="100px"></td>
        
        

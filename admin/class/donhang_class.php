@@ -6,7 +6,12 @@ class cart{
         $this->db = new Database();
     }
     public function showdonhang(){
-        $query = "SELECT * FROM cart n INNER JOIN bill b WHERE n.id_bill=b.id_bill ";
+        $query = "SELECT * FROM cart n INNER JOIN trangthai t WHERE n.trangthai_id=t.trangthai_id ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function xemnhieu(){
+        $query = "SELECT * FROM product  ORDER BY luotxem DESC LIMIT 3";
         $result = $this->db->select($query);
         return $result;
     }
@@ -45,6 +50,11 @@ public function get_donhang($id_bill)
         $query = "DELETE FROM cart WHERE id_bill='$id_bill'";
         $result = $this->db->delete($query);
         header ("location:index.php?act=dsdonhang");
+        return $result;
+    }
+    public function donhangnew(){
+        $query = "SELECT * FROM bill  ORDER BY ngaydathang DESC LIMIT 3";
+        $result = $this->db->select($query);
         return $result;
     }
 }

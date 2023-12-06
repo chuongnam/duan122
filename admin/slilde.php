@@ -52,8 +52,8 @@
             <li><a href="">THÔNG KÊ</a>
                 <ul>
                     
-                    <li><a href="index.php?act=showtk">DANH SÁCH THÔNG KÊ</a></li>
-                    <li><a href="index.php?act=showtk">BIỂU ĐỒ</a></li>
+                    <li><a href="index.php?act=thongke">DANH SÁCH THÔNG KÊ</a></li>
+                    
                 </ul>
             </li>
             

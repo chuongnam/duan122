@@ -17,7 +17,7 @@
                 
                     <th>IMAGE</th>
                     <th>TỔNG TIỀN</th>
-                    <th>NGÀY ĐẶT</th>
+                    <th>MÃ ĐƠN HÀNG</th>
                     <th>TRẠNG THÁI</th>
                     <th>TÙY CHỈNH</th>
                     
@@ -34,8 +34,8 @@
         <td><?php echo $row['pro_name']?></td>
         <td><img src="../admin/upload/<?php echo $row['images'] ?>" width="100px"></td>
         <td><?php echo number_format($row['thanhtien']),'vnd'?></td>
-        <td><?php echo $row['ngaydathang']?></td>
-        <td><?php echo $row['trangthai_id']?></td>
+        <td><?php echo $row['cart_bill']?></td>
+        <td><?php echo $row['name']?></td>
       
        
     

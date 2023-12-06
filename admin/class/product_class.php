@@ -70,5 +70,13 @@
         $result = $this->db->select($query);
         return $result;
     }
+    public function thongke(){
+        $query = "SELECT loaixe.cartegory_id as madm,loaixe.tendanhmuc as tendm, count(product.product_id) as countsp, min(product.product_gia) as minprice, max(product.product_gia) as maxprice,avg(product.product_gia) as avg,sum(product.product_gia) as sum FROM product left join loaixe on loaixe.cartegory_id = product.cartegory_id GROUP BY loaixe.cartegory_id";
+       
+        $result = $this->db->select($query);
+        return $result;
+    }
+    
+    
  }
 ?>

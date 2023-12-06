@@ -17,6 +17,11 @@
         margin-top: 10px;
         width: 50px;
     }
+    .nam{
+        font-size: 25px;
+        font-weight: bold;
+    }
+    
 </style>
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
@@ -30,8 +35,8 @@
                 <table>
                     <tr>
                         <th>STT</th>
-                        <th>ID San pham</th>
-                        <th>ẢNH SẢN PHẨM</th>
+                        <th>ID</th>
+                        <th>IMAGES</th>
                         <th>TÊN SẢN PHẨM</th>
                         <th>GIÁ</th>
 
@@ -58,7 +63,7 @@
                                     <td>
                                         <?= $idSP ?>
                                     </td>
-                                    <td><img src="../admin/upload/<?= $value['images'] ?>" width="100px"></td>
+                                    <td><img src="../admin/upload/<?= $value['images'] ?>" width="200px"></td>
                                     <td>
                                         <?= $value['product_name'] ?>
                                     </td>
@@ -95,15 +100,30 @@
                             echo '<tr><td colspan="9">Giỏ hàng trống</td></tr>';
                         }
                         ?>
+                       
                 </table>
-
+               
+                <a href="index.php?act=showdon">ĐƠN HÀNG</a> 
+          
                 </ul>
             </div>
             <div class="cart-content-right">
                 <table>
 
+                <ul>
+                <p class="nam">Tổng tiền:
 
+                    <?php 
+                        $sum = 0;
+                        foreach ($_SESSION['giohang'] as $item) {
+                            $sum += $item['product_gia'] * $item['soluong'];
+                        }
 
+                        echo number_format($sum) . "<sup>vnđ</sup>";
+                    ?>
+                <p>
+            </ul>
+               
                 </table>
 
 
@@ -112,18 +132,14 @@
 
                     <p>bạn sẽ được miễn phí giao hàng khi đơn hàng của bạn có tổng giá trị trên 2.000.000<sub>đ</sub>
                     </p>
-                    <p style="color: red; font-weight: bold;">mua thêm <span style="font-size: 18px;">200.000</span> để
-                        được miễn phí ship</p>
+                    
                 </div>
                 <div class="cart-content-right-button">
 
                     <input type="submit" name="dongydathang" value="thanh toán" class="thanh-toan">
                 </div>
                 </form>
-                <div class="cart-content-right-dangnhap">
-                    <p>tài khoản</p><br>
-                    <p>Hãy <a href="" style="color: red;">ĐĂNG NHẬP</a> tài khoản của bạn để tích điểm thành viên</p>
-                </div>
+                
             </div>
         </div>
     </div>
