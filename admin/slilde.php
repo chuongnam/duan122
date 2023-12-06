@@ -17,10 +17,22 @@
                     <li><a href="index.php?act=showsp">DANH SÁCH SẢN PHẨM</a></li>
                 </ul>
             </li>
+            <li><a href="">BÌNH LUẬN</a>
+                <ul>
+                
+                    <li><a href="index.php?act=showbinhluan">DANH SÁCH BÌNH LUẬN</a></li>
+                </ul>
+            </li>
             <li><a href="">ĐƠN HÀNG</a>
                 <ul>
                     
                     <li><a href="index.php?act=dsdonhang">DANH SÁCH ĐƠN HÀNG</a></li>
+                </ul>
+            </li>
+            <li><a href="">LIÊN HỆ</a>
+                <ul>
+                    
+                    <li><a href="index.php?act=showlienhe">DANH SÁCH LIÊN HỆ</a></li>
                 </ul>
             </li>
             <li><a href="">KỸ THUẬT</a>

@@ -83,7 +83,7 @@
 
 
                                     <td>
-                                        <a href="index.php?act=xoasp&product_id=<?= $idSP ?>" class="btn btn-danger">Xóa</a>
+                                        <a onclick="return confirm('bạn có sản phẩm này không')" href="index.php?act=xoasp&product_id=<?= $idSP ?>" class="btn btn-danger">Xóa</a>
                                     </td>
                                 </tr>
 

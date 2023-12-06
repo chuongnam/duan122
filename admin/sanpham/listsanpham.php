@@ -41,7 +41,7 @@
                     <td><?php echo $result['masp']?></td>
                     <td><?php echo $result['color']?></td>
                     <td><?php echo $result['cartegory_id']?></td>
-                    <td><a href="index.php?act=xoasp&product_id=<?php echo $result['product_id']?>" class="btn btn-success">XÓA</a><a class="btn btn-danger" href="index.php?act=suasp&product_id=<?php echo $result['product_id']?>">SỬA</a></td>
+                    <td><a onclick="return confirm('bạn có muốn xóa')" href="index.php?act=xoasp&product_id=<?php echo $result['product_id']?>" class="btn btn-success">XÓA</a><a class="btn btn-danger" href="index.php?act=suasp&product_id=<?php echo $result['product_id']?>">SỬA</a></td>
                     
                 </tr>
                 </tbody>
