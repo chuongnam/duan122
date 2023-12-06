@@ -31,7 +31,7 @@
                     <td><?php echo $result['user_name']?></td>
                     <td><?php echo $result['pass']?></td>
                     <td><?php echo $result['email']?></td>
-                    <td><a href="deleteuser.php?user_id=<?php echo $result['user_id']?>" class="btn btn-success">XÓA</a></td>
+                    <td><a onclick="return confirm('bạn có muốn xóa')" href="deleteuser.php?user_id=<?php echo $result['user_id']?>" class="btn btn-success">XÓA</a></td>
                 </tr>
                 </tbody>
                 <?php

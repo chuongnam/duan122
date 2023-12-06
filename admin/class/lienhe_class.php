@@ -1,9 +1,9 @@
 <?php
-include "database.php";
+
 
 ?>
 <?php
-class LienHe
+class Lienhe
 {
     private $db;
     public function __construct()
@@ -41,7 +41,7 @@ class LienHe
     {
         $query = "DELETE FROM lienhe WHERE lienhe_id='$lienhe_id'";
         $result = $this->db->delete($query);
-        header("location:listlienhe.php");
+        header("location:index.php?act=showlienhe");
         return $result;
     }
 

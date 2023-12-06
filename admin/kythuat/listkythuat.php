@@ -28,7 +28,7 @@
                     <td><?php echo $result['taynam']?></td>
                     <td><?php echo $result['lop']?></td>
                     <td><?php echo $result['xich']?></td>
-                    <td><a href="index.php?act=xoakt&kt_id=<?php echo $result['kt_id']?>" class="btn btn-success">XÓA</a><a class="btn btn-danger" href="index.php?act=suakt&kt_id=<?php echo $result['kt_id']?>">SỬA</a></td>
+                    <td><a onclick="return confirm('bạn có muốn xóa')" href="index.php?act=xoakt&kt_id=<?php echo $result['kt_id']?>" class="btn btn-success">XÓA</a><a class="btn btn-danger" href="index.php?act=suakt&kt_id=<?php echo $result['kt_id']?>">SỬA</a></td>
                     
                 </tr>
                 </tbody>
