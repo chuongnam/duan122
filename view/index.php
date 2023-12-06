@@ -13,73 +13,87 @@ if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
         case "taogio":
-            if (!isset($_SESSION['giohang']))
-                $_SESSION['giohang'] = [];
+            if (!empty($_POST)) {
+                $_SESSION['giohang'][$_POST['product_id']] = [
+                    'product_name' => $_POST['product_name'],
+                    'images' => $_POST['images'],
+                    'product_gia' => $_POST['product_gia'],
+                    'color' => $_POST['color'],
+                    'soluong' => $_POST['soluong'],
+                ];
 
-
-            //lay du lieu form
-            if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
-
-                $images = $_POST['images'];
-                $product_name = $_POST['product_name'];
-                $product_gia = $_POST['product_gia'];
-                $color = $_POST['color'];
-                $soluong = $_POST['soluong'];
-                //ktra sản phẩm có trong giỏ hàng hay k
-                $fl = 0;
-                for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
-                    if ($_SESSION['giohang'][$i][1] == $product_name) {
-                        $fl = 1;
-                        $integr = $soluong;
-                        $soluongnew = intval($soluong) + intval($_SESSION['giohang'][$i][4]);
-                        $_SESSION['giohang'][$i][4] = $soluongnew;
-                        break;
-                    }
-                }
-                if ($fl == 0) {
-                    //them moi
-                    $sp = [$images, $product_name, $product_gia, $color, $soluong];
-                    $_SESSION['giohang'][] = $sp;
-                    header("location:index.php?act=taogio");
-                }
             }
-
             include "cart.php";
             break;
-        case "mua":
-
-
-            if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
-                $bill_name = $_POST['bill_name'];
-                $bill_address = $_POST['bill_address'];
-                $tel = $_POST['tel'];
-                $email = $_POST['email'];
-                $ngaydathang = date('d-m-y h:i:s');
-                $total = tongdonhang();
-                $pttt = $_POST['pttt'];
-
-
-                $id_bill = taogiohang($bill_name, $bill_address, $tel, $email, $total, $pttt, $ngaydathang);
-
-                for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
-                    $pro_name = $_SESSION['giohang'][$i][1];
-                    $images = $_SESSION['giohang'][$i][0];
-                    $dongia = $_SESSION['giohang'][$i][2];
-                    $soluong = $_SESSION['giohang'][$i][4];
-                    $color = $_SESSION['giohang'][$i][3];
-                    $trangthai_id = "1";
-                    $thanhtien = $dongia * $soluong;
-                    taodonhang($pro_name, $images, $dongia, $soluong, $thanhtien, $color, $id_bill, $trangthai_id);
+            case "xoasp":
+                $product_id = $_GET['product_id'] ?? '';
+    
+                if (!empty($product_id)) {
+                    unset($_SESSION['giohang'][$product_id]);
                 }
-
-
-            }
-            unset($_SESSION['giohang']);
-
-
-
-            header("location:index.php?act=trangthaii");
-            break;
+                header('Location: index.php?act=taogio');
+    
+                break;
+            case "them":
+                $product_id = $_GET['product_id'] ?? '';
+    
+                if (!empty($product_id)) {
+                    ++$_SESSION['giohang'][$product_id]['soluong'];
+                }
+    
+                header('Location: index.php?act=taogio');
+    
+                break;
+            case "tru":
+                $product_id = $_GET['product_id'] ?? '';
+    
+                if (!empty($product_id)) {
+                    $_SESSION['giohang'][$product_id]['soluong'] = max(1, $_SESSION['giohang'][$product_id]['soluong'] - 1);
+                }
+    
+                header('Location: index.php?act=taogio');
+    
+                break;
+            case "mua":
+    
+    
+                if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
+                    $sum = 0;
+                    foreach ($_SESSION['giohang'] as $item) {
+                        $sum += $item['product_gia'] * $item['soluong'];
+                    }
+                    $bill_name = $_POST['bill_name'];
+                    $bill_address = $_POST['bill_address'];
+                    $tel = $_POST['tel'];
+                    $email = $_POST['email'];
+                    $ngaydathang = date('d-m-y h:i:s');
+                    $total = $sum;
+                    $pttt = $_POST['pttt'];
+    
+    
+                    $id_bill = taogiohang($bill_name, $bill_address, $tel, $email, $total, $pttt, $ngaydathang);
+    
+                    foreach ($_SESSION['giohang'] as $product_id => $item) {
+                        $pro_name = $item['product_name'];
+                        $images = $item['images'];
+                        $dongia = $item['product_gia'];
+                        $soluong = $item['soluong'];
+                        $color = $item['color'];
+                        $trangthai_id =1;
+                        $thanhtien = $dongia * $soluong;
+                        taodonhang($pro_name, $images, $dongia, $soluong, $thanhtien, $color, $id_bill, $trangthai_id);
+                    }
+    
+    
+    
+    
+                }
+                unset($_SESSION['giohang']);
+    
+    
+    
+                header("location:index.php?act=trangthaii");
+                break;
         case "showdon":
             $showdonhang = $cart->showdonhang();
             $trangthai = $trangthai->trangthai();

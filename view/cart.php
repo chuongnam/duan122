@@ -1,4 +1,3 @@
-
 <style>
     .thanh-toan {
         margin-top: 10px;
@@ -19,6 +18,8 @@
         width: 50px;
     }
 </style>
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
 <section class="cart">
 
@@ -29,6 +30,7 @@
                 <table>
                     <tr>
                         <th>STT</th>
+                        <th>ID San pham</th>
                         <th>ẢNH SẢN PHẨM</th>
                         <th>TÊN SẢN PHẨM</th>
                         <th>GIÁ</th>
@@ -40,28 +42,62 @@
                         <th>XÓA</th>
                     </tr>
                     <form action="thanhtoan.php" method="POST">
-                        <?php showgiohang() ?>
-                        <!-- <tr>
-                           <td><img src="image/anh11.jpg"></td>
-                           <td><p>xe đạp trẻ em</p></td>
-                           <td><img src="image/color.jpg" ></td>
-                         
-                           <td><input type="number" value="1" min="1"></td>
-                           <td><p>4.000.000<sub>đ</sub></p></td>
-                           <td><span>x</span></td>
-   
-                       </tr>
-                       <tr>
-                           <td><img src="image/anh11.jpg"></td>
-                           <td><p>xe đạp trẻ em</p></td>
-                           <td><img src="image/color.jpg" ></td>
-                         
-                           <td><input type="number" value="1" min="1"></td>
-                           <td><p>4.000.000<sub>đ</sub></p></td>
-                           <td><span>x</span></td>
-   
-                       </tr> -->
+                        <?php
+                        if (isset($_SESSION['giohang']) && !empty($_SESSION['giohang'])) {
+                            $i = 1;
+                            $tong = 0;
+                            $sum = 0;
+                            foreach ($_SESSION['giohang'] as $idSP => $value):
+                                $sum = $value['product_gia'] * $value['soluong'];
+                                $tong += $sum;
+                                ?>
+                                <tr>
+                                    <td>
+                                        <?= $i++ ?>
+                                    </td>
+                                    <td>
+                                        <?= $idSP ?>
+                                    </td>
+                                    <td><img src="../admin/upload/<?= $value['images'] ?>" width="100px"></td>
+                                    <td>
+                                        <?= $value['product_name'] ?>
+                                    </td>
+                                    <td>
+                                        <?= number_format($value['product_gia']) ?><sup>VNĐ</sup>
+                                    </td>
+
+                                    <td>
+                                        <?= $value['color'] ?>
+                                    </td>
+
+                                    <td>
+                                        <a href="index.php?act=them&product_id=<?= $idSP ?>" class="btn btn-success">+</a>
+                                        <?= $value['soluong'] ?>
+                                        <a href="index.php?act=tru&product_id=<?= $idSP ?>" class="btn btn-danger">-</a>
+                                    </td>
+
+                                    <td>
+                                        <?= number_format($sum) ?><sup>VNĐ</sup>
+                                    </td>
+
+
+
+                                    <td>
+                                        <a href="index.php?act=xoasp&product_id=<?= $idSP ?>" class="btn btn-danger">Xóa</a>
+                                    </td>
+                                </tr>
+
+                                <?php
+                                $i++;
+                            endforeach;
+                        } else {
+                            // Nếu giỏ hàng không có giá trị session, hiển thị thông báo giỏ hàng trống
+                            echo '<tr><td colspan="9">Giỏ hàng trống</td></tr>';
+                        }
+                        ?>
                 </table>
+
+                </ul>
             </div>
             <div class="cart-content-right">
                 <table>
@@ -70,7 +106,10 @@
 
                 </table>
 
+
+
                 <div class="cart-content-right-text">
+
                     <p>bạn sẽ được miễn phí giao hàng khi đơn hàng của bạn có tổng giá trị trên 2.000.000<sub>đ</sub>
                     </p>
                     <p style="color: red; font-weight: bold;">mua thêm <span style="font-size: 18px;">200.000</span> để
