@@ -186,12 +186,12 @@ if(isset($_GET['act'])) {
             include "./kythuat/listkythuat.php";
             break;
         case "suatt":
-            if(!isset($_GET["id_bill"]) || ($_GET["id_bill"]) == null) {
+            if(!isset($_GET["cart_bill"]) || ($_GET["cart_bill"]) == null) {
 
             } else {
-                $id_bill = $_GET["id_bill"];
+                $cart_bill = $_GET["cart_bill"];
             }
-            $get_donhang = $cartt->get_donhang($id_bill);
+            $get_donhang = $cartt->get_donhang($cart_bill);
 
             if($get_donhang) {
                 $row = $get_donhang->fetch_assoc();
@@ -199,17 +199,17 @@ if(isset($_GET['act'])) {
 
             if(isset($_POST["submit"])) {
                 $trangthai_id = $_POST['trangthai_id'];
-                $insertdh = $cartt->updatedh($id_bill, $trangthai_id);
+                $insertdh = $cartt->updatedh($cart_bill, $trangthai_id);
             }
             include "./donhang/suatt.php";
             break;
         case "xoatt":
-            if(!isset($_GET["id_bill"]) || ($_GET["id_bill"]) == null) {
+            if(!isset($_GET["cart_bill"]) || ($_GET["cart_bill"]) == null) {
 
             } else {
-                $id_bill = $_GET["id_bill"];
+                $cart_bill = $_GET["cart_bill"];
             }
-            $delete_donhang = $cartt->deletedonhang($id_bill);
+            $delete_donhang = $cartt->deletedonhang($cart_bill);
             include "./donhang/dsdonhnag";
             break;
 

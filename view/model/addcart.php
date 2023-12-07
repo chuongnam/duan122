@@ -1,63 +1,7 @@
 <?php
 
-if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=[];
-if(isset($_GET['delid'])&&($_GET['delid']>=0)){
-    array_splice($_SESSION['giohang'],$_GET['delid'],1);
-}
-function tongdonhang(){
-    $tong=0;
-    if(isset($_SESSION['giohang'])&&(is_array($_SESSION['giohang']))){
-       if(sizeof($_SESSION['giohang'])> 0){
-         for($i=0; $i < sizeof($_SESSION['giohang']); $i++){
-             $tt= $_SESSION['giohang'][$i][2]*$_SESSION['giohang'][$i][4];
-             $tong+=$tt;
-             
-         
-         }
-        }
-      
-          
-      
-     }
-     return $tong;
-}
- function showgiohang(){
-    if(isset($_SESSION['giohang'])&&(is_array($_SESSION['giohang']))){
-       $tong=0;
-        for($i=0; $i < sizeof($_SESSION['giohang']); $i++){
-            $tt= $_SESSION['giohang'][$i][2]*$_SESSION['giohang'][$i][4];
-            $tong+=$tt;
-            echo '<tr>
-            <td>'.($i+1).'</td>
-            <td><img src="../admin/upload/'.$_SESSION['giohang'][$i][0].'" width="100px"></td>
-            <td><p>'.$_SESSION['giohang'][$i][1].'</p></td>
-            <td>'.$_SESSION['giohang'][$i][2].'</td>
-            <td>'.$_SESSION['giohang'][$i][3].'</td>
-            <td>'.$_SESSION['giohang'][$i][4].'</td>
-            <td>'.number_format($tt).' vnđ</td>
-            <td>
-            <a href="index.php?act=taogio&delid='.$i.'"><span>x</span></a>
-            </td>
-
-        </tr>';
-        
-        }
-      echo ' <table>
-     
-         
-      <tr>
-          <td>Tổng Tiền Hàng</td>
-          <td><p>'.number_format($tong).' vnđ</p></td>
-          
-      </tr>
-      
-  </table>';
-    }
 
 
-    echo '<a href="index.php?act=showdon" class="thanh-toan">danh sách đơn hàng</a>';
-
- }
  function ketnoidb(){
    
     $servername = "localhost";
@@ -100,39 +44,7 @@ function tongdonhang(){
   $conn = null;
 
  }
- function showlai(){
-  if(isset($_SESSION['giohang'])&&(is_array($_SESSION['giohang']))){
-     $tong=0;
-      for($i=0; $i < sizeof($_SESSION['giohang']); $i++){
-$tt= $_SESSION['giohang'][$i][2]*$_SESSION['giohang'][$i][4];
-          $tong+=$tt;
-          echo '<tr>
-         
-        
-          <td><p>'.$_SESSION['giohang'][$i][1].'</p></td>
-         
-          <td>'.$_SESSION['giohang'][$i][4].'</td>
-          <td>'.number_format($tt).' vnđ</td>
-         
 
-      </tr>';
-      
-      }
-    echo ' <table>
-   
-       
-    <tr>
-        <td>Tổng Tiền Hàng</td>
-        <td><p>'.number_format($tong).' vnđ</p></td>
-        
-    </tr>
-    
-</table>';
-  }
-
-  echo '<a href="index.php?act=showdon" class="thanh-toan">danh sách đơn hàng</a>';
-
-}
 
  
 ?>

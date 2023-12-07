@@ -38,7 +38,47 @@ include "header.php";
               <?php 
 if (!isset($_SESSION['userr'])) {
 ?>
-<p>Bạn chưa đăng nhập</p>
+<div class="delivery-content-left">
+                   <p>VUI LÒNG CHỌN ĐỊA CHỈ GIAO HÀNG</p>
+                   <div class="delivery-content-left-dangnhap row">
+                     <form action="index.php?act=mua" method="POST">
+                 
+                   
+                    
+                   <div class="delivery-content-left-input-top-item">
+                        <label for="">Họ Tên <span style="color: red;">*</span></label>
+                        <input required type="text" name="bill_name">
+                     </div>
+                     <div class="delivery-content-left-input-top-item">
+                        <label for="">Điện Thoại <span style="color: red;">*</span></label>
+                        <input required type="text" name="tel">
+                     </div>
+                     <div class="delivery-content-left-input-top-item">
+                        <label for="">EMAIL <span style="color: red;">*</span></label>
+                        <input required type="text" name="email" >
+                     </div>
+                  
+                 
+                   <div class="delivery-content-left-input-top-item">
+                    <label for="">Địa Chỉ<span style="color: red;">*</span></label>
+                    <input required type="text" name="bill_address" required>
+                 </div>
+                 <div class="pttt">
+                    Phương Thức Thanh Toán<span style="color: red;">*</span>
+                    <p><input type="radio" name="pttt" value="Trả tiền khi nhận hàng" checked class="tt">Trả tiền khi nhận hàng</p>
+                    <p><input type="radio" name="pttt" value="Thanh toán online" class="tt">Thanh toán online </p>
+                    <p><input type="radio" name="pttt" value="thanh toán qua ngân hàng" class="tt">thanh toán qua ngân hàng </p>
+                 </div>
+                 
+                 
+                   <input type="submit" name="dongydathang" value="thanh toan" class="thanh-toan">
+                     </form>
+                 </div>
+         
+                </div>
+               
+              </div>
+           </div>
    <?php 
   }else{
     extract($_SESSION['userr']);

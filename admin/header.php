@@ -20,3 +20,12 @@
    <header>
     <img src="../view/image/logo.jpg" width="300px">
 </header> 
+<?php
+if (isset($_GET['logout'])) {
+    session_unset();
+    session_destroy();
+    header("Location: ../view/index.php?act=trangchu");
+    exit();
+}
+?>
+<a href="?logout=true">Đăng xuất</a>

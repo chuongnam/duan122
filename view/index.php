@@ -9,6 +9,7 @@ $user = new user_client();
 $cart = new cart();
 $product = new product();
 $trangthai = new trangthai();
+$cartegory = new category();
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
@@ -140,6 +141,16 @@ if (isset($_GET['act'])) {
             $product = $product->top10();
             include "trangchu.php";
             break;
+            case "timkiem":
+                if (isset($_GET['name'])) {
+                    $name = $_GET['name'];
+                    $loadsp = $product->get_productByName($name);
+                } else {
+                    $loadsp = $product->loadsp();
+                }
+                $loaddm = $cartegory->loaddm();
+                include "cartegory.php";
+                break;
 
         case "login":
             $email = $_POST['email'];

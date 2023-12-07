@@ -9,7 +9,7 @@ $danhsachbinhluan = $user->loadall_binhluan($product_id);
 if(isset($_POST['guibinhluan'])) {
   $noidung = $_POST['noidung'];
     $product_id = $_POST['product_id'];  
-    $id_user = $_SESSION['user_id']['user_id'];
+    $id_user = $_SESSION['userr']['user_id'];
     $date = date('h:i:sa d/m/Y');
     $user->insert_binhluan($id_user,$product_id,$date,$noidung);
     header("location:".$_SERVER['HTTP_REFERER']);

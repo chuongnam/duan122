@@ -33,8 +33,8 @@ class product
     }
     public function splienquan()
     {
-        
-        $query = "SELECT * FROM product,loaixe WHERE product.cartegory_id = loaixe.cartegory_id";
+        $id = $_GET['product_id'];
+        $query = "SELECT * FROM product WHERE product_id <>".$id;
         $result = $this->db->select($query);
         return $result;
     }
@@ -43,6 +43,11 @@ class product
     $query = "SELECT * FROM kythuat,product where kythuat.product_id=product.product_id AND kythuat.product_id=product_id.$id";
     $result = $this->db->select($query);
     return $result;
+    }
+    public function get_productByName($name){
+        $query = "SELECT * FROM product WHERE product_name LIKE '%$name%'";
+        $result = $this->db->select($query);
+        return $result;
     }
 }
 
@@ -207,7 +212,7 @@ class user {
     public function sptrangthai()
     {
         $id = $_GET['trangthai_id'];
-        $query = "SELECT * FROM cart,trangthai WHERE cart.trangthai_id = trangthai.trangthai_id AND cart.trangthai_id=$id ORDER BY cart.trangthai_id DESC";
+        $query = "SELECT * FROM cart n INNER JOIN trangthai t join bill b on b.id_bill=n.id_bill WHERE  n.trangthai_id=t.trangthai_id AND n.trangthai_id=$id";
         $result = $this->db->select($query);
         return $result;
     }
