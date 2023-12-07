@@ -74,12 +74,15 @@
     <tr>
         <th>STT</th>
         <th>MÃ ĐƠN HÀNG</th>
+        <th>MÃ HÓA ĐƠN</th>
         <th>TÊN SẢN PHẨM</th>
+        <th>TÊN KHÁCH</th>
         <th>IMAGES</th>
         <th>THÀNH TIỀN</th>
     
-       
-        <th>TỔNG TIỀN</th>
+       <th>SĐT</th>
+       <th>ĐỊA CHỈ</th>
+        <th>SỐ LƯỢNG</th>
         <th>NGÀY ĐẶT</th>
        
         <th>TRẠNG THÁI</th>
@@ -98,14 +101,18 @@
         <tr>
         <td><?php echo $i++ ?></td>
         <td><?php echo $row['id_bill']?></td>
+        <td><?php echo $row['cart_bill']?></td>
         <td><?php echo $row['pro_name']?></td>
+        <td><?php echo $row['bill_name']?></td>
         <td><img src="../admin/upload/<?php echo $row['images'] ?>" width="100px"></td>
         
        
        
         <td><?php echo number_format($row['thanhtien']),'vnđ'?></td>
+        <td><?php echo $row['tel']?></td>
+        <td><?php echo $row['bill_address']?></td>
         <td><?php echo $row['soluong']?></td>
-        <td><?php echo $row['color']?></td>
+        <td><?php echo $row['ngaydathang']?></td>
     
         <td><?php echo $row['name']?></td>
       </tr>

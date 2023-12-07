@@ -6,21 +6,7 @@
             
                <label for="">nhập tên sản phẩm <span style="color: red;">*</span></label>
                <input required type="text" name="product_name" value="<?php echo $result['product_name'] ?>">
-               <label for="">chọn danh mục <span style="color: red;">*</span></label>
-               <select name="cartegory_id">
-                <option value="#">--chọn--</option>
-                <?php
-                $showdm = $product->showdm();
-                if($showdm){while($result= $showdm->fetch_assoc()){
-
-                 
-                ?>
-                  <option value="<?php echo $result['cartegory_id']?> "<?php echo $result['tendanhmuc']?>>
                
-                  <?php
-                    }}
-                  ?>
-               </select>
                <label for="">nhập giá sản phẩm <span style="color: red;">*</span></label>
                <input required type="text" name="product_gia" value="<?php echo $result['product_gia'] ?>">
                <label for="">mô tả <span style="color: red;">*</span></label><br>

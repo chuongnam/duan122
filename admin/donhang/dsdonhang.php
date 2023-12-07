@@ -14,11 +14,14 @@
                 <tr>
                     <th>ID</th>
                     <th>TÊN SẢN PHẨM</th>
-                
+                    <th>TÊN KHÁCH HÀNG</th>
                     <th>IMAGE</th>
                     <th>TỔNG TIỀN</th>
                     <th>MÃ ĐƠN HÀNG</th>
                     <th>TRẠNG THÁI</th>
+                    <th>NGÀY ĐẶT</th>
+                    <th>SĐT</th>
+                    <th>ĐỊA CHỈ</th>
                     <th>TÙY CHỈNH</th>
                     
                 </tr>
@@ -32,9 +35,13 @@
         <td><?php echo $i++ ?></td>
        
         <td><?php echo $row['pro_name']?></td>
+        <td><?php echo $row['bill_name']?></td>
         <td><img src="../admin/upload/<?php echo $row['images'] ?>" width="100px"></td>
         <td><?php echo number_format($row['thanhtien']),'vnd'?></td>
         <td><?php echo $row['cart_bill']?></td>
+        <td><?php echo $row['ngaydathang']?></td>
+        <td><?php echo $row['tel']?></td>
+        <td><?php echo $row['bill_address']?></td>
         <td><?php echo $row['name']?></td>
       
        
@@ -43,7 +50,7 @@
        
         
         
-        <td><a href="index.php?act=suatt&id_bill=<?php echo $row['id_bill']?>" class="btn btn-success" >CẬP NHẬT</a><a onclick="return confirm('bạn có muốn xóa')" href="index.php?act=xoatt&id_bill=<?php echo $row['id_bill']?>" class="btn btn-danger" >xóa</a></td>
+        <td><a href="index.php?act=suatt&cart_bill=<?php echo $row['cart_bill']?>" class="btn btn-success" >CẬP NHẬT</a><a onclick="return confirm('bạn có muốn xóa')" href="index.php?act=xoatt&cart_bill=<?php echo $row['cart_bill']?>" class="btn btn-danger" >xóa</a></td>
 
         
     </tr>

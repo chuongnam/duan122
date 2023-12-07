@@ -114,12 +114,14 @@
                 <p class="nam">Tổng tiền:
 
                     <?php 
+                     if (isset($_SESSION['giohang']) && !empty($_SESSION['giohang'])) {
                         $sum = 0;
                         foreach ($_SESSION['giohang'] as $item) {
                             $sum += $item['product_gia'] * $item['soluong'];
                         }
 
                         echo number_format($sum) . "<sup>vnđ</sup>";
+                    }
                     ?>
                 <p>
             </ul>

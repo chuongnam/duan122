@@ -1,70 +1,57 @@
 <?php
-session_start();
-include "header.php";
-include "model/sanpham.php";
+
 include "slide.php";
-?>
-<?php
 
-$product = new product();
-$loadsp = $product->loadsp();
-?>
-<?php
 
-$cartegory = new category();
-$loaddm = $cartegory->loaddm();
+
+
 ?>
+
 <style>
     .cartegory-right-content {
         display: flex;
     }
-    .content-left{
+
+    .content-left {
         width: 20%;
     }
-    .btn-xemthem{
-     
+
+    .btn-xemthem {
+
         border: 2px solid #BF8A49;
     }
-    .btn-xemthem:hover{
+
+    .btn-xemthem:hover {
         background-color: black;
-    color: white;
+        color: white;
     }
-    .content-sp{
-        
+
+    .content-sp {
+
         margin-left: 10px;
         display: flex;
         justify-content: space-between;
         width: 200px;
-        
+
     }
-    h1{
+
+    h1 {
         font-size: 20px;
     }
-    .content-item{
+
+    .content-item {
         margin-left: 10px;
         border: 2px solid gray;
     }
-    .content-item h1{
+
+    .content-item h1 {
         margin-top: 20px;
     }
-    .content-item p{
+
+    .content-item p {
         margin-top: 10px;
         margin-bottom: 10px;
     }
-    .dm-item{
-        margin-left: 20px;
-        margin-top: 10px;
-     
-    }
-   .item{
-    margin: 20 20px 20 20px;
-   }
-   .dm-item a{
-    color: #BF8A49  ;
-   }
-   .dm-item a:hover{
-     color: red;
-   }
 </style>
 <section class="cartegory">
     <div class="container">
@@ -72,32 +59,30 @@ $loaddm = $cartegory->loaddm();
     </div>
     <div class="container">
         <div class="row">
-<div class="content-left">
-<div class="cartegory-right-top-item">
+            <div class="content-left">
+                <div class="cartegory-right-top-item">
                     <h1>DANH MỤC</h1>
-                    <div class="dm-item">
                     <?php
-                if ($loaddm) {
-                    while ($row = $loaddm->fetch_assoc()) {
-                        ?>
-                        <a href="spdanhmuc.php?cartegory_id=<?php echo $row['cartegory_id']?>" class="item"><?php echo $row['tendanhmuc']?></p></a>
-                               <?php
+                    if ($loaddm) {
+                        while ($row = $loaddm->fetch_assoc()) {
+                    ?>
+                            <a href="spdanhmuc.php?cartegory_id=<?php echo $row['cartegory_id'] ?>"><?php echo $row['tendanhmuc'] ?></p></a>
+                    <?php
+                        }
                     }
-                }
-                ?>
-                    </div>
-                </div>
-</div>
-            <div class="cartegory-right">
-                
-                
-                <div class="content-sp">
-                <?php
-                if ($loadsp) {
-                    while ($row = $loadsp->fetch_assoc()) {
-                        ?>
+                    ?>
 
-                        
+                </div>
+            </div>
+            <div class="cartegory-right">
+
+
+                <div class="content-sp">
+                    <?php
+                    if ($loadsp && $loadsp->num_rows > 0) {
+                        // Nếu có sản phẩm
+                        while ($row = $loadsp->fetch_assoc()) {
+                    ?>
                             <div class="content-item">
                                 <img src="../admin/upload/<?php echo $row['images'] ?>" width="200px" height="200px">
                                 <h1>
@@ -108,12 +93,15 @@ $loaddm = $cartegory->loaddm();
                                 </p>
                                 <a href="index.php?act=chitiet&product_id=<?php echo $row['product_id'] ?>" class="btn-xemthem">xem them</a>
                             </div>
-                        
-                        <?php
+                    <?php
+                        }
+                    } else {
+                        // Nếu không có sản phẩm
+                        echo '<p>Sản phẩm không tồn tại.</p>';
                     }
-                }
-                ?>
+                    ?>
                 </div>
+
 
 
 

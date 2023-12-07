@@ -10,7 +10,7 @@ if (isset($_SESSION['user_email'], $_SESSION['user_id'], $_SESSION['role']) && $
 
 if (isset($_POST["search-btn"])) {
     $value = $_POST['search'];
-    header("location: cartegory.php?name=$value");
+    header("location: index.php?act=timkiem&name=$value");
 }
 
 if (isset($_GET['logout'])) {
@@ -63,7 +63,7 @@ if (isset($_GET['logout'])) {
         </div>
         <div class="menu">
             <li><a href="index.php?act=trangchu">TRANG CHỦ</a></li>
-            <li><a href="cartegory.php">SẢN PHẨM</a>
+            <li><a href="index.php?act=timkiem">SẢN PHẨM</a>
 
 
 

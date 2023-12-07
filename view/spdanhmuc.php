@@ -83,7 +83,7 @@ $spdanhmuc = $cartegory->spdanhmuc();
             <img src="../admin/upload/<?php echo $row['images'] ?>" width="200px">
             <h1><?php echo $row['product_name']?></h1>
             <p><?php echo number_format($row['product_gia']),'VNĐ'?></p>
-            <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>" class="xem-them">xem them</a>
+            <a href="index.php?act=chitiet&product_id=<?php echo $row['product_id'] ?>" class="xem-them">xem them</a>
             </div>
        
 
