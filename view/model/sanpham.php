@@ -109,7 +109,7 @@ class lienhe{
         return $result;
     }
 }
-class user {
+class userr {
 
     private $db;
     public function __construct() {
@@ -135,12 +135,12 @@ class user {
         $result = $this->db->select($query);
         return $result;
     }
-    public function dangky($username,$email,$pass){
-        $query = "insert into user(user_name,email,pass) values('$username','$email','$pass')";
+    public function dangky($username,$email,$pass,$role_id){
+        $query = "insert into user(user_name,email,pass,role_id) values('$username','$email','$pass',$role_id)";
         $result = $this->db->insert($query);
         return $result;
     }
-    function insert_user($username,$email,$pass){
+    function insert_user($username,$email,$pass,$role_id){
         $errors = [];
         if ((empty($email))) {
             $errors['email'] = "Email không được để trống!";
@@ -170,7 +170,7 @@ class user {
         $errors['pass'] = "Mật khẩu của bạn phải chứa ít nhất 5 ký tự!";
     }
        if (!$errors) {
-        $sql = "insert into user(user_name,pass,email) values('$username','$pass','$email')";
+        $sql = "insert into user(user_name,pass,email,role_id) values('$username','$pass','$email','$role_id')";
         $result=$this->db->insert($sql);
         $errors['thongbao'] = "Đăng kí thành công! Vui lòng đăng nhập";
       }else{
@@ -195,6 +195,7 @@ class user {
             $sql_insert = "insert into binhluan values(null,'$id_user','$product_id','$date','$noidung')";
             $this->db->insert($sql_insert);
          }
+       
     
  }
  class trangthai{
@@ -203,12 +204,7 @@ class user {
     {
         $this->db = new Database();
     }
-    public function trangthai()
-    {
-        $query = "SELECT * FROM trangthai WHERE trangthai_id";
-        $result = $this->db->select($query);
-        return $result;
-    }
+    
     public function sptrangthai()
     {
         $id = $_GET['trangthai_id'];
@@ -216,7 +212,12 @@ class user {
         $result = $this->db->select($query);
         return $result;
     }
-  
+    public function trangthai()
+    {
+        $query = "SELECT * FROM trangthai WHERE trangthai_id";
+        $result = $this->db->select($query);
+        return $result;
+    }
     }
 
 ?>

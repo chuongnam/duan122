@@ -18,10 +18,13 @@
                     <th>IMAGE</th>
                     <th>TỔNG TIỀN</th>
                     <th>MÃ ĐƠN HÀNG</th>
-                    <th>TRẠNG THÁI</th>
                     <th>NGÀY ĐẶT</th>
                     <th>SĐT</th>
+                 
                     <th>ĐỊA CHỈ</th>
+                 
+                    
+                    <th>TRẠNG THÁI</th>
                     <th>TÙY CHỈNH</th>
                     
                 </tr>

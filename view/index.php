@@ -10,6 +10,7 @@ $cart = new cart();
 $product = new product();
 $trangthai = new trangthai();
 $cartegory = new category();
+$userr = new userr();
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
@@ -26,75 +27,75 @@ if (isset($_GET['act'])) {
             }
             include "cart.php";
             break;
-            case "xoasp":
-                $product_id = $_GET['product_id'] ?? '';
-    
-                if (!empty($product_id)) {
-                    unset($_SESSION['giohang'][$product_id]);
+        case "xoasp":
+            $product_id = $_GET['product_id'] ?? '';
+
+            if (!empty($product_id)) {
+                unset($_SESSION['giohang'][$product_id]);
+            }
+            header('Location: index.php?act=taogio');
+
+            break;
+        case "them":
+            $product_id = $_GET['product_id'] ?? '';
+
+            if (!empty($product_id)) {
+                ++$_SESSION['giohang'][$product_id]['soluong'];
+            }
+
+            header('Location: index.php?act=taogio');
+
+            break;
+        case "tru":
+            $product_id = $_GET['product_id'] ?? '';
+
+            if (!empty($product_id)) {
+                $_SESSION['giohang'][$product_id]['soluong'] = max(1, $_SESSION['giohang'][$product_id]['soluong'] - 1);
+            }
+
+            header('Location: index.php?act=taogio');
+
+            break;
+        case "mua":
+
+
+            if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
+                $sum = 0;
+                foreach ($_SESSION['giohang'] as $item) {
+                    $sum += $item['product_gia'] * $item['soluong'];
                 }
-                header('Location: index.php?act=taogio');
-    
-                break;
-            case "them":
-                $product_id = $_GET['product_id'] ?? '';
-    
-                if (!empty($product_id)) {
-                    ++$_SESSION['giohang'][$product_id]['soluong'];
+                $bill_name = $_POST['bill_name'];
+                $bill_address = $_POST['bill_address'];
+                $tel = $_POST['tel'];
+                $email = $_POST['email'];
+                $ngaydathang = date('d-m-y h:i:s');
+                $total = $sum;
+                $pttt = $_POST['pttt'];
+
+
+                $id_bill = taogiohang($bill_name, $bill_address, $tel, $email, $total, $pttt, $ngaydathang);
+
+                foreach ($_SESSION['giohang'] as $product_id => $item) {
+                    $pro_name = $item['product_name'];
+                    $images = $item['images'];
+                    $dongia = $item['product_gia'];
+                    $soluong = $item['soluong'];
+                    $color = $item['color'];
+                    $trangthai_id = 1;
+                    $thanhtien = $dongia * $soluong;
+                    taodonhang($pro_name, $images, $dongia, $soluong, $thanhtien, $color, $id_bill, $trangthai_id);
                 }
-    
-                header('Location: index.php?act=taogio');
-    
-                break;
-            case "tru":
-                $product_id = $_GET['product_id'] ?? '';
-    
-                if (!empty($product_id)) {
-                    $_SESSION['giohang'][$product_id]['soluong'] = max(1, $_SESSION['giohang'][$product_id]['soluong'] - 1);
-                }
-    
-                header('Location: index.php?act=taogio');
-    
-                break;
-            case "mua":
-    
-    
-                if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
-                    $sum = 0;
-                    foreach ($_SESSION['giohang'] as $item) {
-                        $sum += $item['product_gia'] * $item['soluong'];
-                    }
-                    $bill_name = $_POST['bill_name'];
-                    $bill_address = $_POST['bill_address'];
-                    $tel = $_POST['tel'];
-                    $email = $_POST['email'];
-                    $ngaydathang = date('d-m-y h:i:s');
-                    $total = $sum;
-                    $pttt = $_POST['pttt'];
-    
-    
-                    $id_bill = taogiohang($bill_name, $bill_address, $tel, $email, $total, $pttt, $ngaydathang);
-    
-                    foreach ($_SESSION['giohang'] as $product_id => $item) {
-                        $pro_name = $item['product_name'];
-                        $images = $item['images'];
-                        $dongia = $item['product_gia'];
-                        $soluong = $item['soluong'];
-                        $color = $item['color'];
-                        $trangthai_id =1;
-                        $thanhtien = $dongia * $soluong;
-                        taodonhang($pro_name, $images, $dongia, $soluong, $thanhtien, $color, $id_bill, $trangthai_id);
-                    }
-    
-    
-    
-    
-                }
-                unset($_SESSION['giohang']);
-    
-    
-    
-                header("location:index.php?act=camon");
-                break;
+
+
+
+
+            }
+            unset($_SESSION['giohang']);
+
+
+
+            header("location:index.php?act=camon");
+            break;
         case "showdon":
             $showdonhang = $cart->showdonhang();
             $trangthai = $trangthai->trangthai();
@@ -121,36 +122,33 @@ if (isset($_GET['act'])) {
 
             include "trangthai.php";
             break;
-        case "showtrangthai":
-            $trangthai = $trangthai->sptrangthai();
 
-            include "trangthai.php";
+        case "camon":
+
+
+            include "camon.php";
             break;
-            case "camon":
-               
-    
-                include "camon.php";
-                break;
             
-        case "trangthaii":
 
+        case "trangthaii":
             $trangthai = $trangthai->trangthai();
+
             include "danhmuctt.php";
             break;
         case "trangchu":
             $product = $product->top10();
             include "trangchu.php";
             break;
-            case "timkiem":
-                if (isset($_GET['name'])) {
-                    $name = $_GET['name'];
-                    $loadsp = $product->get_productByName($name);
-                } else {
-                    $loadsp = $product->loadsp();
-                }
-                $loaddm = $cartegory->loaddm();
-                include "cartegory.php";
-                break;
+        case "timkiem":
+            if (isset($_GET['name'])) {
+                $name = $_GET['name'];
+                $loadsp = $product->get_productByName($name);
+            } else {
+                $loadsp = $product->loadsp();
+            }
+            $loaddm = $cartegory->loaddm();
+            include "cartegory.php";
+            break;
 
         case "login":
             $email = $_POST['email'];
@@ -169,7 +167,23 @@ if (isset($_GET['act'])) {
 
             include "login.php";
             break;
-
+            case "dangky":
+                if(isset($_POST["btn_dangky"])){
+                    $email = $_POST['email'];
+                    $pass = $_POST['pass'];
+                    $username = $_POST['user_name'];
+                    $role_id = "2";
+                    $dangky = $userr->insert_user($username,$email,$pass,$role_id);
+                    if($dangky){
+                        
+                    }
+                    else{
+                        
+                    }
+                }
+    
+                include "dangky.php";
+                break;
 
         default:
             include "";

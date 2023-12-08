@@ -63,10 +63,7 @@
     color: #BF8A49;
    }
 </style>
-<?php
 
-
-?>
 
 <div class="a">
 <table>

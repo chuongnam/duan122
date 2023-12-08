@@ -134,7 +134,7 @@
 <!-----sản phẩm liên quam-->
 <section class="product-relate">
     <div class="product-relate-title">
-        <p>SẢN PHẨM LIÊN QUAN</p>
+        <p>SẢN PHÂM TƯỞNG TỰ</p>
     </div>
     <div class="row product-content">
     <?php
