@@ -32,6 +32,7 @@ if (isset($_GET['logout'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <style>
         .dropdown {
             position: relative;
@@ -90,3 +91,4 @@ if (isset($_GET['logout'])) {
         </div>
 
     </header>
+    <script src="js/silde.js"> </script>

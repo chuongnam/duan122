@@ -130,7 +130,7 @@ form{
                         </form>
                     </div>
                     <div class="row">
-                        <p>Chưa có tài khoản ? <a href="dangky.php">Đăng kí ngay</a></p>
+                        <p>Chưa có tài khoản ? <a href="index.php?act=dangky">Đăng kí ngay</a></p>
                     </div>
                 </div>
             </div>

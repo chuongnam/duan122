@@ -1,4 +1,4 @@
-const header = Document.querySelector("header");
+const header = Document.querySelector("header")
 window.addEventListener("scroll",function(){
     x = window.pageYOffset
     if(x>0){

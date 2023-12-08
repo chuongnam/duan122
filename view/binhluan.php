@@ -3,15 +3,15 @@ session_start();
 include "model/sanpham.php";
 
 $product_id =$_REQUEST['product_id'];
-$user = new user();
-$danhsachbinhluan = $user->loadall_binhluan($product_id);
+$userr = new userr();
+$danhsachbinhluan = $userr->loadall_binhluan($product_id);
 
 if(isset($_POST['guibinhluan'])) {
   $noidung = $_POST['noidung'];
     $product_id = $_POST['product_id'];  
     $id_user = $_SESSION['userr']['user_id'];
     $date = date('h:i:sa d/m/Y');
-    $user->insert_binhluan($id_user,$product_id,$date,$noidung);
+    $userr->insert_binhluan($id_user,$product_id,$date,$noidung);
     header("location:".$_SERVER['HTTP_REFERER']);
 }
 ?>
