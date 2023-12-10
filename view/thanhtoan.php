@@ -67,9 +67,7 @@ include "header.php";
                         Phương Thức Thanh Toán<span style="color: red;">*</span>
                         <p><input type="radio" name="pttt" value="Trả tiền khi nhận hàng" checked class="tt">Trả tiền khi
                            nhận hàng</p>
-                        <p><input type="radio" name="pttt" value="Thanh toán online" class="tt">Thanh toán online </p>
-                        <p><input type="radio" name="pttt" value="thanh toán qua ngân hàng" class="tt">thanh toán qua ngân
-                           hàng </p>
+                      
                      </div>
 
 
@@ -115,10 +113,7 @@ include "header.php";
                      Phương Thức Thanh Toán<span style="color: red;">*</span>
                      <p><input type="radio" name="pttt" value="Trả tiền khi nhận hàng" checked class="tt">Trả tiền khi nhận
                         hàng</p>
-                     <p><input type="radio" name="pttt" value="Thanh toán online" class="tt">Thanh toán online </p>
-                     <p><input type="radio" name="pttt" value="thanh toán qua ngân hàng" class="tt">thanh toán qua ngân
-                        hàng
-                     </p>
+                     
                   </div>
 
 

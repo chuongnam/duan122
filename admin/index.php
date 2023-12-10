@@ -91,6 +91,7 @@ if(isset($_GET['act'])) {
                 $color = $_POST['color'];
                 $insertsp = $product->updatesp($product_name, $product_gia, $product_mota, $soluong, $masp, $color, $product_id);
             }
+           
             include "./sanpham/productedit.php";
             break;
         case "showsp":
@@ -157,6 +158,11 @@ if(isset($_GET['act'])) {
             $lienhe = $lienhe->showlh();
             include "./lienhe/listlienhe.php";
             break;
+            case "inbill":
+
+                $cart = $cart->hoadon();
+                include "./donhang/inbill.php";
+                break;
         case "xoabl":
             if(!isset($_GET["id_binhluan"]) || ($_GET["id_binhluan"]) == null) {
 
@@ -204,12 +210,12 @@ if(isset($_GET['act'])) {
             include "./donhang/suatt.php";
             break;
         case "xoatt":
-            if(!isset($_GET["cart_bill"]) || ($_GET["cart_bill"]) == null) {
+            if(!isset($_GET["id_bill"]) || ($_GET["id_bill"]) == null) {
 
             } else {
-                $cart_bill = $_GET["cart_bill"];
+                $id_bill = $_GET["id_bill"];
             }
-            $delete_donhang = $cartt->deletedonhang($cart_bill);
+            $delete_donhang = $cartt->deletedonhang($id_bill);
             include "./donhang/dsdonhnag";
             break;
 

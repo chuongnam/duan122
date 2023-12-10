@@ -29,5 +29,6 @@
 <div class="tich">
     <img src="image/tich1.jpg">
     <h3>BẠN ĐÃ ĐẶT HÀNG THÀNH CÔNG</h3>
-    <a class="button" href="index.php?act=trangchu">VỀ TRANG CHỦ</a><a class="button" href="index.php?act=showdon">GIỎ HÀNG</a>
+    <a class="button" href="index.php?act=trangchu">VỀ TRANG CHỦ</a>
+    <!-- <a class="button" href="index.php?act=trangthaii">GIỎ HÀNG</a> -->
 </div>

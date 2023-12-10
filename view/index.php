@@ -11,22 +11,35 @@ $product = new product();
 $trangthai = new trangthai();
 $cartegory = new category();
 $userr = new userr();
+$lienhe = new lienhe();
+$thongbao;
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
         case "taogio":
+            // if (!empty($_POST)) {
+            //     $_SESSION['giohang'][$_POST['product_id']] = [
+            //         'product_name' => $_POST['product_name'],
+            //         'images' => $_POST['images'],
+            //         'product_gia' => $_POST['product_gia'],
+            //         'color' => $_POST['color'],
+            //         'soluong' => $_POST['soluong'],
+            //     ];
             if (!empty($_POST)) {
-                $_SESSION['giohang'][$_POST['product_id']] = [
-                    'product_name' => $_POST['product_name'],
-                    'images' => $_POST['images'],
-                    'product_gia' => $_POST['product_gia'],
-                    'color' => $_POST['color'],
-                    'soluong' => $_POST['soluong'],
-                ];
+                $product_id = $_POST['product_id'];
 
+                if (isset($_SESSION['giohang'][$product_id])) {
+                    $_SESSION['giohang'][$product_id]['soluong'] += $_POST['soluong'];
+                } else {
+                    $_SESSION['giohang'][$product_id] = ['product_name' => $_POST['product_name'], 'images' => $_POST['images'], 'product_gia' => $_POST['product_gia'], 'color' => $_POST['color'], 'soluong' => $_POST['soluong'],];
+                }
+                echo '<script>window.location.href = "index.php?act=taogio";</script>';
+                exit();
             }
+
             include "cart.php";
             break;
+
         case "xoasp":
             $product_id = $_GET['product_id'] ?? '';
 
@@ -71,6 +84,7 @@ if (isset($_GET['act'])) {
                 $ngaydathang = date('d-m-y h:i:s');
                 $total = $sum;
                 $pttt = $_POST['pttt'];
+                
 
 
                 $id_bill = taogiohang($bill_name, $bill_address, $tel, $email, $total, $pttt, $ngaydathang);
@@ -128,7 +142,7 @@ if (isset($_GET['act'])) {
 
             include "camon.php";
             break;
-            
+
 
         case "trangthaii":
             $trangthai = $trangthai->trangthai();
@@ -149,6 +163,20 @@ if (isset($_GET['act'])) {
             $loaddm = $cartegory->loaddm();
             include "cartegory.php";
             break;
+            case "lienhe":
+                if(isset($_POST['submit'])){
+                    $bl_name = $_POST['bl_name'];
+                    $sodienthoai = $_POST['sodienthoai'];
+                    $email=$_POST['email'];
+                    $noidungbinhluan = $_POST['noidungbinhluan'];
+                    $lienhe=$lienhe->insertlh($bl_name,$sodienthoai,$email,$noidungbinhluan);
+                    echo '<script>window.location.href = "index.php?act=lienhe";</script>';
+                    exit();
+                }
+                
+                
+                include "lienhe.php";
+                break;
 
         case "login":
             $email = $_POST['email'];
@@ -167,27 +195,44 @@ if (isset($_GET['act'])) {
 
             include "login.php";
             break;
-            case "dangky":
-                if(isset($_POST["btn_dangky"])){
-                    $email = $_POST['email'];
-                    $pass = $_POST['pass'];
-                    $username = $_POST['user_name'];
-                    $role_id = "2";
-                    $dangky = $userr->insert_user($username,$email,$pass,$role_id);
-                    if($dangky){
-                        
-                    }
-                    else{
-                        
-                    }
+        case "dangky":
+            if (isset($_POST["btn_dangky"])) {
+                $email = $_POST['email'];
+                $pass = $_POST['pass'];
+                $username = $_POST['user_name'];
+                $role_id = "2";
+                $dangky = $userr->insert_user($username, $email, $pass, $role_id);
+                if ($dangky) {
+                  $error['thongbao'];
+                } else {    
+                  
                 }
-    
-                include "dangky.php";
-                break;
+               
+            }
+           
+
+            include "dangky.php";
+            break;
+        case "quenmk":
+            if (isset($_POST["quenmk"]) && ($_POST['quenmk'])) {
+                $email = $_POST['email'];
+                $check = $user->checkemail($email);
+                if (is_array($check)) {
+                    $thongbao = "mật khẩu của bạn là:" . $check['pass'];
+                } else {
+                    $thongbao = "email không tồn tại";
+                }
+            }
+
+            include "quenmk.php";
+            break;
 
         default:
             include "";
             break;
     }
 }
+?>
+<?php
+include "footer.php";
 ?>

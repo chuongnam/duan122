@@ -6,7 +6,13 @@ class cart{
         $this->db = new Database();
     }
     public function showdonhang(){
-        $query = "SELECT * FROM cart n INNER JOIN trangthai t join bill b on b.id_bill=n.id_bill WHERE  n.trangthai_id=t.trangthai_id ";
+        $query = "SELECT * FROM bill ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function hoadon(){
+        $id=$_GET['id_bill'];
+        $query = "SELECT * FROM cart WHERE id_bill=$id ";
         $result = $this->db->select($query);
         return $result;
     }
@@ -46,8 +52,8 @@ public function get_donhang($cart_bill)
         return $result;
 
     }
-    public function deletedonhang($cart_bill){
-        $query = "DELETE FROM cart WHERE cart_bill='$cart_bill'";
+    public function deletedonhang($id_bill){
+        $query = "DELETE FROM bill WHERE id_bill='$id_bill'";
         $result = $this->db->delete($query);
         header ("location:index.php?act=dsdonhang");
         return $result;

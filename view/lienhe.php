@@ -1,8 +1,4 @@
-<?php
-session_start();
-include "header.php";
 
-?>
 <div class="top">
 <div class="md:grid block grid-cols-2 my-4">
     <div class="w-full h-full border">
@@ -29,19 +25,20 @@ include "header.php";
 
         <h3 class="text-4xl font-bold mt-9 mb-9">Gửi thắc mắc cho chúng tôi</h3>
         <p class="w-20 h-1 bg-black my-4"></p>
-        <input type="text" placeholder="Nhập tên của bạn" id="name" name="name"
+        <form action="index.php?act=lienhe" method="post">
+        <input type="text" placeholder="Nhập tên của bạn" id="name" name="bl_name"
             class="border w-full pl-2 pt-2 pb-2 mb-4 bg-[#F5F5F5]" require>
         <div class="mb-4 mt-4">
             <input type="email" name="email" id="email" placeholder="Email của bạn"
                 class="border pl-2 pt-2 pb-2 mr-2 bg-[#F5F5F5]" require>
-            <input type="text" name="phone" id="phone" placeholder="Số điện thoại của bạn"
+            <input type="text" name="sodienthoai" id="phone" placeholder="Số điện thoại của bạn"
                 class="border pl-2 pt-2 pb-2 ml-2 bg-[#F5F5F5]" require>
         </div>
-        <textarea name="content" id="content" cols="30" rows="10" placeholder="Nội dung"
+        <textarea name="noidungbinhluan" id="content" cols="30" rows="10" placeholder="Nội dung"
             class="border w-full mt-4 pl-2 bg-[#F5F5F5]" require></textarea>
         <button
             class="border pr-7 pl-7 pt-4 pb-4 bg-black text-white hover:bg-white hover:text-black mt-10 mb-10 button_slide slide_right"
-            type="submit">GỬI CHO CHÚNG TÔI</button>
+            type="submit" name="submit">GỬI CHO CHÚNG TÔI</button>
         </form>
     </div>
 </div>

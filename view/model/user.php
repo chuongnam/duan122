@@ -1,5 +1,5 @@
 <?php
-
+// include ".././admin/database.php";
 class user_client {
     private $db;
     public function __construct() {
@@ -13,6 +13,11 @@ class user_client {
        
     }
     public function getUserByEmail($email){
+        $sql="SELECT * FROM `user` WHERE email = '$email'";
+        $result = $this->db->select($sql);
+        return $result;
+    }
+    public function checkemail($email){
         $sql="SELECT * FROM `user` WHERE email = '$email'";
         $result = $this->db->select($sql);
         return $result;

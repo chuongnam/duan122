@@ -11,7 +11,7 @@
                <input required type="text" name="product_gia" value="<?php echo $result['product_gia'] ?>">
                <label for="">mô tả <span style="color: red;">*</span></label><br>
                <textarea name="mota" id="" cols="30" rows="10" value="<?php echo $result['product_mota'] ?>"></textarea><br>
-           
+               
                <label for="">nhập số lượng <span style="color: red;">*</span></label>
                <input required type="text" name="soluong" value="<?php echo $result['soluong'] ?>">
                <label for="">nhập mã sản phẩm <span style="color: red;">*</span></label>
