@@ -1,4 +1,5 @@
 
+
 <style>
     .main-content{
 	width: 50%;
@@ -90,32 +91,23 @@ form{
             <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
                 <div class="container-fluid">
                     <div class="row">
-                        <h2>ĐĂNG NHẬP THÀNH VIÊN</h2>
+                        <h2>QUÊN MẬT KHẨU</h2>
                     </div>
                     <div class="row">
-                        <form action="index.php?act=login" class="form-group" method="post">
+                        <form action="index.php?act=quenmk" class="form-group" method="post">
                             <div class="row">
                                 <input type="text" name="email" id="username" class="form__input" placeholder="Email">
                             </div>
+                            
                             <div class="row">
-                         
-                                <input type="password" name="pass" id="password" class="form__input" placeholder="Password">
-                            </div>
-                            <div class="row">
-                                
-                                
-                            </div>
-                            <div class="row">
-                            <button class="submit" name="btn-login">ĐĂNG NHẬP</button>
+                            <button class="submit" name="quenmk">gửi</button>
                             </div>
                         </form>
                     </div>
                     <div class="row">
                         <p>Chưa có tài khoản ? <a href="index.php?act=dangky">Đăng kí ngay</a></p>
                     </div>
-					<div class="row">
-                        <p> <a href="index.php?act=quenmk">Quên Mật Khẩu</a></p>
-                    </div>
+                   
                 </div>
             </div>
         </div>

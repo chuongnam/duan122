@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+// include "header.php";
 include "model/user.php";
 $user = new user_client();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -70,7 +70,7 @@ if (isset($_GET['logout'])) {
 
             </li>
             <li><a href="gioithieu.php">GIỚI THIỆU</a></li>
-            <li><a href="lienhe.php">LIÊN HỆ</a></li>
+            <li><a href="index.php?act=lienhe">LIÊN HỆ</a></li>
 
         </div>
         <div class="others">
@@ -82,7 +82,7 @@ if (isset($_GET['logout'])) {
             <div class="dropdown">
             <button class="dropdown-btn"><a href="<?php echo $login_link; ?>"><?php echo $login_text; ?></a></button>
             <div class="options">
-                    <a href="changepassword.php">Đổi mật khẩu</a>
+                    <a href="changerpassword.php">Đổi mật khẩu</a>
                     <a href="index.php?act=trangthaii">Đơn Hàng</a>
                     <a href="?logout=true">Đăng xuất</a>
                 </div>
