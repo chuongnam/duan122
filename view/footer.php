@@ -13,7 +13,7 @@
 
     </div>
   <div class="footer-conter">
-    <p>Công ty Cổ phần Dự Kim với số đăng ký kinh doanh: 0105777650<br>
+    <p>Công ty Cổ phần POLYBIKE với số đăng ký kinh doanh: 0105777650<br>
 
         Địa chỉ đăng ký: Tổ dân phố Tháp, P.Đại Mỗ, Q.Nam Từ Liêm, TP.Hà Nội, Việt Nam<br>
      

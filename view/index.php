@@ -108,7 +108,7 @@ if (isset($_GET['act'])) {
 
 
 
-            header("location:index.php?act=camon");
+            header("location: camon.php");
             break;
         case "showdon":
             $showdonhang = $cart->showdonhang();
@@ -137,12 +137,7 @@ if (isset($_GET['act'])) {
             include "trangthai.php";
             break;
 
-        case "camon":
-
-
-            include "camon.php";
-            break;
-
+        
 
         case "trangthaii":
             $trangthai = $trangthai->trangthai();
@@ -232,7 +227,4 @@ if (isset($_GET['act'])) {
             break;
     }
 }
-?>
-<?php
-include "footer.php";
 ?>

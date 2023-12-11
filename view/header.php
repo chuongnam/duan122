@@ -75,7 +75,7 @@ if (isset($_GET['logout'])) {
         </div>
         <div class="others">
             <form action="" method="post">
-                <li><input type="text" placeholder="tìm kiếm..." name="search"><button name="search-btn"> tìm kiếm</button></li>
+                <li><input type="text" placeholder="tìm kiếm..." name="search"><button name="search-btn"></button></li>
             </form>
 
             <li><a href="index.php?act=taogio"><i class="fa fa-shopping-bag"></i></a></li>
