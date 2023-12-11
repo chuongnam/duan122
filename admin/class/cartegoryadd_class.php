@@ -11,7 +11,7 @@ class cartegory
     {
         $query = "INSERT INTO loaixe(tendanhmuc) VALUE ('$tendanhmuc')";
         $result = $this->db->insert($query);
-        header('location:index.php?act=showdm');
+        echo '<script>window.location.href = "index.php?act=showdm";</script>';
         return $result;
     }
     public function showdm()
@@ -30,7 +30,7 @@ class cartegory
     {
         $query = "UPDATE loaixe SET tendanhmuc = '$tendanhmuc' WHERE cartegory_id='$cartegory_id'";
         $result = $this->db->update($query);
-        header('location:index.php?act=showdm');
+        echo '<script>window.location.href = "index.php?act=showdm";</script>';
         return $result;
 
     }
@@ -38,7 +38,7 @@ class cartegory
     {
         $query = "DELETE FROM loaixe WHERE cartegory_id='$cartegory_id'";
         $result = $this->db->delete($query);
-        header('location:index.php?act=showdm');
+        echo '<script>window.location.href = "index.php?act=showdm";</script>';
         return $result;
     }
 

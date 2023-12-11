@@ -40,10 +40,6 @@ $binhluan = $user_cmt->loadall_binhluan($id);
         margin-left: 15px;
     }
 
-    a {
-        color: #BF8A49;
-    }
-
     a:hover {
         color: aliceblue;
     }
@@ -192,21 +188,26 @@ $binhluan = $user_cmt->loadall_binhluan($id);
         </section>
 
         <section class="comment" style="width:70%;margin:auto;margin-top:20px">
-            <div class="myInputComent" style="margin:auto">
-                <h2 style="text-align:center;margin:20px 0px">Bình Luận Về <?php echo $sanphamchitiet['product_name'] ?></h2>
-                <form action="" method="post">
-                    <textarea name="cmt-content" id="commentI" placeholder="nội dung bình luận" rows="5"></textarea>
-                    <button style="background-color: green; color: #fff; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;" name="submit-comment">Gửi Bình Luận</button>
-                </form>
-            </div>
-            <div class="otherComment" style="margin-top:20px;display:flex;flex-direction:column">
-                <?php
+            <?php
+            if (isset($_SESSION['user_id'])) {
+                echo '<div class="myInputComent" style="margin:auto">
+            <h2 style="text-align:center;margin:20px 0px">Bình Luận Về ' . htmlspecialchars($sanphamchitiet['product_name']) . '</h2>
+            <form action="" method="post">
+                <textarea name="cmt-content" id="commentI" placeholder="nội dung bình luận" rows="5"></textarea>
+                <button style="background-color: green; color: #fff; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;" name="submit-comment">Gửi Bình Luận</button>
+            </form>
+        </div>
+        <div class="otherComment" style="margin-top:20px;display:flex;flex-direction:column">';
+            }
+            ?>
+            <?php
+            if (isset($_SESSION['user_id'])) {
                 if ($binhluan) {
                     foreach ($binhluan as $row) {
                         echo '<div class="otherCommentItem" style="display:flex; background-color: #f2f2f2; padding: 10px; margin-bottom: 10px; border-radius: 5px;">';
                         echo '<div class="image">
-                    <img src="https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg" style="width:50px" alt="">
-                </div>';
+                        <img src="https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg" style="width:50px" alt="">
+                    </div>';
                         echo '<div class="content" style="margin-left:10px;">';
                         echo '<h2 style="margin-bottom: 5px; font-size: 18px;">' . $row['user_name'] . '</h2>';
                         echo '<p style="margin-bottom: 5px; color: #888;">' . $row['date'] . '</p>';
@@ -215,12 +216,15 @@ $binhluan = $user_cmt->loadall_binhluan($id);
                         echo '</div>';
                     }
                 }
-                ?>
-            </div>
+            } else {
+                echo '<h2 style="text-align:center">vui lòng đăng nhập để bình luận</h2>';
+            }
+            ?>
+    </div>
 
 
-        </section>
-    </div>
-    </div>
-    </div>
+</section>
+</div>
+</div>
+</div>
 </section>

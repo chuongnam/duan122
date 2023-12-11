@@ -53,7 +53,7 @@
                             $tong = 0;
                             $sum = 0;
                             foreach ($_SESSION['giohang'] as $idSP => $value):
-                                $sum = $value['product_gia'] * $value['soluong'];
+                                $sum = $value['dongia'] * $value['soluong'];
                                 $tong += $sum;
                                 ?>
                                 <tr>
@@ -65,10 +65,10 @@
                                     </td>
                                     <td><img src="../admin/upload/<?= $value['images'] ?>" width="200px"></td>
                                     <td>
-                                        <?= $value['product_name'] ?>
+                                        <?= $value['pro_name'] ?>
                                     </td>
                                     <td>
-                                        <?= number_format($value['product_gia']) ?><sup>VNĐ</sup>
+                                        <?= number_format($value['dongia']) ?><sup>VNĐ</sup>
                                     </td>
 
                                     <td>
@@ -103,7 +103,7 @@
                        
                 </table>
                
-                <a href="index.php?act=showdon">ĐƠN HÀNG</a> 
+                <a href="index.php?act=showdon">ĐƠN HÀNG CỦA TÔI></a> 
           
                 </ul>
             </div>
@@ -117,7 +117,7 @@
                      if (isset($_SESSION['giohang']) && !empty($_SESSION['giohang'])) {
                         $sum = 0;
                         foreach ($_SESSION['giohang'] as $item) {
-                            $sum += $item['product_gia'] * $item['soluong'];
+                            $sum += $item['dongia'] * $item['soluong'];
                         }
 
                         echo number_format($sum) . "<sup>vnđ</sup>";
@@ -149,5 +149,4 @@
     </div>
 </section>
 <?php
-include "footer.php";
 ?>

@@ -1,8 +1,5 @@
-<style>
-
-</style>
-<section class="admin-content" >
-<div class="container" id="admin-left" style="margin-top:60px">
+<section class="admin-content">
+    <div class="container" id="admin-left" style="margin-top:60px">
         <div class="row">
             <div class="col">
                 <ul class="nav">
@@ -24,7 +21,7 @@
                             </ul>
                         </div>
                     </li>
-                    
+
                     <li class="panel panel-default">
                         <a data-toggle="collapse" href="#binhluan">BÌNH LUẬN </a>
                         <div class="collapse" id="binhluan">

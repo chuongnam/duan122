@@ -5,19 +5,10 @@
     margin: 0;
 }
 
-body {
-    margin-top: 100px;
-    background-color: #e8f5ff;
-    font-family: Arial;
-    overflow: hidden;
-}
-
-/* NavbarTop */
 .navbar-top {
     background-color: #fff;
     color: #333;
     box-shadow: 0px 4px 8px 0px grey;
-    height: 70px;
 }
 
 .title {
@@ -63,7 +54,6 @@ body {
     background-color: #fff;
     color: #333;
     border-bottom-right-radius: 25px;
-    height: 46%;
     left: 0;
     overflow-x: hidden;
     padding-top: 20px;
@@ -125,7 +115,8 @@ body {
 
 /* Main */
 .main {
-    margin-top: 2%;
+    margin-bottom: 50px;
+    margin-top: 5%;
     margin-left: 29%;
     font-size: 28px;
     padding: 0 10px;

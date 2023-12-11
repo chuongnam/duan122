@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
             var reader = new FileReader();
     
             reader.onload = function (e) {
+                var curImgElement = document.getElementById('cur_img');
+
+if (curImgElement && curImgElement.hasAttribute('src')) {
+    curImgElement.removeAttribute('src');
+}
+
+
                 document.getElementById('imagePreview').style.backgroundImage = 'url(' + e.target.result + ')';
             };
     

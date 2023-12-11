@@ -96,10 +96,35 @@ class cart{
         $this->db = new Database();
     }
     public function showdonhang(){
-        $query = "SELECT * FROM cart n INNER JOIN bill b WHERE n.id_bill=b.id_bill ";
+        $query = "SELECT * FROM bill  WHERE n.id_bill=b.id_bill ";
         $result = $this->db->select($query);
         return $result;
     }
+    public function showdonhangUser($username){
+        $query = "SELECT * FROM bill  WHERE bill.user_id='$username' ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function showdonhangUserBySessionkey($session_key){
+        $query = "SELECT * FROM bill  WHERE bill.session_key='$session_key' ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function hoadon($id)
+    {
+        $query = "SELECT * FROM cart WHERE id_bill='$id' ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function deletedonhang($id)
+    {
+        $query = "UPDATE `bill` SET `trangthai`='Đã Hủy' WHERE id_bill=$id";
+        $result = $this->db->update($query);
+        echo '<script>window.location.href = "index.php?act=showdon";</script>';
+        return $result;
+    }
+
 }
 class lienhe{
     private $db;
@@ -205,12 +230,6 @@ class user {
     public function __construct()
     {
         $this->db = new Database();
-    }
-    public function trangthai()
-    {
-        $query = "SELECT * FROM trangthai WHERE trangthai_id";
-        $result = $this->db->select($query);
-        return $result;
     }
     public function sptrangthai()
     {

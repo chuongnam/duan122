@@ -67,42 +67,51 @@
     }
 </style>
 <div class="a">
+    <h1>CHI TIẾT ĐƠN HÀNG #<?php echo $id_bill ?></h1>
     <table>
-        <h1>ĐƠN HÀNG CỦA TÔI</h1>
         <tr>
             <th>STT</th>
-            <th>MÃ ĐƠN HÀNG</th>
-            <th>NGÀY ĐẶT HÀNG</th>
-            <th>PHƯƠNG THỨC THANH TOÁN</th>
-            <th>THÀNH TIỀN</th>
-            <th>TRẠNG THÁI ĐƠN HÀNG</th>
-            <th>action</th>
+            <th>Tên Sản Phẩm</th>
+            <th>Ảnh Sản Phẩm</th>
+            <th>Đơn Giá</th>
+            <th>Số Lượng</th>
+            <th>Màu Sắc</th>
+            <th>Thành Tiền</th>
         </tr>
-        <tr>
-            <?php
-            if ($showdonhang) {
-                $i = 1;
-                foreach ($showdonhang as $row) {
-                    echo '<tr>
-            <td>' . $i++ . '</td>
-            <td>' . $row['id_bill'] . '</td>
-            <td>' . $row['ngaydathang'] . '</td>
-            <td>' . $row['pttt'] . '</td>
-            <td>' . number_format($row['total']) . 'vnd</td>
-            <td>' . $row['trangthai'] . '</td>
-            <td>';
 
-                    if ($row['trangthai'] != 'Đang Giao' && $row['trangthai'] != 'Đã Hủy') {
-                        echo '<a style="color:green" href="index.php?act=chitietdonhang&id=' . $row['id_bill'] . '">Chi Tiết</a>
-                  <a style="color: red" href="#" onclick="confirmCancelOrder(' . $row['id_bill'] . ')">Hủy Đơn</a>';
-                    } else {
-                        echo '<a style="color:green" href="index.php?act=chitietdonhang&id=' . $row['id_bill'] . '">Chi Tiết</a>';
-                    }
-
-                    echo '</td></tr>';
-                }
+        <?php
+        if (!isset($_SESSION['user_id'])) {
+            $i = 1;
+            foreach ($chitietdonhang as $productRow) {
+                echo '<tr>
+        <td>' . $i++ . '</td>
+        <td>' . $productRow['pro_name'] . '</td>
+        <td><img src="/admin/upload/' . $productRow['images'] . '" width="90" style="max-width: 100%;"></td>
+        <td>' . number_format($productRow['dongia']) . ' VNĐ</td>
+        <td>' . $productRow['soluong'] . '</td>
+        <td>' . $productRow['color'] . '</td>
+        <td>' . number_format($productRow['thanhtien']) . ' VNĐ</td>
+    </tr>';
             }
-            ?>
+        }
+        else{
+            $i = 1;
+            while ($productRow = $chitietdonhang->fetch_assoc()) {
+                echo '<tr>
+        <td>' . $i++ . '</td>
+        <td>' . $productRow['pro_name'] . '</td>
+        <td><img src="/admin/upload/' . $productRow['images'] . '" width="90" style="max-width: 100%;"></td>
+        <td>' . number_format($productRow['dongia']) . ' VNĐ</td>
+        <td>' . $productRow['soluong'] . '</td>
+        <td>' . $productRow['color'] . '</td>
+        <td>' . number_format($productRow['thanhtien']) . ' VNĐ</td>
+    </tr>';
+            }
+        }
+        ?>
+
+
 
     </table>
+
 </div>

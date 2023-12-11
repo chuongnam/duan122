@@ -109,7 +109,7 @@
         }
     }
     ?>
-    <div id="pie_chart" style="width:100%; max-width:600px; height:500px;"></div>
+    <div id="pie_chart" style="width:100%; max-width:600px; height:500px;margin:auto"></div>
 </div>
 <script>
     google.charts.load('current', {

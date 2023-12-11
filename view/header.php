@@ -34,7 +34,6 @@ if (isset($_GET['logout'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js" integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
-
         .dropdown:hover .options {
 
             display: <?php echo ($login_text === "Tôi") ? 'block' : 'none'; ?>;
@@ -61,22 +60,42 @@ if (isset($_GET['logout'])) {
 
             </li>
             <li><a href="gioithieu.php">GIỚI THIỆU</a></li>
-            <li><a href="lienhe.php">LIÊN HỆ</a></li>
+            <li><a href="index.php?act=lienhe">LIÊN HỆ</a></li>
 
         </div>
         <div class="others">
             <form action="" method="post">
-                <li style="display:flex;position:relative">
-                    <input type="text" placeholder="Tìm kiếm..." name="search" id="search-area">
-                    <button style="position:absolute;right:5px;top:7px;border:none;width:fit-content;height:fit-content" name="search-btn"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>
-                </li>
-            </form>
-            <li><a href="index.php?act=taogio"><i class="fa fa-shopping-bag fa-2x"></i></a></li>
-            <div class="dropdown">
-                <button style="border:none;margin-top:5px"><a href="<?php echo isset($_SESSION['user_email'], $_SESSION['user_id'], $_SESSION['role']) && $_SESSION['role'] == 2 ? 'index.php?act=thongtincuatoi' : $login_link; ?>">
-                        <?php echo isset($_SESSION['user_email'], $_SESSION['user_id'], $_SESSION['role']) && $_SESSION['role'] == 2 ? '<i class="fa-solid fa-user fa-2x"></i>' : $login_text; ?></a></button>
-            </div>
 
+                <div class="searchBox">
+                    <input class="searchInput" type="text" name="search" placeholder="Search">
+                    <button class="searchButton" name="search-btn" href="#">
+                        <i class="material-icons">
+                            search
+                        </i>
+                    </button>
+                </div>
+            </form>
+            <div class="other-logo" style="display: flex; align-items: center;position:absolute;top:20px;right:65px">
+                <li style="list-style-type: none; margin-right: 10px;"><a href="index.php?act=taogio" style="text-decoration: none; color: black;"><i class="fa fa-shopping-bag fa-2x"></i></a></li>
+                <div>
+                    <button style="background-color: #bbc0bb; /* Green */
+               border: none;
+               color: white;
+               padding: 9px 13px;
+               text-align: center;
+               text-decoration: none;
+               display: inline-block;
+               font-size: 16px;
+               cursor: pointer;
+               border-radius: 5px;">
+                        <a href="<?php echo isset($_SESSION['user_email'], $_SESSION['user_id'], $_SESSION['role']) && $_SESSION['role'] == 2 ? 'index.php?act=thongtincuatoi' : $login_link; ?>" style="text-decoration: none; color: black;">
+                            <?php echo isset($_SESSION['user_email'], $_SESSION['user_id'], $_SESSION['role']) && $_SESSION['role'] == 2 ? '<i class="fa-solid fa-user fa-2x"></i>' : $login_text; ?>
+                        </a>
+                    </button>
+                   
+                </div>
+            </div>
         </div>
+
 
     </header>

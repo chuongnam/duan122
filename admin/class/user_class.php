@@ -21,7 +21,7 @@
     public function deleteuser($user_id){
         $query = "DELETE FROM user WHERE user_id='$user_id'";
         $result = $this->db->delete($query);
-        header ("location:index.php?act=showtk");
+        echo '<script>window.location.href = "index.php?act=showtk";</script>';
         return $result;
     }
  }

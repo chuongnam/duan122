@@ -24,10 +24,10 @@
  }
 
 
- function taogiohang($bill_name, $bill_address, $tel,$email,$total,$pttt,$ngaydathang){
+ function taogiohang($bill_name,$id, $bill_address, $tel,$email,$total,$pttt,$ngaydathang,$session_key){
     $conn=ketnoidb();
-    $sql = "INSERT INTO bill (bill_name, bill_address, tel,email,total,pttt,ngaydathang)
-  VALUES ('$bill_name', '$bill_address', '$tel','$email','$total','$pttt','$ngaydathang')";
+    $sql = "INSERT INTO bill (bill_name,user_id, bill_address, tel,email,total,pttt,ngaydathang,session_key)
+  VALUES ('$bill_name','$id', '$bill_address', '$tel','$email','$total','$pttt','$ngaydathang','$session_key')";
 
     
   $conn->exec($sql);
@@ -35,10 +35,10 @@
   $conn = null;
   return $last_id;
  }
- function taodonhang($pro_name, $images, $dongia,$soluong,$thanhtien,$color,$id_bill,$trangthai_id){
+ function taodonhang($pro_name, $images, $dongia,$soluong,$thanhtien,$color,$id_bill){
     $conn=ketnoidb();
-    $sql = "INSERT INTO cart (pro_name, images, dongia,soluong,thanhtien,color,id_bill,trangthai_id)
-  VALUES ('$pro_name', '$images', '$dongia','$soluong','$thanhtien','$color','$id_bill','$trangthai_id')";
+    $sql = "INSERT INTO cart (pro_name, images, dongia,soluong,thanhtien,color,id_bill)
+  VALUES ('$pro_name', '$images', '$dongia','$soluong','$thanhtien','$color','$id_bill')";
   
   $conn->exec($sql);
   $conn = null;

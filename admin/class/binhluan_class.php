@@ -17,7 +17,7 @@ class binhluan{
     {
         $query = "DELETE FROM binhluan WHERE id_binhluan='$id_binhluan'";
         $result = $this->db->delete($query);
-        header('location:index.php?act=showbinhluan');
+        echo '<script>window.location.href = "index.php?act=showbinhluan";</script>';
         return $result;
     }
 

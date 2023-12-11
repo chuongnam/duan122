@@ -11,21 +11,34 @@ $cart = new cart();
 $product = new product();
 $trangthai = new trangthai();
 $cartegory = new category();
+$lienhe =new lienhe();
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
         case "taogio":
             if (!empty($_POST)) {
-                $_SESSION['giohang'][$_POST['product_id']] = [
-                    'product_name' => $_POST['product_name'],
-                    'images' => $_POST['images'],
-                    'product_gia' => $_POST['product_gia'],
-                    'color' => $_POST['color'],
-                    'soluong' => $_POST['soluong'],
-                ];
+                $product_id = $_POST['product_id'];
+                $quantity = $_POST['soluong'];
+        
+                if (isset($_SESSION['giohang'][$product_id])) {
+                    $_SESSION['giohang'][$product_id]['soluong'] += $quantity;
+                    $_SESSION['giohang'][$product_id]['thanhtien'] = $_SESSION['giohang'][$product_id]['soluong'] * $_SESSION['giohang'][$product_id]['dongia'];
+                } else {
+                    $_SESSION['giohang'][$product_id] = [
+                        'pro_name' => $_POST['product_name'],
+                        'images' => $_POST['images'],
+                        'dongia' => $_POST['product_gia'],
+                        'color' => $_POST['color'],
+                        'soluong' => $quantity,
+                        'thanhtien' => $quantity * $_POST['product_gia']
+                    ];
+                }
+                echo '<script>window.location.href = "index.php?act=taogio";</script>';
+                exit();
             }
             include "cart.php";
             break;
+        
         case "xoasp":
             $product_id = $_GET['product_id'] ?? '';
 
@@ -55,47 +68,115 @@ if (isset($_GET['act'])) {
             header('Location: index.php?act=taogio');
 
             break;
-        case "mua":
-
-
-            if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
-                $sum = 0;
-                foreach ($_SESSION['giohang'] as $item) {
-                    $sum += $item['product_gia'] * $item['soluong'];
+            case "mua":
+                if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
+                    $sum = 0;
+                    foreach ($_SESSION['giohang'] as $item) {
+                        $sum += $item['dongia'] * $item['soluong'];
+                    }
+                    
+                    $bill_name = $_POST['bill_name'];
+                    $bill_address = $_POST['bill_address'];
+                    $tel = $_POST['tel'];
+                    $email = $_POST['email'];
+                    $ngaydathang = date('d-m-y h:i:s');
+                    $total = $sum;
+                    $pttt = $_POST['pttt'];
+            
+                    if (isset($_SESSION['user_id'])) {
+                        $id_bill = taogiohang($bill_name, $_SESSION['user_id'], $bill_address, $tel, $email, $total, $pttt, $ngaydathang,'null');
+                        foreach ($_SESSION['giohang'] as $product_id => $item) {
+                            $pro_name = $item['pro_name'];
+                            $images = $item['images'];
+                            $dongia = $item['dongia'];
+                            $soluong = $item['soluong'];
+                            $color = $item['color'];
+                            $thanhtien = $dongia * $soluong;
+            
+                            taodonhang($pro_name, $images, $dongia, $soluong, $thanhtien, $color, $id_bill);
+                        }
+                        unset($_SESSION['giohang']);
+                    } 
+                    else { 
+                        $giohang = $_SESSION['giohang'];
+                        $session_key=uniqid();
+                        $id_bill = taogiohang($bill_name, 0, $bill_address, $tel, $email, $total, $pttt, $ngaydathang,$session_key);
+                        $_SESSION['session_orders'] = array(
+                            'session_key'=>$session_key,
+                            'id_bill'=> $id_bill,
+                            'bill_name' => $bill_name,
+                            'bill_address' => $bill_address,
+                            'tel' => $tel,
+                            'email' => $email,
+                            'total' => $total,
+                            'pttt' => $pttt,
+                            'ngaydathang' => $ngaydathang,
+                            'trangthai'=>'Chờ Xác Nhận',
+                            'items' => $giohang
+                        );
+                        foreach ($giohang as $item) {
+                            taodonhang(
+                                $item['pro_name'],
+                                $item['images'],
+                                $item['dongia'],
+                                $item['soluong'],
+                                $item['thanhtien'],
+                                $item['color'],
+                                $id_bill
+                            );
+                        }
+                        unset($_SESSION['giohang']);
+                    }
+            
                 }
-                $bill_name = $_POST['bill_name'];
-                $bill_address = $_POST['bill_address'];
-                $tel = $_POST['tel'];
+                
+            
+                header("location:index.php?act=camon");
+                break;
+            
+
+        case "lienhe":
+            if (isset($_POST['submit'])) {
+                $bl_name = $_POST['bl_name'];
+                $sodienthoai = $_POST['sodienthoai'];
                 $email = $_POST['email'];
-                $ngaydathang = date('d-m-y h:i:s');
-                $total = $sum;
-                $pttt = $_POST['pttt'];
-
-
-                $id_bill = taogiohang($bill_name, $bill_address, $tel, $email, $total, $pttt, $ngaydathang);
-
-                foreach ($_SESSION['giohang'] as $product_id => $item) {
-                    $pro_name = $item['product_name'];
-                    $images = $item['images'];
-                    $dongia = $item['product_gia'];
-                    $soluong = $item['soluong'];
-                    $color = $item['color'];
-                    $trangthai_id = 1;
-                    $thanhtien = $dongia * $soluong;
-                    taodonhang($pro_name, $images, $dongia, $soluong, $thanhtien, $color, $id_bill, $trangthai_id);
-                }
+                $noidungbinhluan = $_POST['noidungbinhluan'];
+                $lienhe = $lienhe->insertlh($bl_name, $sodienthoai, $email, $noidungbinhluan);
+                echo '<script>window.location.href = "index.php?act=lienhe";</script>';
+                exit();
             }
-            unset($_SESSION['giohang']);
 
-
-
-            header("location:index.php?act=camon");
+            include "lienhe.php";
             break;
-        case "showdon":
-            $showdonhang = $cart->showdonhang();
-            $trangthai = $trangthai->trangthai();
-            include "dsdonhang.php";
+            case "showdon":
+                if (isset($_SESSION["user_email"])) {
+                    $userinfor = $user->getUserByEmail($_SESSION["user_email"])->fetch_assoc();
+                    $showdonhang = $cart->showdonhangUser($userinfor['user_id']);
+                } elseif (isset($_SESSION['session_orders'])) {
+                    $showdonhang = $cart->showdonhangUserBySessionkey($_SESSION['session_orders']['session_key']);;
+                } else {
+                    $showdonhang = array();
+                }
+            
+                include "dsdonhang.php";
+                break;
+            
+        case "chitietdonhang":
+            if (isset($_SESSION['user_id'])) {
+                $id_bill = $_GET['id'];
+                $chitietdonhang = $cart->hoadon($id_bill);
+            } else {
+                $id_bill = $_GET['id'];
+                $chitietdonhang = isset($_SESSION['session_orders']) ? $_SESSION['session_orders']['items'] : null;
+            }
+            
+            include "chitietdonhang.php";
             break;
+        case "huydonhang":
+            $id_bill = $_GET['id_donhang'];
+            $cart->deletedonhang($id_bill);
+            break;
+
         case "chitiet":
             $id = $_GET["product_id"];
             $product->update_luotxem($id);
@@ -118,12 +199,6 @@ if (isset($_GET['act'])) {
 
 
             include "camon.php";
-            break;
-
-        case "trangthaii":
-
-            $trangthai = $trangthai->trangthai();
-            include "danhmuctt.php";
             break;
         case "trangchu":
             $product = $product->top10();

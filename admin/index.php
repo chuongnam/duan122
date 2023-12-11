@@ -1,5 +1,6 @@
 <?php
 include "database.php";
+include "header.php";
 include "class/cartegoryadd_class.php";
 include "class/product_class.php";
 include "class/user_class.php";
@@ -7,8 +8,9 @@ include "class/kythuat_class.php";
 include "class/donhang_class.php";
 include "class/binhluan_class.php";
 include "class/lienhe_class.php";
-include "header.php";
+
 include "slilde.php";
+
 $cartegory = new Cartegory();
 $product = new product();
 $binhluan = new binhluan();
@@ -16,14 +18,11 @@ $lienhe = new lienhe();
 $user = new user();
 $cart = new cart();
 $cartt = new cartt();
-
-$kythuat = new kythuat;
-
-if(isset($_GET['act'])) {
-    switch($_GET['act']) {
-
+$kythuat = new kythuat();
+if (isset($_GET['act'])) {
+    switch ($_GET['act']) {
         case "adddm":
-            if(isset($_POST["submit"])) {
+            if (isset($_POST["submit"])) {
                 $tendanhmuc = $_POST['tendanhmuc'];
                 $insertlh = $cartegory->insertlh($tendanhmuc);
             }
@@ -36,8 +35,8 @@ if(isset($_GET['act'])) {
             include "./danhmuc/listdanhmuc.php";
             break;
         case "xoadm":
-            if(!isset($_GET["cartegory_id"]) || ($_GET["cartegory_id"]) == null) {
-                echo "<scrip>window.location = 'cartegorylist.php'</scrip>";
+            if (!isset($_GET["cartegory_id"]) || ($_GET["cartegory_id"]) == null) {
+            
             } else {
                 $cartegory_id = $_GET["cartegory_id"];
             }
@@ -45,51 +44,53 @@ if(isset($_GET['act'])) {
             include "./danhmuc/listdanhmuc.php";
             break;
         case "suadm":
-            if(!isset($_GET["cartegory_id"]) || ($_GET["cartegory_id"]) == null) {
-                echo "<scrip>window.location = 'cartegorylist.php'</scrip>";
+            if (!isset($_GET["cartegory_id"]) || ($_GET["cartegory_id"]) == null) {
             } else {
                 $cartegory_id = $_GET["cartegory_id"];
             }
             $get_cartegory = $cartegory->get_cartergory($cartegory_id);
 
-            if($get_cartegory) {
+            if ($get_cartegory) {
                 $row = $get_cartegory->fetch_assoc();
             }
             $cartegory = new Cartegory;
-            if(isset($_POST["submit"])) {
+            if (isset($_POST["submit"])) {
                 $tendanhmuc = $_POST['tendanhmuc'];
                 $insertlh = $cartegory->updatedm($cartegory_id, $tendanhmuc);
             }
             include "./danhmuc/cartegoryedit.php";
             break;
         case "addsp":
-            if(isset($_POST["submit"])) {
+            if (isset($_POST["submit"])) {
 
                 $insert_product = $product->insertproduct($_POST, $_FILES);
-
             }
 
             include "./sanpham/productadd.php";
             break;
         case "suasp":
-            if(!isset($_GET["product_id"]) || ($_GET["product_id"]) == null) {
-                echo "<scrip>window.location = 'cartegorylist.php'</scrip>";
+            if (!isset($_GET["product_id"]) || ($_GET["product_id"]) == null) {
+            
             } else {
                 $product_id = $_GET["product_id"];
             }
             $get_product = $product->get_product($product_id);
 
-            if($get_product) {
+            if ($get_product) {
                 $result = $get_product->fetch_assoc();
             }
-            if(isset($_POST["submit"])) {
+            if (isset($_POST["submit"])) {
                 $product_name = $_POST['product_name'];
                 $product_gia = $_POST['product_gia'];
+                $cartegory_id = $_POST['cartegory_id'];
                 $product_mota = $_POST['mota'];
                 $soluong = $_POST['soluong'];
                 $masp = $_POST['masp'];
                 $color = $_POST['color'];
-                $insertsp = $product->updatesp($product_id,$product_name, $product_gia, $product_mota, $soluong, $masp, $color);
+                $images = $_FILES['images']['name'];
+                move_uploaded_file($_FILES['images']['tmp_name'],"upload/".$_FILES['images']['name']);
+
+                $insertsp = $product->updatesp($product_id, $product_name, $product_gia,$images, $product_mota, $soluong, $masp, $color,$cartegory_id);
             }
             include "./sanpham/productedit.php";
             break;
@@ -99,8 +100,7 @@ if(isset($_GET['act'])) {
             include "./sanpham/listsanpham.php";
             break;
         case "xoasp":
-            if(!isset($_GET["product_id"]) || ($_GET["product_id"]) == null) {
-                echo "<scrip>window.location = 'listsanpham.php'</scrip>";
+            if (!isset($_GET["product_id"]) || ($_GET["product_id"]) == null) {
             } else {
                 $product_id = $_GET["product_id"];
             }
@@ -113,8 +113,7 @@ if(isset($_GET['act'])) {
             include "./user/listtaikhoan.php";
             break;
         case "xoatk":
-            if(!isset($_GET["user_id"]) || ($_GET["user_id"]) == null) {
-                echo "<scrip>window.location = 'listtaikhoan.php'</scrip>";
+            if (!isset($_GET["user_id"]) || ($_GET["user_id"]) == null) {
             } else {
                 $user_id = $_GET["user_id"];
             }
@@ -128,10 +127,9 @@ if(isset($_GET['act'])) {
             break;
         case "addkt":
 
-            if(isset($_POST["submit"])) {
+            if (isset($_POST["submit"])) {
 
                 $insert_kt = $kythuat->insertkt($_POST);
-                //  var_dump($_POST,$_FILES);
             }
             include "./kythuat/kythuatadd.php";
             break;
@@ -151,15 +149,14 @@ if(isset($_GET['act'])) {
             $product = $product->thongke();
             include "./thongke/listthongke.php";
             break;
-        
+
         case "showlienhe":
 
             $lienhe = $lienhe->showlh();
             include "./lienhe/listlienhe.php";
             break;
         case "xoabl":
-            if(!isset($_GET["id_binhluan"]) || ($_GET["id_binhluan"]) == null) {
-
+            if (!isset($_GET["id_binhluan"]) || ($_GET["id_binhluan"]) == null) {
             } else {
                 $id_binhluan = $_GET["id_binhluan"];
             }
@@ -167,8 +164,7 @@ if(isset($_GET['act'])) {
             include "./binhluan/listbinhluan.php";
             break;
         case "xoalh":
-            if(!isset($_GET["lienhe_id"]) || ($_GET["lienhe_id"]) == null) {
-
+            if (!isset($_GET["lienhe_id"]) || ($_GET["lienhe_id"]) == null) {
             } else {
                 $lienhe_id = $_GET["lienhe_id"];
             }
@@ -177,8 +173,7 @@ if(isset($_GET['act'])) {
             break;
         case "xoakt":
 
-            if(!isset($_GET["kt_id"]) || ($_GET["kt_id"]) == null) {
-                echo "<scrip>window.location = 'listkyhuat.php'</scrip>";
+            if (!isset($_GET["kt_id"]) || ($_GET["kt_id"]) == null) {
             } else {
                 $kt_id = $_GET["kt_id"];
             }
@@ -186,38 +181,31 @@ if(isset($_GET['act'])) {
             include "./kythuat/listkythuat.php";
             break;
         case "suatt":
-            if(!isset($_GET["cart_bill"]) || ($_GET["cart_bill"]) == null) {
-
+            if (!isset($_GET["cart_bill"]) || ($_GET["cart_bill"]) == null) {
             } else {
                 $cart_bill = $_GET["cart_bill"];
             }
             $get_donhang = $cartt->get_donhang($cart_bill);
-
-            if($get_donhang) {
+            if ($get_donhang) {
                 $row = $get_donhang->fetch_assoc();
             }
-
-            if(isset($_POST["submit"])) {
+            if (isset($_POST["submit"])) {
                 $trangthai_id = $_POST['trangthai_id'];
-                $insertdh = $cartt->updatedh($cart_bill, $trangthai_id);
+                $cartt->updatedh($cart_bill, $trangthai_id);
+                echo '<script>window.location.href = "index.php?act=dsdonhang";</script>';
+                exit;
             }
             include "./donhang/suatt.php";
             break;
         case "xoatt":
-            if(!isset($_GET["cart_bill"]) || ($_GET["cart_bill"]) == null) {
-
+            if (!isset($_GET["id_bill"]) || ($_GET["id_bill"]) == null) {
             } else {
-                $cart_bill = $_GET["cart_bill"];
+                $cart_bill = $_GET["id_bill"];
             }
             $delete_donhang = $cartt->deletedonhang($cart_bill);
-            include "./donhang/dsdonhnag";
+            echo '<script>window.location.href = "index.php?act=dsdonhang";</script>';
+            include "./donhang/dsdonhang";
             break;
-
-
-
-
-
-
         default:
             include "";
             break;

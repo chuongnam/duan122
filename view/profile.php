@@ -31,24 +31,18 @@
     <!-- Sidenav -->
     <div class="sidenav">
         <div class="profile">
-            <img src="https://imdezcode.files.wordpress.com/2020/02/imdezcode-logo.png" alt="" width="100" height="100">
+            <img src="https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg" alt="" width="100" height="100">
 
             <div class="name">
-                ImDezCode
+                POLYBIKE
             </div>
             <div class="job">
-                Web Developer
             </div>
         </div>
 
         <div class="sidenav-url">
             <div class="url">
                 <a href="#profile" class="active">Profile</a>
-                <hr align="center">
-            </div>
-            <div class="url">
-                <a href="#settings">Settings</a>
-                <hr align="center">
             </div>
         </div>
     </div>
@@ -78,16 +72,16 @@
         </div>
     <form action="" method="post">
     <button class="logout" name="change_pass" style="background-color: #3498db; color: #fff; padding: 10px; border: none; text-decoration: none; cursor: pointer;">
-  <a style="text-decoration: none; color: inherit;"><a href="index.php?act=changepassword">Đổi mật khẩu</a> <i class="fa-solid fa-right-to-bracket"></i></a>
+  <a style="text-decoration: none; color: inherit;"><a href="index.php?act=changepassword">ĐỔI MẬT KHẨU</a> <i class="fa-solid fa-unlock-keyhole"></i></a>
 </button>
-
+<button class="logout" name="" style="background-color: #e74c3c; color: #fff; padding: 10px; border: none; text-decoration: none; cursor: pointer;">
+  <a href="index.php?act=showdon" style="text-decoration: none; color: inherit;">ĐƠN HÀNG CỦA TÔI<i class="fa-solid fa-bag-shopping"></i></a>
+</button>
 <button class="logout" name="logout" style="background-color: #e74c3c; color: #fff; padding: 10px; border: none; text-decoration: none; cursor: pointer;">
   <a style="text-decoration: none; color: inherit;">ĐĂNG XUẤT<i class="fa-solid fa-right-to-bracket"></i></a>
 </button>
 
     </form>
-      
-      <div></div>
     </div>
     <!-- End -->
 </body>

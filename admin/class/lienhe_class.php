@@ -41,7 +41,7 @@ class Lienhe
     {
         $query = "DELETE FROM lienhe WHERE lienhe_id='$lienhe_id'";
         $result = $this->db->delete($query);
-        header("location:index.php?act=showlienhe");
+        echo '<script>window.location.href = "index.php?act=showlienhe";</script>';
         return $result;
     }
 

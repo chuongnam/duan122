@@ -20,7 +20,6 @@
         $color = $_POST['color'];
         $luotxem=0;
         $images = $_FILES['images']['name'];
-        // $upload_path="upload/".$images;
         move_uploaded_file($_FILES['images']['tmp_name'],"upload/".$_FILES['images']['name']);
         $query = "INSERT INTO product (
             product_name,
@@ -42,7 +41,7 @@
                 '$color','$luotxem'
                  )";
         $this->db->insert($query);
-        header ("location:index.php?act=showsp");
+        echo '<script>window.location.href = "index.php?act=showsp";</script>';
 
     }
     public function showsp(){
@@ -53,14 +52,14 @@
     public function deletesp($product_id){
         $query = "DELETE FROM product WHERE product_id='$product_id'";
         $result = $this->db->delete($query);
-        header ("location:index.php?act=showsp");
+        echo '<script>window.location.href = "index.php?act=showsp";</script>';
         return $result;
     }
-    public function updatesp($product_id,$product_name,$product_gia,$product_mota,$soluong,$masp,$color){
+    public function updatesp($product_id,$product_name,$product_gia,$images,$product_mota,$soluong,$masp,$color,$categoryId){
         $id=$_GET['product_id'];
-        $query = "UPDATE product SET product_name ='$product_name',product_gia ='$product_gia',product_mota ='$product_mota',soluong ='$soluong',masp ='$masp',color ='$color' WHERE product_id=$product_id";
+        $query = "UPDATE product SET product_name ='$product_name',product_gia ='$product_gia',images='$images',product_mota ='$product_mota',soluong ='$soluong',masp ='$masp',color ='$color',cartegory_id='$categoryId' WHERE product_id=$product_id";
         $result = $this->db->update($query);
-        header ("location:index.php?act=showsp");
+        echo '<script>window.location.href = "index.php?act=showsp";</script>';
         return $result;
 
     }
