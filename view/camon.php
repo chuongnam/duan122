@@ -1,34 +1,54 @@
-<style>
-    .tich {
-        align-items: center;
-        text-align: center;
-        margin-top: 100px;
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cảm ơn đã mua hàng</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
     }
-
-    .tich img {
-        width: 400px;
-        height: 400px;
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
     }
-    h3{
-        padding-top: 40px;
-        padding-bottom: 40px;
+    
+    h1 {
+      color: #333;
     }
-    .button{
-        margin-left: 10px;
-        text-decoration: none;
-        border: 2px solid black;
-        color: red;
+    
+    p {
+      color: #777;
     }
-    .button:hover{
-        background: black;
-        color: white;
+    
+    .logo {
+      max-width: 200px;
+      margin: 20px auto;
     }
-
-</style>
-<div class="tich">
-    <img src="image/tich1.jpg">
-    <h3>BẠN ĐÃ ĐẶT HÀNG THÀNH CÔNG</h3>
-    <a class="button" href="index.php?act=trangchu">VỀ TRANG CHỦ</a>
-    <!-- <a class="button" href="index.php?act=trangthaii">GIỎ HÀNG</a> -->
-</div>
+    
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="logo" src="image/logo.jpg" alt="Logo">
+    <h1>Cảm ơn bạn đã mua hàng!</h1>
+    <p>Chúng tôi sẽ nhanh chóng xử lý và giao hàng cho bạn. Hãy kiểm tra email của bạn để biết thêm thông tin chi tiết.</p>
+    <a class="button" href="index.php?act=trangchu">Trang chủ</a>
+  </div>
+</body>
+</html>
