@@ -1,7 +1,4 @@
-<?php
-include "database.php";
 
-?>
 <?php
  class kythuat {
     private $db;
@@ -17,8 +14,8 @@ include "database.php";
        $vanh = $_POST['vanh'];
         $query ="INSERT INTO kythuat(khungsuon,yen,taynam,lop,xich,vanh) VALUE ('$khungsuon','$yen','$taynam','$lop','$xich','$vanh')";
         $this->db->insert($query);
-        // header ("location:listsanpham.php");
-        // header ('location:listkythuat.php');
+        header ("location:index.php?act=showkt");
+        
       
     }
     public function showkt(){
@@ -41,7 +38,7 @@ include "database.php";
     public function deletekt($kt_id){
         $query = "DELETE FROM kythuat WHERE kt_id='$kt_id'";
         $result = $this->db->delete($query);
-        header ("location:listkythuat.php");
+        header ("location:index.php?act=showkt");
         return $result;
     }
  }

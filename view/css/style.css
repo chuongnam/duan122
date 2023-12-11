@@ -33,7 +33,6 @@ header:hover{
 .menu{
     flex: 3;
     display: flex;
-    justify-content: space-evenly;
 }
 .menu >li{
     padding: 0 12px;
@@ -101,25 +100,19 @@ li{
     top: 70px;
 }
 #silde{
-    padding-bottom: 30px;
-    border-bottom: 2px solid #000;
     overflow: hidden;
+    width: 100%;
 }
 .aspect-ratio-169 {
-    display: block;
-    position: relative;
-    padding-top: 56.25%;
-    transition: 0.3s;
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
     
   }
   
   .aspect-ratio-169 img {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+        width: 1476px;
+        height: 941px;
   }
   .dot-container{
     position: absolute;
@@ -230,7 +223,7 @@ footer{
 }
 
 
-.cartegory-right{
+/* .cartegory-right{
     
     width: 80%;
 }
@@ -295,7 +288,7 @@ footer{
 }
 .cartegory-right-content2-item img{
     width: 50%;
-}
+} */
 /*--------------------product--------------*/
 .product{
     padding: 100px 0;
@@ -410,7 +403,9 @@ footer{
     margin-right: 6px;
 }
 .product-content-right-product-QR {
-    margin: 20px 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 .product-content-right-bottom{
     padding-top: 40px;
@@ -737,117 +732,35 @@ font-size: 12px;
 .delivery-content-right table tr td:first-child{
     text-align: left;
 }
-<<<<<<< Updated upstream
-.main-content{
-	width: 50%;
-	border-radius: 20px;
-	box-shadow: 0 5px 5px rgba(0,0,0,.4);
-	margin: 5em auto;
-	display: flex;
+#search-area{
+    width: 400px;
+    height: 40px;
+    border-radius: 4px;
 }
-.company__info{
-	background-color: #008080;
-	border-top-left-radius: 20px;
-	border-bottom-left-radius: 20px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	color: #fff;
+#Slide {
+    overflow: hidden;
+    width: 100%;
 }
-.fa-android{
-	font-size:3em;
-}
-@media screen and (max-width: 640px) {
-	.main-content{width: 90%;}
-	.company__info{
-		display: none;
-	}
-	.login_form{
-		border-top-left-radius:20px;
-		border-bottom-left-radius:20px;
-	}
-}
-@media screen and (min-width: 642px) and (max-width:800px){
-	.main-content{width: 70%;}
-}
-.row > h2{
-	color:#008080;
-}
-.login_form{
-	background-color: #fff;
-	border-top-right-radius:20px;
-	border-bottom-right-radius:20px;
-	border-top:1px solid #ccc;
-	border-right:1px solid #ccc;
-}
-form{
-	padding: 0 2em;
-}
-.form__input{
-	width: 100%;
-	border:0px solid transparent;
-	border-radius: 0;
-	border-bottom: 1px solid #aaa;
-	padding: 1em .5em .5em;
-	padding-left: 2em;
-	outline:none;
-	margin:1.5em auto;
-	transition: all .5s ease;
-}
-.form__input:focus{
-	border-bottom-color: #008080;
-	box-shadow: 0 0 5px rgba(0,80,80,.4); 
-	border-radius: 4px;
-}
-.btn{
-	transition: all .5s ease;
-	width: 70%;
-	border-radius: 30px;
-	color:#008080;
-	font-weight: 600;
-	background-color: #fff;
-	border: 1px solid #008080;
-	margin-top: 1.5em;
-	margin-bottom: 1em;
-}
-.btn:hover, .btn:focus{
-	background-color: #008080;
-	color:#fff;
-=======
-.changepassword{
-    margin-top: 100px;
-}
-.page_404{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;
-}
-
-.page_404  img{ width:100%;}
-
-.four_zero_four_bg{
- 
- background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
-    height: 400px;
-    background-position: center;
- }
- 
- 
- .four_zero_four_bg h1{
- font-size:80px;
- }
- 
-  .four_zero_four_bg h3{
-       font-size:80px;
-       }
-       
-       .link_404{      
-  color: #fff!important;
-    padding: 10px 20px;
-    background: #39ac31;
-    margin: 20px 0;
-    display: inline-block;}
-  .contant_box_404{ margin-top:-50px;}
-#countdown{
-    font-size: 700;
+label.error {
     color: red;
-    
->>>>>>> Stashed changes
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+.product-relate {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 10px;
+    margin: 10px; 
+    text-align: center;
+    transition: box-shadow 0.3s ease; 
+}
+.comment{
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 10px;
+    margin: 10px; 
+    transition: box-shadow 0.3s ease; 
 }

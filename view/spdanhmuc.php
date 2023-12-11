@@ -1,4 +1,5 @@
 <?php
+session_start();   
 include "header.php";
 include "model/sanpham.php";
 ?>
@@ -52,35 +53,32 @@ $spdanhmuc = $cartegory->spdanhmuc();
         text-align: center;
         align-items: center;
     }
-    
+    .xem-them{
+     
+     border: 2px solid #BF8A49;
+ }
+ .xem-them:hover{
+     background-color: black;
+ color: white;
+ }
     </style>
     <?php
-    
     ?>
 <div class="cartegory-right">
     <h1 class="h1">DANH MỤC</h1>
 <div class="content-sp row">
-<?php
-        
-        if ($spdanhmuc) {
-            
+<?php       
+        if ($spdanhmuc) {           
             while ($row = $spdanhmuc->fetch_assoc()) {
-                extract($row);
-                
+                extract($row);          
                 ?>
-          
-    
         <div class="content-item">
        
             <img src="../admin/upload/<?php echo $row['images'] ?>" width="200px">
             <h1><?php echo $row['product_name']?></h1>
-            <p><?php echo $row['product_gia']?><sub>đ</sub></p>
-            <a href="sanphamchitiet.php?product_id=<?php echo $row['product_id'] ?>">xem them</a>
-            </div>
-       
-
-    
-      
+            <p><?php echo number_format($row['product_gia']),'VNĐ'?></p>
+            <a href="index.php?act=chitiet&product_id=<?php echo $row['product_id'] ?>" class="xem-them">xem them</a>
+            </div>  
             <?php
                     }
                 }

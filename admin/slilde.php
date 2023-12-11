@@ -1,42 +1,75 @@
 <style>
-   
-    </style>
-<section class="admin-content">
-    <div class="admin-content-left">
-         <ul>
-            <li><a href="">DANH MUC</a>
-                <ul>
-                    <li><a href="cartegoryadd.php">THÊM DANH MỤC</a></li>
-                    <li><a href="listdanhmuc.php">DANH SÁCH DANH MỤC</a></li>
-                   
-                </ul>
-            </li>
-            <li><a href="">SẢN PHẨM</a>
-                <ul>
-                    <li><a href="productadd.php">THÊM SẢN PHẨM</a></li>
-                    <li><a href="listsanpham.php">DANH SÁCH SẢN PHẨM</a></li>
-                </ul>
-            </li>
-            <li><a href="">ĐƠN HÀNG</a>
-                <ul>
+
+</style>
+<section class="admin-content" >
+<div class="container" id="admin-left" style="margin-top:60px">
+        <div class="row">
+            <div class="col">
+                <ul class="nav">
+                    <li class="panel panel-default">
+                        <a data-toggle="collapse" href="#danhmuc">DANH MỤC </a>
+                        <div class="collapse" id="danhmuc">
+                            <ul class="nav">
+                                <li><a href="index.php?act=adddm">THÊM DANH MỤC</a></li>
+                                <li><a href="index.php?act=showdm">DANH SÁCH DANH MỤC</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="panel panel-default">
+                        <a data-toggle="collapse" href="#sanpham">SẢN PHẨM </a>
+                        <div class="collapse" id="sanpham">
+                            <ul class="nav">
+                                <li><a href="index.php?act=addsp">THÊM SẢN PHẨM</a></li>
+                                <li><a href="index.php?act=showsp">DANH SÁCH SẢN PHẨM</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     
-                    <li><a href="">DANH SÁCH ĐƠN HÀNG</a></li>
+                    <li class="panel panel-default">
+                        <a data-toggle="collapse" href="#binhluan">BÌNH LUẬN </a>
+                        <div class="collapse" id="binhluan">
+                            <ul class="nav">
+                                <li><a href="index.php?act=showbinhluan">DANH SÁCH BÌNH LUẬN</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="panel panel-default">
+                        <a data-toggle="collapse" href="#donhang">ĐƠN HÀNG </a>
+                        <div class="collapse" id="donhang">
+                            <ul class="nav">
+                                <li><a href="index.php?act=dsdonhang">DANH SÁCH ĐƠN HÀNG</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="panel panel-default">
+                        <a data-toggle="collapse" href="#lienhe">LIÊN HỆ </a>
+                        <div class="collapse" id="lienhe">
+                            <ul class="nav">
+                                <li><a href="index.php?act=showlienhe">DANH SÁCH LIÊN HỆ</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="panel panel-default">
+                        <a data-toggle="collapse" href="#taikhoan">TÀI KHOẢN </a>
+                        <div class="collapse" id="taikhoan">
+                            <ul class="nav">
+                                <li><a href="index.php?act=showtk">DANH SÁCH TÀI KHOẢN</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="panel panel-default">
+                        <a data-toggle="collapse" href="#thongke">THỐNG KÊ </a>
+                        <div class="collapse" id="thongke">
+                            <ul class="nav">
+                                <li><a href="index.php?act=thongke">DANH SÁCH THÔNG KÊ</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
-            </li>
-            <li><a href="">KỸ THUẬT</a>
-                <ul>
-                    
-                    <li><a href="kythuatadd.php">THÊM KỸ THUẬT</a></li>
-                    <li><a href="listkythuat.php">DANH SÁCH KỸ THUẬT</a></li>
-                    
-                </ul>
-            </li>
-            <li><a href="">TÀI KHOẢN</a>
-                <ul>
-                    
-                    <li><a href="listtaikhoan.php">DANH SÁCH TÀI KHOẢN</a></li>
-                </ul>
-            </li>
-            
-         </ul>
+            </div>
+        </div>
     </div>

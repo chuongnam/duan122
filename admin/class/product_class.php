@@ -1,7 +1,4 @@
-<?php
-include "database.php";
 
-?>
 <?php
  class product {
     private $db;
@@ -45,7 +42,7 @@ include "database.php";
                 '$color','$luotxem'
                  )";
         $this->db->insert($query);
-        header ("location:listsanpham.php");
+        header ("location:index.php?act=showsp");
 
     }
     public function showsp(){
@@ -56,13 +53,14 @@ include "database.php";
     public function deletesp($product_id){
         $query = "DELETE FROM product WHERE product_id='$product_id'";
         $result = $this->db->delete($query);
-        header ("location:listsanpham.php");
+        header ("location:index.php?act=showsp");
         return $result;
     }
     public function updatesp($product_id,$product_name,$product_gia,$product_mota,$soluong,$masp,$color){
-        $query = "UPDATE product SET product_name ='$product_name',product_gia ='$product_gia',product_mota ='$product_mota',soluong ='$soluong',masp ='$masp',color ='$color' WHERE product_id='$product_id' ";
+        $id=$_GET['product_id'];
+        $query = "UPDATE product SET product_name ='$product_name',product_gia ='$product_gia',product_mota ='$product_mota',soluong ='$soluong',masp ='$masp',color ='$color' WHERE product_id=$product_id";
         $result = $this->db->update($query);
-        header ('location:listsanpham.php');
+        header ("location:index.php?act=showsp");
         return $result;
 
     }
@@ -72,5 +70,13 @@ include "database.php";
         $result = $this->db->select($query);
         return $result;
     }
+    public function thongke(){
+        $query = "SELECT loaixe.cartegory_id as madm,loaixe.tendanhmuc as tendm, count(product.product_id) as countsp, min(product.product_gia) as minprice, max(product.product_gia) as maxprice,avg(product.product_gia) as avg,sum(product.product_gia) as sum FROM product left join loaixe on loaixe.cartegory_id = product.cartegory_id GROUP BY loaixe.cartegory_id";
+       
+        $result = $this->db->select($query);
+        return $result;
+    }
+    
+    
  }
 ?>

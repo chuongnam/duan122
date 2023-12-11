@@ -14,32 +14,40 @@ ul {
 header {
    
     height: 100px;
-    width: 100vw;
     border-bottom: 2px solid #ddd;
 }
-.admin-content{
-    padding-top: 50px;
-    display: flex;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
-.admin-content-left{
-    background-color: white;
-    width: 20%;
-    height: 100vh;
-    padding: 30px 0 0 12px;
 
+.admin-content {
+    display: flex;
+    justify-content: space-between;
 }
-.admin-content-left> ul> li> a{
-    font-weight: bold;
+
+#admin-left{
+    width: 230px;
+    margin-right: 0;
+    margin-left: 0;
 }
-.admin-content-left ul li {
-    margin: 6px 0;
+.nav .panel-default > a {
+    position: relative;
+    padding-right: 30px;
 }
-.admin-content-left ul ul{
-    margin-left: 20px;
+
+.nav .panel-default > a::after {
+    content: '\25BC';
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
 }
 .admin-content-right{
-    width: 80%;
-    padding: 30px 0 0 12px;
+    width: 81%;
+    padding: 12px;
 
 }
 .admin-content-right-cartegoryadd input{
@@ -96,3 +104,16 @@ table{
     margin-top: 12px;
     padding: 12px;
 }
+#imagePreview {
+    position: absolute;
+    right: 63%;
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
+    background-size: cover;
+    background-position: center;
+  }
+.container .row label{
+    font-family: sans-serif
+}
+  

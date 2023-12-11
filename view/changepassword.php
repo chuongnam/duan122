@@ -1,48 +1,35 @@
-<?php
-include "header.php";
-include "model/user.php";
-$user = new user_client();
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_id = $_SESSION['user_id'];
-    $oldPassword = $_POST['old_password'];
-    $newPassword = $_POST['new_password'];
-    $confirmPassword = $_POST['confirm_password'];
-    if ($user -> check_old_pass($user_id,$oldPassword)==false) {
-        $error = "Mật khẩu cũ không đúng";
-    } elseif ($newPassword !== $confirmPassword) {
-        $error = "Mật khẩu mới không khớp";
-    } else {
-        $user -> update_pasword($user_id,$newPassword);
-        $success = "Đã cập nhật mật khẩu thành công !";
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin cá nhân</title>
+</head>
+<body>
+<br><br><br><br><br><br><br><br>
+<div  style="max-width: 400px; margin:auto; padding: 20px; background-color: #fff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 5px;">
+    <h2>Thông tin cá nhân</h2>
+    <br>
+    <h3>Đổi Mật Khẩu</h3>
+<br>
+    <form method="post" action="" id="changepasswordform">
         
-    }
-}
-?>
+        <input type="password" name="old_password" placeholder="mật khẩu cũ"  style="width: 100%; padding: 8px; margin-bottom: 12px; box-sizing: border-box;">
 
-<div class="changepassword">
-<h2>Thông tin cá nhân</h2><br>
-<h3>Đổi Mật Khẩu</h3>
+        
+        <input type="" name="new_password" id="new_password" placeholder="mật khẩu mới"  style="width: 100%; padding: 8px; margin-bottom: 12px; box-sizing: border-box;">
 
+       
+        <input type="" name="confirm_password" placeholder="nhập lại mật khẩu mới"  style="width: 100%; padding: 8px; margin-bottom: 12px; box-sizing: border-box;">
 
-
-<form method="post" action="">
-    <label for="old_password">Mật khẩu cũ:</label> 
-    <input type="password" name="old_password" required><br>
-
-    <label for="new_password">Mật khẩu mới:</label>
-    <input type="password" name="new_password" required><br>
-
-    <label for="confirm_password">Xác nhận mật khẩu mới:</label>
-    <input type="password" name="confirm_password" required><br>
-
-    <button >Đổi Mật Khẩu</button>
-</form>
-<?php if (isset($error)): ?>
-    <p style="color: red;"><?php echo $error; ?></p>
-<?php endif; ?>
-
-<?php if (isset($success)): ?>
-    <p style="color: green;"><?php echo $success; ?></p>
-<?php endif; ?>
+        <button style="background-color: #007BFF; color: #fff; padding: 10px 15px; border: none; border-radius: 3px; cursor: pointer;">Đổi Mật Khẩu</button>
+    </form>
+    
 </div>
+</div>
+</body>
+</html>
+
+
 

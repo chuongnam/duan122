@@ -1,43 +1,3 @@
-<?php
-session_start();
-include "header.php";
-include "model/addcart.php";
-
-?>
-
-<?php
-
-if (!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
-                 
-
-//lay du lieu form
-if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
-
-    $images = $_POST['images'];
-    $product_name = $_POST['product_name'];
-    $product_gia = $_POST['product_gia'];
-    $color = $_POST['color'];
-    $soluong = $_POST['soluong'];
-    //ktra sản phẩm có trong giỏ hàng hay k
-    $fl = 0;
-    for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
-        if ($_SESSION['giohang'][$i][1] == $product_name) {
-            $fl = 1;
-            $integr=$soluong;
-            $soluongnew = intval($soluong) + intval($_SESSION['giohang'][$i][4]);
-            $_SESSION['giohang'][$i][4] = $soluongnew;
-            break;
-        }
-    }
-    if ($fl == 0) {
-        //them moi
-        $sp = [$images, $product_name, $product_gia, $color, $soluong];
-        $_SESSION['giohang'][] = $sp;
-        header("location:cart.php");
-    }
-}
-
-?>
 <style>
     .thanh-toan {
         margin-top: 10px;
@@ -57,7 +17,14 @@ if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
         margin-top: 10px;
         width: 50px;
     }
+    .nam{
+        font-size: 25px;
+        font-weight: bold;
+    }
+    
 </style>
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
 <section class="cart">
 
@@ -68,7 +35,8 @@ if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
                 <table>
                     <tr>
                         <th>STT</th>
-                        <th>ẢNH SẢN PHẨM</th>
+                        <th>ID</th>
+                        <th>IMAGES</th>
                         <th>TÊN SẢN PHẨM</th>
                         <th>GIÁ</th>
 
@@ -79,51 +47,103 @@ if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
                         <th>XÓA</th>
                     </tr>
                     <form action="thanhtoan.php" method="POST">
-                        <?php showgiohang() ?>
-                        <!-- <tr>
-                           <td><img src="image/anh11.jpg"></td>
-                           <td><p>xe đạp trẻ em</p></td>
-                           <td><img src="image/color.jpg" ></td>
-                         
-                           <td><input type="number" value="1" min="1"></td>
-                           <td><p>4.000.000<sub>đ</sub></p></td>
-                           <td><span>x</span></td>
-   
-                       </tr>
-                       <tr>
-                           <td><img src="image/anh11.jpg"></td>
-                           <td><p>xe đạp trẻ em</p></td>
-                           <td><img src="image/color.jpg" ></td>
-                         
-                           <td><input type="number" value="1" min="1"></td>
-                           <td><p>4.000.000<sub>đ</sub></p></td>
-                           <td><span>x</span></td>
-   
-                       </tr> -->
+                        <?php
+                        if (isset($_SESSION['giohang']) && !empty($_SESSION['giohang'])) {
+                            $i = 1;
+                            $tong = 0;
+                            $sum = 0;
+                            foreach ($_SESSION['giohang'] as $idSP => $value):
+                                $sum = $value['product_gia'] * $value['soluong'];
+                                $tong += $sum;
+                                ?>
+                                <tr>
+                                    <td>
+                                        <?= $i++ ?>
+                                    </td>
+                                    <td>
+                                        <?= $idSP ?>
+                                    </td>
+                                    <td><img src="../admin/upload/<?= $value['images'] ?>" width="200px"></td>
+                                    <td>
+                                        <?= $value['product_name'] ?>
+                                    </td>
+                                    <td>
+                                        <?= number_format($value['product_gia']) ?><sup>VNĐ</sup>
+                                    </td>
+
+                                    <td>
+                                        <?= $value['color'] ?>
+                                    </td>
+
+                                    <td>
+                                        <a href="index.php?act=them&product_id=<?= $idSP ?>" class="btn btn-success">+</a>
+                                        <?= $value['soluong'] ?>
+                                        <a href="index.php?act=tru&product_id=<?= $idSP ?>" class="btn btn-danger">-</a>
+                                    </td>
+
+                                    <td>
+                                        <?= number_format($sum) ?><sup>VNĐ</sup>
+                                    </td>
+
+
+
+                                    <td>
+                                        <a onclick="return confirm('bạn có sản phẩm này không')" href="index.php?act=xoasp&product_id=<?= $idSP ?>" class="btn btn-danger">Xóa</a>
+                                    </td>
+                                </tr>
+
+                                <?php
+                                $i++;
+                            endforeach;
+                        } else {
+                            // Nếu giỏ hàng không có giá trị session, hiển thị thông báo giỏ hàng trống
+                            echo '<tr><td colspan="9">Giỏ hàng trống</td></tr>';
+                        }
+                        ?>
+                       
                 </table>
+               
+                <a href="index.php?act=showdon">ĐƠN HÀNG</a> 
+          
+                </ul>
             </div>
             <div class="cart-content-right">
                 <table>
 
+                <ul>
+                <p class="nam">Tổng tiền:
 
+                    <?php 
+                     if (isset($_SESSION['giohang']) && !empty($_SESSION['giohang'])) {
+                        $sum = 0;
+                        foreach ($_SESSION['giohang'] as $item) {
+                            $sum += $item['product_gia'] * $item['soluong'];
+                        }
 
+                        echo number_format($sum) . "<sup>vnđ</sup>";
+                    }
+                    ?>
+                <p>
+            </ul>
+               
                 </table>
 
+
+
                 <div class="cart-content-right-text">
-                    <p>bạn sẽ được miễn phí giao hàng khi đơn hàng của bạn có tổng giá trị trên 2.000.000<sub>đ</sub>
+
+                    <p>Bạn sẽ được miễn phí giao hàng khi đơn hàng của bạn có tổng giá trị trên 2.000.000<sub>đ</sub>
                     </p>
-                    <p style="color: red; font-weight: bold;">mua thêm <span style="font-size: 18px;">200.000</span> để
-                        được miễn phí ship</p>
+                    
                 </div>
                 <div class="cart-content-right-button">
 
-                    <input type="submit" name="dongydathang" value="thanh toán" class="thanh-toan">
+                    <?php if(isset($_SESSION['giohang'])){
+                        echo '<input type="submit" name="dongydathang" value="thanh toán" class="thanh-toan">';
+                    } ?>
                 </div>
                 </form>
-                <div class="cart-content-right-dangnhap">
-                    <p>tài khoản</p><br>
-                    <p>Hãy <a href="" style="color: red;">ĐĂNG NHẬP</a> tài khoản của bạn để tích điểm thành viên</p>
-                </div>
+                
             </div>
         </div>
     </div>
