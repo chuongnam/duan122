@@ -1,10 +1,4 @@
 <?php
-
-include "slide.php";
-
-
-
-
 ?>
 
 <style>
@@ -27,11 +21,10 @@ include "slide.php";
     }
 
     .content-sp {
-
         margin-left: 10px;
         display: flex;
         justify-content: space-between;
-        width: 200px;
+        flex-wrap: wrap;
 
     }
 
@@ -40,8 +33,12 @@ include "slide.php";
     }
 
     .content-item {
-        margin-left: 10px;
+        max-width: 270px;
         border: 2px solid gray;
+        flex: 1 0 20%;
+        /* Flex-grow: 1; Flex-shrink: 0; Flex-basis: 30%; */
+        margin: 10px;
+        box-sizing: border-box;
     }
 
     .content-item h1 {
@@ -76,22 +73,17 @@ include "slide.php";
             </div>
             <div class="cartegory-right">
 
-
                 <div class="content-sp">
                     <?php
                     if ($loadsp && $loadsp->num_rows > 0) {
                         // Nếu có sản phẩm
                         while ($row = $loadsp->fetch_assoc()) {
                     ?>
-                            <div class="content-item">
-                                <img src="../admin/upload/<?php echo $row['images'] ?>" width="200px" height="200px">
-                                <h1>
-                                    <?php echo $row['product_name'] ?>
-                                </h1>
-                                <p>
-                                    <?php echo number_format($row['product_gia'])  ?> VNĐ
-                                </p>
-                                <a href="index.php?act=chitiet&product_id=<?php echo $row['product_id'] ?>" class="btn-xemthem">xem them</a>
+                            <div style="text-align: center; margin: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 10px;" class="content-item">
+                                <img src="../admin/upload/<?php echo $row['images'] ?>" style="width: 200px; height: 200px; border-radius: 5px;">
+                                <h1 style="margin-top: 10px;"><?php echo $row['product_name'] ?></h1>
+                                <p><?php echo number_format($row['product_gia']) ?> VNĐ</p>
+                                <a href="index.php?act=chitiet&product_id=<?php echo $row['product_id'] ?>" style="text-decoration: none; background-color: #007BFF; color: #fff; padding: 10px 15px; border-radius: 5px; display: inline-block; margin-top: 10px;">Xem Chi Tiết</a>
                             </div>
                     <?php
                         }
@@ -101,6 +93,7 @@ include "slide.php";
                     }
                     ?>
                 </div>
+
 
 
 
