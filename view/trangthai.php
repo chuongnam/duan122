@@ -112,6 +112,7 @@
         <td><?php echo $row['ngaydathang']?></td>
     
         <td><?php echo $row['name']?></td>
+       
       </tr>
        
        
@@ -121,6 +122,7 @@
       }
     }
     ?>
+    
 <a href="index.php?act=trangthaii" class="thanh-toan">quay lại đơn hàng</a>
         
     </tr>

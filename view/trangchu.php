@@ -70,6 +70,7 @@ include "slide.php";
     text-align: center;
     font-size: 40px;
 }
+
 </style>
 <section class="cartegory">
     <div class="container">

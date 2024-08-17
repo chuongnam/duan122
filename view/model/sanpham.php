@@ -35,6 +35,7 @@ class product
     {
         $id = $_GET['product_id'];
         $query = "SELECT * FROM product WHERE product_id <>".$id;
+        
         $result = $this->db->select($query);
         return $result;
     }
